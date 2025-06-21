@@ -1,0 +1,79 @@
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="form-container">
+  <div class="form-fields">
+    <!-- CREATE -->
+    <ng-container *ngIf="action === 'create'">
+      <div>
+        <label for="title">Título</label>
+        <input id="title" formControlName="title" type="text" placeholder="Título de la categoría" />
+      </div>
+
+      <div>
+        <label for="description">Descripción</label>
+        <textarea id="description" formControlName="description" rows="4" placeholder="Descripción..."></textarea>
+      </div>
+
+      <button type="submit">Crear Categoría</button>
+    </ng-container>
+
+    <!-- EDIT: listado de categorías -->
+    <ng-container *ngIf="action === 'edit' && !selectedCategory">
+    <div class="edit-list">
+        <h4>Selecciona una categoría para editar:</h4>
+        <ul>
+        <li
+            *ngFor="let cat of categories"
+            (click)="selectCategoryToEdit(cat)"
+        >
+            {{ cat.title }}
+        </li>
+        </ul>
+    </div>
+    </ng-container>
+
+
+    <!-- EDIT: formulario -->
+    <ng-container *ngIf="action === 'edit' && selectedCategory">
+      <div>
+        <label for="title">Título</label>
+        <input id="title" formControlName="title" type="text" placeholder="Título de la categoría" />
+      </div>
+
+      <div>
+        <label for="description">Descripción</label>
+        <textarea id="description" formControlName="description" rows="4" placeholder="Descripción..."></textarea>
+      </div>
+
+      <button type="submit">Actualizar Categoría</button>
+      <div class="edit-note">
+        <small>Editando: {{ selectedCategory.title }}</small>
+        <button type="button" (click)="cancelEdit()">Cancelar</button>
+      </div>
+    </ng-container>
+
+    <!-- DELETE -->
+    <ng-container *ngIf="action === 'delete'">
+      <div class="delete-list">
+        <h4>Selecciona una categoría para eliminar:</h4>
+        <ul>
+          <li
+            *ngFor="let cat of categories"
+            (click)="selectCategoryToDelete(cat)"
+            [class.selected]="selectedCategory?.id === cat.id"
+          >
+            {{ cat.title }}
+          </li>
+        </ul>
+        <button [disabled]="!selectedCategory" (click)="confirmDelete()" type="button">
+          Confirmar eliminación
+        </button>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Acciones: SIEMPRE visibles -->
+  <div class="actions">
+    <button type="button" (click)="setAction('create')">Crear nueva</button>
+    <button type="button" (click)="setAction('edit')">Editar</button>
+    <button type="button" (click)="setAction('delete')">Eliminar</button>
+  </div>
+</form>
