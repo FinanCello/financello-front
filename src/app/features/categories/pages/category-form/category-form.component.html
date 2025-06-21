@@ -4,7 +4,7 @@
     <ng-container *ngIf="action === 'create'">
       <div>
         <label for="title">Título</label>
-        <input id="title" formControlName="title" type="text" placeholder="Título de la categoría" />
+        <input id="name" formControlName="name" type="text" placeholder="Título de la categoría" />
       </div>
 
       <div>
@@ -24,7 +24,7 @@
             *ngFor="let cat of categories"
             (click)="selectCategoryToEdit(cat)"
         >
-            {{ cat.title }}
+            {{ cat.name }}
         </li>
         </ul>
     </div>
@@ -35,7 +35,7 @@
     <ng-container *ngIf="action === 'edit' && selectedCategory">
       <div>
         <label for="title">Título</label>
-        <input id="title" formControlName="title" type="text" placeholder="Título de la categoría" />
+        <input id="name" formControlName="name" type="text" placeholder="Título de la categoría" />
       </div>
 
       <div>
@@ -45,7 +45,7 @@
 
       <button type="submit">Actualizar Categoría</button>
       <div class="edit-note">
-        <small>Editando: {{ selectedCategory.title }}</small>
+        <small>Editando: {{ selectedCategory.name }}</small>
         <button type="button" (click)="cancelEdit()">Cancelar</button>
       </div>
     </ng-container>
@@ -58,9 +58,9 @@
           <li
             *ngFor="let cat of categories"
             (click)="selectCategoryToDelete(cat)"
-            [class.selected]="selectedCategory?.id === cat.id"
+            [class.selected]="selectedCategory?.name === cat.name"
           >
-            {{ cat.title }}
+            {{ cat.name }}
           </li>
         </ul>
         <button [disabled]="!selectedCategory" (click)="confirmDelete()" type="button">

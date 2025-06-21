@@ -2,6 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CategoryService } from '../../../../services/Category.service';
+import { CategoryRequest, CategorySimpleResponse } from '../../../../models/Category';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-form',
@@ -14,22 +17,37 @@ import { RouterModule } from '@angular/router';
 export class CategoryFormComponent {
   categoryForm!: FormGroup;
   action: 'create' | 'edit' | 'delete' = 'create';
-
-  categories = [
-    { id: '1', title: 'Comida', description: 'Categoría de comida' },
-    { id: '2', title: 'Viajes', description: 'Categoría de viajes' }
-  ];
   selectedCategory: any = null;
+  categories: CategorySimpleResponse[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.loadCategories();
+  }
+
+  loadCategories(): void {
+    
+    const userId = 1; //hardcoded
+    this.categoryService.getCategories(userId).subscribe({
+        next: (res) => (this.categories = res),
+        error: (err) => this.showError(err)
+    })
+  }
+
+  showError(error: any) {
+    const msg = 
+    error?.error?.detail ||
+    error?.error?.message ||
+    error?.message ||
+    'Error inesperado';
+    Swal.fire('Error', msg, 'error')
   }
 
   initForm(): void {
     this.categoryForm = this.fb.group({
-      title: ['', Validators.required],
+      name: ['', Validators.required],
       description: ['']
     });
   }
@@ -53,11 +71,25 @@ export class CategoryFormComponent {
   onSubmit(): void {
     if (!this.categoryForm.valid) return;
 
-    const data = this.categoryForm.value;
+    const data = this.categoryForm.value as CategoryRequest;
+    const userId = 1; //mas hardcodeo
     if (this.action === 'create') {
-      console.log('Crear categoría:', data);
+        this.categoryService.createCategory(userId, data).subscribe({
+            next: () => {
+                Swal.fire('Creado', 'La categoría fue creada correctamente', 'success');
+            },
+            error: (err) => this.showError(err)
+        });
     } else if (this.action === 'edit' && this.selectedCategory) {
-      console.log('Actualizar categoría con ID:', this.selectedCategory.id, data);
+        const id = this.selectedCategory.id;
+        this.categoryService.updateCategory(id, data).subscribe({
+            next: () => {
+                Swal.fire('Actualizado', 'La categoría fue actualizada correctamente', 'success');
+                this.cancelEdit();
+                this.loadCategories();
+            },
+            error: (err) => this.showError(err)
+        });
     }
   }
 
@@ -67,7 +99,16 @@ export class CategoryFormComponent {
 
   confirmDelete(): void {
     if (this.selectedCategory) {
-      console.log('Eliminar categoría con ID:', this.selectedCategory.id);
+        const id = this.selectedCategory.id;
+        this.categoryService.deleteCategory(id).subscribe({
+            next: () => {
+                Swal.fire('Eliminado', 'La categoría fue eliminada correctamente', 'success');
+                this.selectedCategory = null;
+                this.loadCategories();
+            },
+            error: (err) => this.showError(err)
+        });
     }
   }
+
 }
