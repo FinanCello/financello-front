@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from './Api.service';
 import {
   RegisterRequest,
   LoginRequest,
@@ -9,33 +8,36 @@ import {
   UpdateProfileRequest,
   UserWithRoleResponse,
 } from '../models/User';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly PREFIX = '/auth';
+  private apiUrl = `${environment.apiUrl}/auth`;
+  private http = inject(HttpClient);
 
-  constructor(private apiService: ApiService) {}
+  constructor() {}
 
   register(request: RegisterRequest): Observable<void> {
-    return this.apiService.post<void>(
-      `${this.PREFIX}/register`,
+    return this.http.post<void>(
+      `${this.apiUrl}/register`,
       request
     );
   }
 
   login(request: LoginRequest): Observable<AuthResponse> {
-    return this.apiService.post<AuthResponse>(
-      `${this.PREFIX}/login`,
+    return this.http.post<AuthResponse>(
+      `${this.apiUrl}/login`,
       request
     );
   }
 
   getUserProfile(userId: number): Observable<UserProfileResponse> {
     // si tu controlador mapea GET /auth/profile/{userId}
-    return this.apiService.get<UserProfileResponse>(
-      `${this.PREFIX}/profile/${userId}`
+    return this.http.get<UserProfileResponse>(
+      `${this.apiUrl}/profile/${userId}`
     );
   }
 
@@ -44,14 +46,14 @@ export class AuthService {
     request: UpdateProfileRequest
   ): Observable<UserProfileResponse> {
     // si tu controlador mapea PUT /auth/profile/{userId}
-    return this.apiService.put<UserProfileResponse>(
-      `${this.PREFIX}/profile/${userId}`,
+    return this.http.put<UserProfileResponse>(
+      `${this.apiUrl}/profile/${userId}`,
       request
     );
   }
 
   getAllUsers(): Observable<UserWithRoleResponse[]> {
     // si tu controlador tiene GET /users
-    return this.apiService.get<UserWithRoleResponse[]>(`/users`);
+    return this.http.get<UserWithRoleResponse[]>(`${environment.apiUrl}/users`);
   }
 }
