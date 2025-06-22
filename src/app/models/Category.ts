@@ -6,8 +6,10 @@ export interface CategoryRequest {
 export interface CategoryResponse {
   name: string;
   description?: string;
+  id: number;
 }
 
 export interface CategorySimpleResponse {
   name: string;
+  id: number;
 }
