@@ -1,16 +1,26 @@
 form.form-container {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 24px;
   background-color: #f9f9f9;
   width: 100%;
-  max-width: 800px;
+  max-width: 500px;
+  min-height: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   gap: 24px;
+  border-radius: 35px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
 }
 
 .form-fields {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 input[type="text"],
@@ -19,38 +29,54 @@ textarea {
   padding: 8px;
   margin-top: 4px;
   margin-bottom: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #BABABA;
   border-radius: 4px;
   font-family: inherit;
   font-size: 14px;
+  background-color: #D9D9D9;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+ul, li {
+    font-family: 'Poppins', sans-serif;
 }
 
 button[type="submit"] {
+  align-self: flex-start;
   background-color: #0EA49B;
-  color: white;
+  color: black;
   border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
   cursor: pointer;
+  border-radius: 100px;
+  padding: 15px;
+  width: auto;
+  min-width: 100px;
 }
 
 button[type="submit"]:hover {
-  background-color: #0EA49B;
+  background-color: #84ddd4;
 }
 
-/* Acciones al lado derecho del form */
+/* Acciones */
 .actions {
+  margin-top: 5px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /*flex-direction: column;*/
+  gap: 8px;
 }
 
 .actions button {
   background-color: #e0e0e0;
   border: none;
-  padding: 10px 12px;
+  padding: 15px 30px;
   border-radius: 4px;
   cursor: pointer;
+  border-radius: 100px;
 }
 
 .actions button:hover {
@@ -98,4 +124,33 @@ button[type="submit"]:hover {
 
 .edit-list li:hover {
   background-color: #eef2ff;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 16px;
+}
+
+.delete-button {
+  background-color: #d9534f; 
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 100px;
+}
+
+.delete-button:hover {
+  background-color: #c9302c;
+}
+
+.delete-button:disabled {
+  background-color: #f5c6cb;
+  cursor: not-allowed;
 }

@@ -1,3 +1,4 @@
+<div class="page-container">
 <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="form-container">
   <div class="form-fields">
     <!-- CREATE -->
@@ -12,10 +13,10 @@
         <textarea id="description" formControlName="description" rows="4" placeholder="Descripción..."></textarea>
       </div>
 
-      <button type="submit">Crear Categoría</button>
+      <button type="submit">Aceptar</button>
     </ng-container>
 
-    <!-- EDIT: listado de categorías -->
+    <!-- EDIT -->
     <ng-container *ngIf="action === 'edit' && !selectedCategory">
     <div class="edit-list">
         <h4>Selecciona una categoría para editar:</h4>
@@ -30,8 +31,6 @@
     </div>
     </ng-container>
 
-
-    <!-- EDIT: formulario -->
     <ng-container *ngIf="action === 'edit' && selectedCategory">
       <div>
         <label for="title">Título</label>
@@ -63,17 +62,17 @@
             {{ cat.name }}
           </li>
         </ul>
-        <button [disabled]="!selectedCategory" (click)="confirmDelete()" type="button">
+        <button class="delete-button" [disabled]="!selectedCategory" (click)="confirmDelete()" type="button">
           Confirmar eliminación
         </button>
       </div>
     </ng-container>
   </div>
 
-  <!-- Acciones: SIEMPRE visibles -->
   <div class="actions">
     <button type="button" (click)="setAction('create')">Crear nueva</button>
     <button type="button" (click)="setAction('edit')">Editar</button>
     <button type="button" (click)="setAction('delete')">Eliminar</button>
   </div>
 </form>
+</div>
