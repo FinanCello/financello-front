@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from './Api.service';
 import {
   AddSavingGoalRequest,
   UpdateSavingGoalRequest,
   AddSavingGoalResponse,
 } from '../models/SavingGoal';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SavingGoalService {
-  private readonly PREFIX = '/goals'; // ajusta a '/saving-goals' si ese es tu @RequestMapping
+  private apiUrl = `${environment.apiUrl}/goals`;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private http: HttpClient) {}
 
   addSavingGoal(
     request: AddSavingGoalRequest
   ): Observable<AddSavingGoalResponse> {
-    return this.apiService.post<AddSavingGoalResponse>(
-      `${this.PREFIX}/add`,
+    return this.http.post<AddSavingGoalResponse>(
+      `${this.apiUrl}/add`,
       request
     );
   }
@@ -28,21 +29,21 @@ export class SavingGoalService {
     goalId: number,
     request: UpdateSavingGoalRequest
   ): Observable<AddSavingGoalResponse> {
-    return this.apiService.put<AddSavingGoalResponse>(
-      `${this.PREFIX}/${goalId}`,
+    return this.http.put<AddSavingGoalResponse>(
+      `${this.apiUrl}/${goalId}`,
       request
     );
   }
 
   deleteSavingGoal(goalId: number): Observable<void> {
-    return this.apiService.delete(
-      `${this.PREFIX}/${goalId}`
+    return this.http.delete<void>(
+      `${this.apiUrl}/${goalId}`
     );
   }
 
   listSavingGoals(): Observable<AddSavingGoalResponse[]> {
-    return this.apiService.get<AddSavingGoalResponse[]>(
-      `${this.PREFIX}`
+    return this.http.get<AddSavingGoalResponse[]>(
+      `${this.apiUrl}`
     );
   }
 }
