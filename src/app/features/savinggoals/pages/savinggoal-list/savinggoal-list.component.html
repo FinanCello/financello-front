@@ -1,0 +1,32 @@
+<div>
+  <h2>Metas de Ahorro</h2>
+  <button (click)="onCreate()">Nueva Meta</button>
+  <div *ngIf="loading">Cargando...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <table *ngIf="!loading && savingGoals.length">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Monto objetivo</th>
+        <th>Monto actual</th>
+        <th>Fecha límite</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let goal of savingGoals">
+        <td>{{ goal.name }}</td>
+        <td>{{ goal.targetAmount | currency }}</td>
+        <td>{{ goal.currentAmount | currency }}</td>
+        <td>{{ goal.dueDate | date }}</td>
+        <td>
+          <button (click)="onEdit(goal)">Editar</button>
+          <button (click)="onDelete(goal)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!loading && !savingGoals.length">
+    No hay metas de ahorro registradas.
+  </div>
+</div>

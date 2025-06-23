@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
-import { SavinggoalFormComponent } from './features/savinggoals/pages/savinggoal-form/savinggoal-form.component';
+import { savingGoalsRoutes } from './features/savinggoals/savinggoals-routes';
 
 export const routes: Routes = [
-  { path: 'savinggoals/new', component: SavinggoalFormComponent },
-  // Puedes agregar aquí la ruta para editar, por ejemplo:
-  // { path: 'savinggoals/edit/:id', component: SavinggoalFormComponent },
+  { path: 'savinggoals', children: savingGoalsRoutes },
 ];
