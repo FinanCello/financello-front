@@ -51,6 +51,7 @@ export class LoginComponent {
       next: (response) => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify({
+          id: response.id,
           email: response.email,
           firstName: response.firstName,
           lastName: response.lastName,
