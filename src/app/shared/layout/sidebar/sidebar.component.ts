@@ -14,22 +14,28 @@ export class SidebarComponent {
   activeSection = 'home';
   constructor(private router: Router) {}
 
-  /*sectionRoutes: { [key: string]: string } = {
+  sectionRoutes: { [key: string]: string } = {
     home: '/home',
-    'load-files': '/load-files',
-    'my-finances': '/my-finances',
-    'saving-goals': '/saving-goals',
-    analytics: '/analytics',
-    profile: '/profile',
+    //'load-files': '/load-files',
+    //'my-finances': '/my-finances',
+    //'saving-goals': '/saving-goals',
+    //analytics: '/analytics',
+    //profile: '/profile',
     settings: '/settings'
   };
-  */
+  
 
   
   setActive(section: string): void {
     this.activeSection = section;
-    this.router.navigate(['auth/login']);
+    const route = this.sectionRoutes[section];
+    if (route) {
+        this.router.navigate([route]);
+    } else {
+        this.router.navigate(['/auth/login']);
+    }
   }
+
   ngAfterViewInit(): void {
     const buttons = document.querySelectorAll('.sidebar-button');
   
