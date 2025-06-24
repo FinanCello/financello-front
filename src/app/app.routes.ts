@@ -31,7 +31,8 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'settings', component: SettingsComponent }
+      { path: 'settings', component: SettingsComponent },
+      //{ path: 'categories', loadComponent: () => import('./features/categories/pages/category-form/category-form.component').then(m => m.CategoryFormComponent) }
      // { path: 'load-files', component: LoadFilesComponent },
       //{ path: 'my-finances', component: MyFinancesComponent },
       //{ path: 'saving-goals', component: SavingGoalsComponent }
