@@ -1,0 +1,17 @@
+<div class="upload-container"
+     (dragover)="onDragOver($event)"
+     (dragleave)="onDragLeave($event)"
+     (drop)="onDrop($event)"
+     [class.dragover]="isDragging">
+
+  <p *ngIf="!selectedFile">Arrastra y suelta un archivo Excel aquí, o haz clic para seleccionar</p>
+  <p *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</p>
+
+  <input type="file" accept=".xlsx" hidden (change)="onFileSelected($event)" #fileInput>
+  <button type="button" (click)="fileInput.click()">Seleccionar archivo</button>
+
+  <button type="button" [disabled]="!selectedFile || isUploading" (click)="upload()">Subir archivo</button>
+
+  <p *ngIf="uploadSuccess" class="success">Archivo subido con éxito.</p>
+  <p *ngIf="uploadError" class="error">Error al subir archivo: {{ uploadError }}</p>
+</div>
