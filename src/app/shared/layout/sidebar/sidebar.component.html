@@ -66,8 +66,9 @@ class="sidebar-button"
 <div 
 class="sidebar-button" 
 [ngClass]="{ 'active': activeSection === 'settings' }"
-(click)="setActive('settings')">
+[routerLink]="['/dashboard/settings']">
 <img src="icons/settings.svg" alt="settings" />
+
 <span>SETTINGS</span>
 </div>
       </div>

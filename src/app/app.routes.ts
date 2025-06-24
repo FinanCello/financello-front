@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/auth.guard';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home.component';
+import { SettingsComponent } from './features/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -29,7 +30,8 @@ export const routes: Routes = [
     loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [authGuard],
     children: [
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: 'settings', component: SettingsComponent }
      // { path: 'load-files', component: LoadFilesComponent },
       //{ path: 'my-finances', component: MyFinancesComponent },
       //{ path: 'saving-goals', component: SavingGoalsComponent }
