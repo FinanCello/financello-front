@@ -11,7 +11,9 @@ export interface UpdateSavingGoalRequest {
 }
 
 export interface AddSavingGoalResponse {
+  id: string;
   name: string;
   targetAmount: number;
+  currentAmount: number;
   dueDate: string;
 }
