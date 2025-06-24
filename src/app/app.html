@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<app-snackbar
+  *ngIf="snackbarData()"
+  [title]="snackbarData()?.title || ''"
+  [message]="snackbarData()?.message || ''"
+  [icon]="snackbarData()?.icon || ''"
+  [showUndo]="!!snackbarData()?.showUndo">
+</app-snackbar>
+
+<main [@routeAnimations]="getAnimationData(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
