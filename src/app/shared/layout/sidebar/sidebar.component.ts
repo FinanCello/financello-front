@@ -20,7 +20,7 @@ export class SidebarComponent {
     //'my-finances': '/my-finances',
     //'saving-goals': '/saving-goals',
     //analytics: '/analytics',
-    //profile: '/profile',
+    profile: '/dashboard/profile',
     settings: '/settings'
   };
   
