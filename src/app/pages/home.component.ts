@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/Auth.service';
+import { UserProfileResponse } from '../models/User';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  // Aquí puedes definir lógicas de dashboard, como KPIs, tarjetas, gráficos, etc.
+  userInfo: any;
 
-  userName = 'John Doe'; // ejemplo de uso simple
+  constructor(private authService: AuthService) {
+    
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      this.userInfo = JSON.parse(userStr);
+      console.log(this.userInfo);
+    }
+  }
 }
