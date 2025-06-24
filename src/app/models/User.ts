@@ -1,9 +1,14 @@
+export enum UserType {
+  PERSONAL = 'PERSONAL',
+  BUSINESS = 'BUSINESS'
+}
+
 export interface RegisterRequest {
   email: string;
   password: string;
   firstName: string;
   lastName: string;
-  userType: string;       // UserType enum → string
+  userType: UserType;
 }
 
 export interface LoginRequest {

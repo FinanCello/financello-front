@@ -1,8 +1,13 @@
+export enum RoleType {
+  ADMIN = 'ADMIN',
+  BASIC = 'BASIC'
+}
+
 export interface RoleRequest {
-  roleType: string; // RoleType enum → string
+  roleType: RoleType;
 }
 
 export interface RoleResponse {
   id: number;
-  roleType: string;
+  roleType: RoleType;
 }
