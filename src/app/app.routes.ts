@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/auth.guard';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { HomeComponent } from './pages/home.component';
 
 export const routes: Routes = [
   {
@@ -25,7 +27,13 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: HomeComponent }
+     // { path: 'load-files', component: LoadFilesComponent },
+      //{ path: 'my-finances', component: MyFinancesComponent },
+      //{ path: 'saving-goals', component: SavingGoalsComponent }
+    ]
   },
   {
     path: 'profile',

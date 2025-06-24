@@ -1,0 +1,87 @@
+<div class="sidebar">
+    <div class="icons-logo">
+      <img class="cello-3-1" src="icons/favicon.png" />
+      <div class="financello">FINANCELLO</div>
+    </div>
+    <div class="frame-228">
+      <div class="links">
+        <div 
+  class="sidebar-button home-button"
+  [ngClass]="{ 'active': activeSection === 'home' }"
+  (click)="setActive('home')">
+  <img src="icons/home.svg" alt="home" />
+  <span>HOME</span>
+</div>
+
+<!-- LOAD FILES -->
+<div 
+  class="sidebar-button" 
+  [ngClass]="{ 'active': activeSection === 'load-files' }"
+  (click)="setActive('load-files')">
+  <img src="icons/file.svg" alt="load-files" />
+  <span>LOAD FILES</span>
+</div>
+
+<!-- MY FINANCES -->
+<div 
+  class="sidebar-button" 
+  [ngClass]="{ 'active': activeSection === 'my-finances' }"
+  (click)="setActive('my-finances')">
+  <img src="icons/my-finances.svg" alt="my-finances" />
+  <span>MY FINANCES</span>
+</div>
+
+<!-- SAVING GOALS -->
+<div 
+  class="sidebar-button" 
+  [ngClass]="{ 'active': activeSection === 'saving-goals' }"
+  (click)="setActive('saving-goals')">
+  <img src="icons/saving-goals.svg" alt="saving-goals" />
+  <span>SAVING GOALS</span>
+</div>
+
+<!-- ANALYTICS -->
+<div 
+  class="sidebar-button" 
+  [ngClass]="{ 'active': activeSection === 'analytics' }"
+  (click)="setActive('analytics')">
+  <img src="icons/analytics.svg" alt="analytics" />
+  <span>ANALYTICS</span>
+</div>
+
+
+      </div>
+      <div class="line-6"></div>
+      <div class="links2">
+        <!-- PROFILE -->
+<div 
+class="sidebar-button" 
+[ngClass]="{ 'active': activeSection === 'profile' }"
+(click)="setActive('profile')">
+<img src="icons/profile.svg" alt="profile" />
+<span>PROFILE</span>
+</div>
+
+<!-- SETTINGS -->
+<div 
+class="sidebar-button" 
+[ngClass]="{ 'active': activeSection === 'settings' }"
+(click)="setActive('settings')">
+<img src="icons/settings.svg" alt="settings" />
+<span>SETTINGS</span>
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const buttons = document.querySelectorAll('.sidebar-button');
+  
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
+  </script>
+  
