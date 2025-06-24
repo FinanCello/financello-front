@@ -29,9 +29,9 @@ export class FinancialMovementService {
     return this.http.post<RegisterFinancialMovementResponse>(`${this.apiUrl}/register`, request, { params });
   }
 
-  filter(userId: number, categoryId: number, type: string): Observable<RegisterFinancialMovementResponse[]> {
+  filter(userId: number, categoryId: number | null, type: string | null): Observable<RegisterFinancialMovementResponse[]> {
     let params = new HttpParams().set('userId', userId.toString());
-    if (categoryId !== undefined) params = params.set('categoryId', categoryId.toString());
+    if (categoryId !== null) params = params.set('categoryId', categoryId.toString());
     if (type) params = params.set('type', type);
 
     return this.http.get<RegisterFinancialMovementResponse[]>(`${this.apiUrl}/filter`, { params });

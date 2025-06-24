@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/auth.guard';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home.component';
-import { SettingsComponent } from './features/settings/settings.component';
+import { ProfileComponent } from './features/profile/profile.component';
+import {SettingsComponent} from './features/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -31,30 +31,19 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       //{ path: 'categories', loadComponent: () => import('./features/categories/pages/category-form/category-form.component').then(m => m.CategoryFormComponent) }
      // { path: 'load-files', component: LoadFilesComponent },
       //{ path: 'my-finances', component: MyFinancesComponent },
       //{ path: 'saving-goals', component: SavingGoalsComponent }
+      { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
     ]
-  },
-  {
-    path: 'profile',
-    loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
-    canActivate: [authGuard]
   },
   {
     path: '**',
     redirectTo: '/dashboard'
   },
-
-  {
-    path: 'movements',
-    loadChildren: () =>
-      import('./features/financialMovement/financialMovement-routes')
-        .then(m => m.financialMovementRoutes)
-  }
-
 
 
 ];
