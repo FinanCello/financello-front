@@ -1,37 +1,48 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { SavingGoalService } from '../../../../services/SavingGoal.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-savinggoal-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './savinggoal-form.component.html',
-  styleUrls: ['./savinggoal-form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./savinggoal-form.component.css']
 })
-export class SavinggoalFormComponent {
-  savingGoalForm: FormGroup;
+export class SavingGoalFormComponent {
+  showModal = false;
+  
+  goal = {
+    name: '',
+    targetAmount: 0,
+    currentAmount: 0,
+    dueDate: ''
+  };
 
-  constructor(
-    private fb: FormBuilder,
-    private savingGoalService: SavingGoalService,
-    private router: Router
-  ) {
-    this.savingGoalForm = this.fb.group({
-      name: ['', Validators.required],
-      targetAmount: [0, [Validators.required, Validators.min(1)]],
-      currentAmount: [0, [Validators.required, Validators.min(0)]],
-      dueDate: ['', Validators.required],
-    });
+  constructor(private router: Router) {}
+
+  submitForm() {
+    const today = new Date();
+    const dueDate = new Date(this.goal.dueDate);
+
+    if (this.goal.targetAmount <= 0 || this.goal.currentAmount < 0) {
+      alert('❌ Amount value incorrect. Zero-value are not allowed.');
+      return;
+    }
+
+    if (dueDate <= today) {
+      alert('❌ Due Date Incorrect. Due date must be future.');
+      return;
+    }
+
+    // Aquí puedes pasar la meta a un servicio para luego guardarla
+    alert('✅ Saving Goal Submitted Successfully!');
+    this.showModal = false;
+    this.router.navigate(['/']);
   }
 
-  onSubmit() {
-    if (this.savingGoalForm.valid) {
-      this.savingGoalService.addSavingGoal(this.savingGoalForm.value).subscribe(() => {
-        this.router.navigate(['/savinggoals']);
-      });
-    }
+  goBack() {
+    this.router.navigate(['/']);
   }
 }

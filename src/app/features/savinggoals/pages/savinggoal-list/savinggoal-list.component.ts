@@ -1,13 +1,14 @@
+/*
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
 
 @Component({
   selector: 'app-savinggoal-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './savinggoal-list.component.html',
   styleUrls: ['./savinggoal-list.component.css']
 })
@@ -55,4 +56,20 @@ export class SavingGoalListComponent implements OnInit {
   onCreate() {
     this.router.navigate(['/savinggoals/new']);
   }
+}
+*/
+
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-savinggoal-list',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './savinggoal-list.component.html',
+  styleUrls: ['./savinggoal-list.component.css']
+})
+export class SavingGoalListComponent {
+
 }
