@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { SpendingLimitService } from  '../../../../services/SpendingLimit.service';
 import { CategoryService } from '../../../../services/Category.service';
 import {SpendingLimitResponse} from '../../../../models/SpendingLimit';
+import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-spending-limit-form',
@@ -21,7 +22,8 @@ export class SpendingLimitFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private spendingLimitService: SpendingLimitService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -46,14 +48,37 @@ export class SpendingLimitFormComponent implements OnInit {
           next: (res) => {
             this.createdLimit = res;
             this.limitForm.reset();
+            this.snackbarService.showSnackbar(
+                'Successsful Limit',
+                'The limit was created correctrly'
+            );
           },
-          error: (err) => alert('Error al guardar límite'),
+          error: (err) => {
+            const backendMessage = err.error?.message || '';
+            if (backendMessage.includes('Ya existe')) {
+              this.snackbarService.showSnackbar(
+                  'Duplicated Limit',
+                  'The limit was already created '
+              );
+            } else if (backendMessage.includes('monto') || backendMessage.includes('mayor a 0')) {
+              this.snackbarService.showSnackbar(
+                  'Amount value incorrect',
+                  'Zero-value are not allowed',
+              );
+            } else {
+              this.snackbarService.showSnackbar(
+                  'Error',
+                  'Limit was not created',
+              );
+            }
+          }
         });
     }
   }
 
   onCancel(): void {
     this.limitForm.reset();
+    this.createdLimit = null;
   }
 
 

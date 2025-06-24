@@ -1,0 +1,724 @@
+.content,
+.content * {
+  box-sizing: border-box;
+}
+.content {
+  background: #dcdcd1;
+  padding: 17px 20px 17px 20px;
+  height: 944px;
+  position: absolute;
+  overflow: hidden;
+  margin-left: 220px;
+  margin-right: 1000px;
+  margin-bottom: -10px;
+  top: 80px;
+  width: 100%;
+}
+.weolcome-buttons {
+  width: 1121px;
+  height: 53px;
+  position: absolute;
+  left: 20px;
+  top: 17px;
+}
+.bienvenido-nuevamente-john-doe {
+  color: #000000;
+  text-align: left;
+  font: 600 24px "PalanquinDark-SemiBold", sans-serif;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 393px;
+  height: 33px;
+}
+.rectangle-318 {
+  background: #d9d9d9;
+  border-radius: 15px;
+  width: 1122px;
+  height: 834px;
+  position: absolute;
+  left: 279px;
+  top: 70px;
+}
+.frame-62 {
+  display: flex;
+  flex-direction: row;
+  gap: 37px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 248px;
+  top: 95px;
+}
+.frame-59,
+.frame-60 {
+  flex-shrink: 0;
+  width: 226px;
+  height: 169px;
+  position: relative;
+  overflow: hidden;
+}
+.frame-61 {
+  flex-shrink: 0;
+  width: 282px;
+  height: 169px;
+  position: relative;
+  overflow: hidden;
+}
+.save-goal,
+.save-goal2 {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 21px 15px;
+  height: 157px;
+  position: absolute;
+  left: 7px;
+  top: 5px;
+  overflow: hidden;
+}
+.save-goal {
+  width: 210px;
+}
+.save-goal2 {
+  width: 275px;
+}
+._1-er-plan,
+._2-er-plan,
+._3-er-plan {
+  color: #000000;
+  text-align: left;
+  font: 600 24px "PalanquinDark-SemiBold", sans-serif;
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 248px;
+  height: 17px;
+}
+._100-00,
+._500-00,
+._9-457-00 {
+  color: #0b6862;
+  text-align: left;
+  font: 700 40px "PalanquinDark-Bold", sans-serif;
+  position: absolute;
+  left: 18px;
+  top: 31px;
+  width: 313px;
+  height: 42px;
+}
+.cumplea-os-javier,
+.viaje-roma,
+.comprar-carro {
+  color: #000000;
+  text-align: left;
+  font: 700 16px "PalanquinDark-Bold", sans-serif;
+  position: absolute;
+  left: 18px;
+  top: 104px;
+  width: 146px;
+  height: 19px;
+}
+.icons,
+.icons2,
+.icons3 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 109px;
+  overflow: visible;
+}
+.icons,
+.icons2 {
+  left: 176px;
+}
+.icons3 {
+  left: 228px;
+}
+.rectangle-319 {
+  background: #ffffff;
+  border-radius: 15px;
+  width: 336px;
+  height: 596px;
+  position: absolute;
+  left: 720px;
+  top: 284px;
+}
+.rectangle-324,
+.rectangle-323,
+.rectangle-322 {
+  background: #0b6862;
+  border-radius: 15px;
+  width: 271px;
+  height: 79px;
+  position: absolute;
+  left: 749px;
+}
+.rectangle-324 {
+  top: 784px;
+}
+.rectangle-323 {
+  top: 685px;
+}
+.rectangle-322 {
+  top: 586px;
+}
+._12,
+._20,
+._152 {
+  color: #1acbcb;
+  text-align: left;
+  font: 500 40px "PalanquinDark-Medium", sans-serif;
+  position: absolute;
+  left: 913px;
+  width: 101px;
+  height: 61px;
+}
+._12 {
+  top: 779px;
+}
+._20 {
+  top: 682px;
+}
+._152 {
+  left: 908px;
+  top: 582px;
+}
+.categor-a-terciaria,
+.categor-a-secundaria,
+.categor-a-primaria {
+  color: #ffffff;
+  text-align: left;
+  font: 500 20px "PalanquinDark-Medium", sans-serif;
+  position: absolute;
+  width: 214px;
+  height: 27px;
+}
+.categor-a-terciaria {
+  left: 779px;
+  top: 784px;
+}
+.categor-a-secundaria {
+  left: 782px;
+  top: 687px;
+}
+.categor-a-primaria {
+  left: 782px;
+  top: 586px;
+}
+.group-197 {
+  position: absolute;
+  inset: 0;
+}
+.ellipse-91,
+.ellipse-103,
+.ellipse-93,
+.ellipse-92 {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 20px;
+  width: 124.96px;
+  height: 121.45px;
+  position: absolute;
+  left: 825.8px;
+  top: 325px;
+}
+.ellipse-91 {
+  border-color: #95f3f3;
+}
+.ellipse-103 {
+  border-color: #e0ffff;
+}
+.ellipse-93 {
+  border-color: #149696;
+}
+.ellipse-92 {
+  border-color: #1acbcb;
+}
+._15,
+._202,
+._122 {
+  color: var(--gris-oscuro-icono, #1d3378);
+  text-align: center;
+  font: 400 10px "Poppins-Regular", sans-serif;
+  letter-spacing: 0.05em;
+  position: absolute;
+  top: 496.19px;
+  height: 22.27px;
+}
+._15 {
+  left: 819px;
+  width: 53.45px;
+}
+._202,
+._122 {
+  width: 54.84px;
+}
+._202 {
+  left: 862.74px;
+}
+._122 {
+  left: 903px;
+}
+.ellipse-94,
+.ellipse-95,
+.ellipse-96 {
+  border-radius: 50%;
+  position: absolute;
+  top: 480px;
+  height: 8.1px;
+}
+.ellipse-94 {
+  background: #149696;
+  width: 7.64px;
+  left: 842.6px;
+}
+.ellipse-95 {
+  background: #1acbcb;
+  width: 9.02px;
+  left: 886.34px;
+}
+.ellipse-96 {
+  background: #52e0e0;
+  width: 9.02px;
+  left: 925.21px;
+}
+.s-3-925 {
+  color: var(--gris-oscuro-icono, #1d3378);
+  text-align: center;
+  font: 400 16px "PalanquinDark-Regular", sans-serif;
+  letter-spacing: 0.05em;
+  position: absolute;
+  left: 720px;
+  top: 370.88px;
+  width: 336px;
+  height: 25.64px;
+}
+.rectangle-320 {
+  background: #ffffff;
+  border-radius: 15px;
+  width: 379px;
+  height: 332px;
+  position: absolute;
+  left: 255px;
+  top: 540px;
+}
+.rectangle-321 {
+  background: #ffffff;
+  border-radius: 15px;
+  width: 295px;
+  height: 266px;
+  position: absolute;
+  left: 1096px;
+  top: 528px;
+}
+.contact-details,
+.contact-details2,
+.contact-details3 {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 280px;
+  position: absolute;
+  left: 1104px; /* Unificado */
+}
+.contact-details {
+  top: 667px;
+}
+.contact-details2 {
+  top: 735px;
+}
+.contact-details3 {
+  top: 599px;
+}
+.ellipse-3 {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  object-fit: cover;
+}
+.frame-16 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.contact-name,
+.e-mail {
+  color: #000000;
+  text-align: left;
+  font: 400 16px "PalanquinDark-Regular", sans-serif; /* Unificado */
+  position: relative;
+  align-self: stretch;
+}
+.e-mail {
+  margin-top: -9px;
+  font-size: 13px; /* Diferencia */
+}
+.text {
+  color: #000000;
+  text-align: left;
+  font: 400 16px "PalanquinDark-Regular", sans-serif;
+  position: relative;
+  width: 58px;
+}
+.movimientos {
+  color: #000000;
+  text-align: left;
+  font: 500 24px "PalanquinDark-Medium", sans-serif;
+  position: absolute;
+  left: 749px;
+  top: 530px;
+  width: 197px;
+  height: 44px;
+}
+.rectangle-325 {
+  background: #0b6862;
+  border-radius: 15px;
+  width: 274px;
+  height: 176px;
+  position: absolute;
+  left: 279px;
+  top: 561px;
+}
+._24th {
+  color: #ffffff;
+  text-align: left;
+  position: absolute;
+  left: 311px;
+  top: 534px;
+  width: 222px;
+  height: 138px;
+}
+._24th-span {
+  font-family: "PalanquinDark-Regular", sans-serif;
+  font-size: 96px;
+  font-weight: 400;
+}
+._24th-span2 {
+  font-family: "PalanquinDark-Regular", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+}
+.mayo {
+  color: #ffffff;
+  text-align: left;
+  font: 400 24px "PalanquinDark-Regular", sans-serif;
+  position: absolute;
+  left: 311px;
+  top: 665px;
+  width: 337px;
+  height: 31px;
+}
+.monto-500-00,
+.recordatorio-cumple-mam {
+  color: #000000;
+  text-align: left;
+  font: 400 24px "PalanquinDark-Regular", sans-serif;
+  position: absolute;
+  left: 284px;
+}
+.monto-500-00 {
+  top: 780px;
+  width: 221px;
+  height: 54px;
+}
+.recordatorio-cumple-mam {
+  top: 743px;
+  width: 323px;
+  height: 53px;
+}
+.contacto-de-empleados {
+  color: #000000;
+  text-align: center;
+  font: 400 16px "PalanquinDark-Regular", sans-serif;
+  position: absolute;
+  left: 1117px;
+  top: 541px;
+  width: 181px;
+  height: 21px;
+}
+.frame-58 {
+  width: 317px;
+  height: 440px;
+  position: absolute;
+  left: 1089px;
+  top: 88px;
+  overflow: hidden;
+}
+.expenses,
+.income {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 135px;
+  position: absolute;
+  top: 215px;
+  overflow: hidden;
+}
+.expenses {
+  height: 200px;
+  left: 167px;
+}
+.income {
+  left: 13px;
+}
+.gastos-este-mes,
+.ingresos-este-mes {
+  color: #000000;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  position: relative;
+  width: 105px;
+  height: 70px;
+}
+.gastos-este-mes-span,
+.ingresos-este-mes-span {
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-weight: 700;
+}
+.gastos-este-mes-span2,
+.ingresos-este-mes-span2 {
+  font-family: "PalanquinDark-Regular", sans-serif;
+}
+.ingresos-este-mes {
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(50% - 79px);
+}
+.icons4,
+.icons5 {
+  border-radius: 100px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: visible;
+}
+.group-3,
+.group-32 {
+  flex-shrink: 0;
+  position: static;
+}
+.group-3 {
+  width: 127px;
+  height: 20px;
+}
+.group-32 {
+  width: 105px;
+  height: 70px;
+}
+._135-800 {
+  color: #f15b64;
+  text-align: center;
+  font: 700 20px "PalanquinDark-Bold", sans-serif;
+  position: absolute;
+  left: 4px;
+  top: 159px;
+  width: 127px;
+  height: 20px;
+}
+._6-000 {
+  color: #0ea49b;
+  text-align: center;
+  font: 700 20px "PalanquinDark-Bold", sans-serif;
+  position: relative;
+  align-self: stretch;
+  height: 20px;
+}
+.wallet-balance {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 13px 15px;
+  width: 289px;
+  height: 200px;
+  position: absolute;
+  left: 13px;
+  top: 6px;
+  overflow: hidden;
+}
+.icons6 {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 11px;
+  top: 126px;
+  overflow: visible;
+}
+.group-33 {
+  position: absolute;
+  inset: 0;
+}
+.saldo-actual-de-billetera {
+  color: #000000;
+  text-align: left;
+  font: 500 24px "PalanquinDark-Medium", sans-serif;
+  position: absolute;
+  left: 11px;
+  top: 16px;
+  width: 292px;
+  height: 42px;
+}
+._142-450-00 {
+  color: #0b6862;
+  text-align: left;
+  font: 700 40px "PalanquinDark-Bold", sans-serif;
+  position: absolute;
+  left: 18.5px;
+  top: 58px;
+  width: 313px;
+  height: 42px;
+}
+.button,
+.button2 {
+  border-radius: 15px;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 289px;
+  height: 64px;
+  position: absolute;
+}
+.button {
+  background: #ffffff;
+  left: 1102px;
+  top: 812px;
+}
+.button2 {
+  background: #092c36;
+  left: 308px;
+  top: 454px;
+}
+.text2 {
+  color: #000000;
+  text-align: center;
+  font: 400 24px "PalanquinDark-Regular", sans-serif;
+  position: relative;
+  width: 250px;
+}
+.text3 {
+  color: #ffffff;
+  text-align: center;
+  font: 500 24px "PalanquinDark-Medium", sans-serif;
+  position: relative;
+  width: 460px;
+}
+.last-transaction {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 13px 15px;
+  width: 382px;
+  height: 157px;
+  position: absolute;
+  left: 255px;
+  top: 280px;
+  overflow: hidden;
+}
+.description-details {
+  position: absolute;
+  inset: 0;
+}
+.ltima-transacci-n {
+  color: #000000;
+  text-align: left;
+  font: 500 24px "PalanquinDark-Medium", sans-serif;
+  position: absolute;
+  left: 21px;
+  top: 14px;
+  width: 269px;
+  height: 42px;
+}
+._620-00 {
+  color: #f15b64;
+  text-align: left;
+  font: 700 32px "PalanquinDark-Bold", sans-serif;
+  position: absolute;
+  left: 21px;
+  top: 88px;
+  width: 313px;
+  height: 42px;
+}
+.cena-con-clientes {
+  color: #000000;
+  text-align: left;
+  font: 400 24px "PalanquinDark-Regular", sans-serif;
+  position: absolute;
+  left: 21px;
+  top: 56px;
+}
+.upcoming-bill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 145px;
+  position: absolute;
+  left: 237px;
+  top: 9px;
+}
+.frame-48 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ultima,
+.acualizaci-n {
+  color: #000000;
+  text-align: center;
+  font: 400 24px "PalanquinDark-Regular", sans-serif;
+  position: relative;
+  align-self: stretch;
+}
+.acualizaci-n {
+  margin-top: -5px;
+}
+.group-6 {
+  margin-top: -5px;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  position: static;
+}
+.icons7 {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 40.5px;
+  top: 76px;
+  overflow: visible;
+}
+._27 {
+  color: #092c36;
+  text-align: center;
+  font: 400 24px "PalanquinDark-Regular", sans-serif;
+  position: absolute;
+  left: 60.5px;
+  top: 89px;
+}
+.line-1 {
+  width: 157px;
+  height: 0;
+  position: absolute;
+  left: 238px;
+  top: 157px;
+  transform: translate(-0.5px, -157px);
+  overflow: visible;
+}
