@@ -14,7 +14,7 @@ export class SpendingLimitAlertComponent implements OnInit {
   exceededAmount = 0;
 
   constructor(private spendingLimitService: SpendingLimitService) {}
-/*
+
   ngOnInit(): void {
     const userId = 1;
 
@@ -34,20 +34,6 @@ export class SpendingLimitAlertComponent implements OnInit {
         this.exceededAmount = exceeded > 0 ? exceeded : 0;
       }
     });
-  }*/
-
-  ngOnInit(): void {
-    this.selectedAlert = {
-      categoryName: 'Comidas',
-      monthlyLimit: 100,
-      totalSpent: 150,
-      overLimit: true,
-      alertMessage: '¡Has excedido tu límite en la categoría Comidas!'
-    };
-
-    const percent = Math.min((this.selectedAlert.totalSpent / this.selectedAlert.monthlyLimit) * 100, 150);
-    this.barWidth = `${percent}%`;
-    this.exceededAmount = this.selectedAlert.totalSpent - this.selectedAlert.monthlyLimit;
   }
 
   goBack(): void {
