@@ -5,6 +5,7 @@ export const routes: Routes = [
   {
     path: 'spending-limit',
     children: spendingLimitRoutes
-  }
+  },
+
 ];
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { SpendingLimitService } from  '../../../../services/SpendingLimit.service';
 import { CategoryService } from '../../../../services/Category.service';
@@ -9,9 +10,7 @@ import {SpendingLimitResponse} from '../../../../models/SpendingLimit';
   standalone: true,
   templateUrl: './spending-limit-form.component.html',
   styleUrls: ['./spending-limit-form.component.css'],
-  imports: [
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class SpendingLimitFormComponent implements OnInit {
   limitForm!: FormGroup;
@@ -56,4 +55,6 @@ export class SpendingLimitFormComponent implements OnInit {
   onCancel(): void {
     this.limitForm.reset();
   }
+
+
 }

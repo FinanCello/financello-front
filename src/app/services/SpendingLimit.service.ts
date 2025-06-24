@@ -26,7 +26,7 @@ export class SpendingLimitService {
 
   getSpendingLimitAlerts(userId: number): Observable<SpendingLimitAlertResponse[]> {
     return this.http.get<SpendingLimitAlertResponse[]>(
-      `${this.apiUrl}/alerts/${userId}`
+      `${this.apiUrl}/alerts?userId=${userId}`
     );
   }
 
