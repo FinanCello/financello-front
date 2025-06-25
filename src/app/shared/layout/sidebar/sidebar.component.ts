@@ -15,7 +15,7 @@ export class SidebarComponent {
   constructor(private router: Router) {}
 
   sectionRoutes: { [key: string]: string } = {
-    home: '/home',
+    home: '/dashboard',
     loadfiles: '/dashboard/load-files',
     myfinances: '/dashboard/finances',
     savinggoals: '/dashboard/savinggoals',
