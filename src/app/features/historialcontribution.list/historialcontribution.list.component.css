@@ -14,3 +14,61 @@
   padding: 20px;
   border-radius: 8px;
 } 
+
+.oasis-live-forever,
+.oasis-live-forever * {
+  box-sizing: border-box;
+}
+.oasis-live-forever {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 212px 231px 212px 231px;
+  height: 944px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.frame-205 {
+  background: #ffffff;
+  border-radius: 35px;
+  padding: 44px 89px 44px 89px;
+  width: 737px;
+  height: 520.04px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el botón del modal */
+.frame-40 {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+.frame-40:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+}
+
+.plus-icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* Hace el ícono blanco */
+}
+
+/* ... y el resto del CSS que ya tienes ... */

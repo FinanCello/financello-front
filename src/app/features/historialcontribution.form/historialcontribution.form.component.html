@@ -95,9 +95,9 @@
       </div>
       <div class="frame-34">
         <div class="rectangle-5"></div>
-        <img class="icons" src="icons/caret-down (1).png" />
+        <img class="icons" src="assets/icons/caret-down (1).png" />
         <img class="rectangle-6" />
-        <img class="icons2" src="icons/caret-up.png" />
+        <img class="icons2" src="assets/icons/caret-up.png" />
       </div>
       <div class="icons3"></div>
       <div class="category-expenses">
@@ -110,9 +110,9 @@
         <div class="frame-39">
           <div class="tercera-categor-a">Tercera Categoría</div>
         </div>
-        <div class="frame-40">
-          <img class="plus-icon" src="icons/plus-circle.png" alt="Agregar categoría" />
-        </div>
+        <div class="frame-40" (click)="goToNewCategory()" style="cursor: pointer">
+          <img class="plus-icon" src="assets/icons/plus-circle.png" alt="Agregar categoría" />
+        </div>        
       </div>
     </div>
     <div class="frame-35">
@@ -120,7 +120,10 @@
       <div class="nuevo-gasto-detectado-y-clasificado-como-gasto-primario">
         Nuevo gasto detectado y clasificado como Gasto Primario.
       </div>
-      <img class="vector" src="icons/info.png" />
+      <img class="vector" src="assets/icons/info.png" />
     </div>
   </div>
+  
+  <!-- Modal embebido -->
+  <app-newcategory-form *ngIf="showModal" (close)="closeModal()"></app-newcategory-form>
   

@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NewcategoryFormComponent } from '../newcategory.form/newcategory.form.component';
 
 @Component({
   selector: 'app-historialcontribution-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NewcategoryFormComponent],
   templateUrl: './historialcontribution.form.component.html',
   styleUrls: ['./historialcontribution.form.component.css']
 })
 export class HistorialContributionFormComponent {
+  showModal = false;
   contributionForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.contributionForm = this.fb.group({
       amount: ['', [Validators.required, Validators.min(1)]],
-      date: ['', Validators.required],
-      note: ['']
+      description: ['', Validators.required],
+      category: ['', Validators.required],
+      date: ['', Validators.required]
     });
   }
 
@@ -28,4 +32,20 @@ export class HistorialContributionFormComponent {
       console.log('Formulario inválido');
     }
   }
+
+  goToNewCategory() {
+    this.showModal = true;
+  }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 }
+
+
+
+
