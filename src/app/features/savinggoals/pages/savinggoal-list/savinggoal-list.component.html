@@ -1,86 +1,55 @@
 <div class="savinggoals-main-container">
-  <div class="savinggoals-left">
-    <div class="savinggoals-donut-row">
-      <div class="savinggoals-donut-container">
-        <div class="donut-chart-wrapper">
-          <svg width="260" height="260" viewBox="0 0 42 42" class="donut">
-            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#1acbcb" stroke-width="10" stroke-dasharray="15 85" stroke-dashoffset="29.05" />
-            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#149696" stroke-width="10" stroke-dasharray="20 80" stroke-dashoffset="10" />
-            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#e0ffff" stroke-width="10" stroke-dasharray="12 88" stroke-dashoffset="-10" />
-            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#0da0a0" stroke-width="10" stroke-dasharray="45 55" stroke-dashoffset="-22" />
-          </svg>
-          <div class="donut-center-label">S/. 3,925</div>
-        </div>
-        <div class="donut-legend-row">
-          <div class="legend-item"><span class="legend-dot" style="background:#1acbcb"></span><span style="color:#1acbcb;font-weight:600;">15%</span></div>
-          <div class="legend-item"><span class="legend-dot" style="background:#149696"></span><span style="color:#149696;font-weight:600;">20%</span></div>
-          <div class="legend-item"><span class="legend-dot" style="background:#e0ffff"></span><span style="color:#149696;font-weight:600;">12%</span></div>
-          <div class="legend-item"><span class="legend-dot" style="background:#0da0a0"></span><span style="color:#0da0a0;font-weight:600;">45%</span></div>
+  <div class="savinggoals-content">
+    <div class="savinggoals-header">
+      <h2 class="page-title">Metas de Ahorro</h2>
+      <div class="savinggoals-buttons">
+        <div class="button-container">
+          <button class="circle-button" [routerLink]="['/dashboard/savinggoals/new']">
+            <img src="assets/icons/plus.png" alt="Nueva Meta" class="plus-icon" />
+          </button>
+          <span class="button-label">Nueva meta</span>
         </div>
       </div>
-      <div class="new-goal-btn-vertical">
-        <button class="circle-button" [routerLink]="['/savinggoals/new']">
-          <img src="assets/icons/plus.png" alt="Nueva Meta" class="plus-icon" />
-        </button>
-        <span class="nueva-meta-label">Nueva meta</span>
+    </div>
+    
+    <!-- Lista de metas de ahorro -->
+    <div *ngIf="savingGoals.length > 0" class="savinggoals-list">
+      <h3 class="section-title">Mis metas de ahorro</h3>
+      <div class="goal-cards-container">
+        <div *ngFor="let goal of savingGoals" class="goal-card">
+          <div class="goal-card-header">
+            <h4 class="goal-name">{{ goal.name }}</h4>
+            <div class="goal-actions">
+              <button class="action-button edit" (click)="onEdit(goal)">
+                <img src="assets/icons/gear-six.png" alt="Editar" class="action-icon" />
+              </button>
+              <button class="action-button delete" (click)="onDelete(goal)">
+                <img src="assets/icons/x.png" alt="Eliminar" class="action-icon" />
+              </button>
+            </div>
+          </div>
+          <div class="goal-amounts">
+            <div class="goal-current">Actual: S/. {{ goal.currentAmount }}</div>
+            <div class="goal-target">Meta: S/. {{ goal.targetAmount }}</div>
+          </div>
+          <div class="goal-progress-bar">
+            <div class="progress-fill" [style.width.%]="(goal.currentAmount / goal.targetAmount) * 100"></div>
+          </div>
+          <div class="goal-date">Fecha límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}</div>
+        </div>
       </div>
     </div>
-    <div class="savinggoals-summary-row shifted">
-      <div class="summary-box">
-        <div class="summary-label">Falta para gastar</div>
-        <div class="summary-value">S/. 1175</div>
-      </div>
-      <div class="summary-box">
-        <div class="summary-label">Presupuesto mensual</div>
-        <div class="summary-value">S/. 5000</div>
-      </div>
-      <div class="add-goal-btn">
-        <button class="circle-button">
-          <img src="assets/icons/plus.png" alt="Añadir" class="plus-icon" />
-        </button>
-        <span class="add-label">Añadir</span>
-      </div>
+    
+    <div *ngIf="savingGoals.length === 0 && !loading && !error" class="empty-state">
+      <p>No tienes metas de ahorro. ¡Crea una nueva!</p>
     </div>
-  </div>
-  <div class="savinggoals-right">
-    <div class="card pagos-card">
-      <div class="card-header">
-        <span class="emoji-icon static">🪪</span>
-        <span class="pagos-title">Pagos</span>
-        <span class="pagos-total">S/. 3500</span>
-      </div>
-      <div class="card-item">
-        <span class="item-label">Pago Membresias</span>
-        <span class="item-value">S/. 2800</span>
-        <span class="item-extra">Falta S/.600</span>
-      </div>
-      <div class="card-item">
-        <span class="item-label">Internet</span>
-        <span class="item-value">S/. 700</span>
-        <span class="item-extra">Falta S/.325</span>
-      </div>
+    
+    <div *ngIf="loading" class="loading-state">
+      <p>Cargando metas de ahorro...</p>
     </div>
-    <div class="card servicios-card">
-      <div class="card-header">
-        <span class="emoji-icon static">💸</span>
-        <span class="servicios-title">Servicios</span>
-        <span class="servicios-total">S/. 1500</span>
-      </div>
-      <div class="card-item">
-        <span class="item-label">Publicidad</span>
-        <span class="item-value">S/. 500</span>
-        <span class="item-extra">Falta S/.0</span>
-      </div>
-      <div class="card-item">
-        <span class="item-label">Transporte</span>
-        <span class="item-value">S/. 700</span>
-        <span class="item-extra">Falta S/.100</span>
-      </div>
-      <div class="card-item">
-        <span class="item-label">Servicios cloud</span>
-        <span class="item-value">S/. 300</span>
-        <span class="item-extra">Falta S/.50</span>
-      </div>
+    
+    <div *ngIf="error" class="error-state">
+      <p>{{ error }}</p>
     </div>
   </div>
 </div>

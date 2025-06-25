@@ -1,56 +1,138 @@
-<!-- Contenedor principal del formulario de meta de ahorro, ordenado y limpio -->
-<div class="savinggoal-form-outer">
-  <div class="savinggoal-form-inner">
-    <!-- Donut Chart y monto principal -->
-    <div class="savinggoal-header">
-      <div class="donut-chart-container">
-        <svg width="220" height="220" viewBox="0 0 42 42" class="donut">
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#1acbcb" stroke-width="10" stroke-dasharray="15 85" stroke-dashoffset="29.05" />
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#149696" stroke-width="10" stroke-dasharray="20 80" stroke-dashoffset="10" />
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#e0ffff" stroke-width="10" stroke-dasharray="12 88" stroke-dashoffset="-10" />
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#0da0a0" stroke-width="10" stroke-dasharray="45 55" stroke-dashoffset="-22" />
-        </svg>
-        <div class="savinggoal-amount">S/. 3,925</div>
+<!-- Contenedor principal del formulario de meta de ahorro, limpio y enfocado -->
+<div class="savinggoal-form-container">
+  <div class="savinggoal-form-wrapper">
+    <div class="form-card">
+      <div class="tab-navigation">
+        <button [class.active]="activeTab === 'create'" (click)="switchTab('create')">Crear</button>
+        <button [class.active]="activeTab === 'edit'" (click)="switchTab('edit')">Editar</button>
+        <button [class.active]="activeTab === 'delete'" (click)="switchTab('delete')">Eliminar</button>
       </div>
-      <div class="savinggoal-form-card">
-        <form (ngSubmit)="submitForm()" #savingGoalForm="ngForm" class="modal-form">
+      
+      <!-- TAB: CREAR META -->
+      <div *ngIf="activeTab === 'create'" class="tab-content">
+        <form (ngSubmit)="submitCreateForm()" #createForm="ngForm" class="goal-form">
           <h2>Nueva Meta de Ahorro</h2>
-          <input type="text" [(ngModel)]="goal.name" name="name" placeholder="Nombre de la meta" required />
-          <input type="number" [(ngModel)]="goal.targetAmount" name="targetAmount" placeholder="Monto objetivo" required />
-          <input type="number" [(ngModel)]="goal.currentAmount" name="currentAmount" placeholder="Monto actual" required />
-          <input type="date" [(ngModel)]="goal.dueDate" name="dueDate" required />
-          <button type="submit">Aceptar</button>
+          
+          <div *ngIf="loading" class="loading-message">Cargando...</div>
+          <div *ngIf="error" class="error-message">{{ error }}</div>
+          
+          <div class="form-group">
+            <label for="name">Nombre de la meta</label>
+            <input type="text" id="name" [(ngModel)]="createGoal.name" name="name" placeholder="Ej: Viaje a Europa" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="targetAmount">Monto objetivo</label>
+            <input type="number" id="targetAmount" [(ngModel)]="createGoal.targetAmount" name="targetAmount" placeholder="0.00" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="currentAmount">Monto actual</label>
+            <input type="number" id="currentAmount" [(ngModel)]="createGoal.currentAmount" name="currentAmount" placeholder="0.00" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="dueDate">Fecha límite</label>
+            <input type="date" id="dueDate" [(ngModel)]="createGoal.dueDate" name="dueDate" required />
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Crear</button>
+            <button type="button" class="btn-secondary" (click)="goBack()">Cancelar</button>
+          </div>
         </form>
       </div>
-    </div>
-
-    <!-- Sección de detalles y tarjetas -->
-    <div class="savinggoal-details">
-      <div class="savinggoal-stats">
-        <div class="stat-card">
-          <div class="stat-label">Falta para gastar</div>
-          <div class="stat-value">S/. 1175</div>
+      
+      <!-- TAB: EDITAR META -->
+      <div *ngIf="activeTab === 'edit'" class="tab-content">
+        <!-- Lista de metas para seleccionar -->
+        <div *ngIf="!selectedGoal" class="goals-list">
+          <h2>Editar Meta de Ahorro</h2>
+          
+          <div *ngIf="loading" class="loading-message">Cargando...</div>
+          <div *ngIf="error" class="error-message">{{ error }}</div>
+          
+          <div *ngIf="savingGoals.length === 0 && !loading" class="empty-list-message">
+            No tienes metas de ahorro creadas. Dirígete a la pestaña "Crear" para agregar una nueva meta.
+          </div>
+          
+          <ul *ngIf="savingGoals.length > 0">
+            <li *ngFor="let goal of savingGoals" (click)="selectGoalToEdit(goal)" class="goal-list-item">
+              <div class="goal-list-name">{{ goal.name }}</div>
+              <div class="goal-list-amount">
+                <span class="current-amount">S/. {{ goal.currentAmount }}</span>
+                <span class="target-amount">/ S/. {{ goal.targetAmount }}</span>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">Presupuesto mensual</div>
-          <div class="stat-value">S/. 5000</div>
+        
+        <!-- Formulario de edición -->
+        <div *ngIf="selectedGoal" class="edit-form">
+          <form (ngSubmit)="submitEditForm()" #editForm="ngForm" class="goal-form">
+            <h2>Editar Meta de Ahorro</h2>
+            
+            <div *ngIf="loading" class="loading-message">Cargando...</div>
+            <div *ngIf="error" class="error-message">{{ error }}</div>
+            
+            <div class="form-group">
+              <label for="editName">Nombre de la meta</label>
+              <input type="text" id="editName" [(ngModel)]="editGoal.name" name="name" placeholder="Ej: Viaje a Europa" required disabled />
+            </div>
+            
+            <div class="form-group">
+              <label for="editTargetAmount">Monto objetivo</label>
+              <input type="number" id="editTargetAmount" [(ngModel)]="editGoal.targetAmount" name="targetAmount" placeholder="0.00" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="editCurrentAmount">Monto actual</label>
+              <input type="number" id="editCurrentAmount" [(ngModel)]="editGoal.currentAmount" name="currentAmount" placeholder="0.00" required disabled />
+            </div>
+            
+            <div class="form-group">
+              <label for="editDueDate">Fecha límite</label>
+              <input type="date" id="editDueDate" [(ngModel)]="editGoal.dueDate" name="dueDate" required />
+            </div>
+            
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Actualizar</button>
+              <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancelar</button>
+            </div>
+            
+            <div class="edit-note">
+              <small>Editando: {{ selectedGoal.name }}</small>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="savinggoal-categories">
-        <div class="category-card">
-          <div class="category-title">Pagos</div>
-          <div class="category-item">Pago Membresías <span>S/. 2800</span> <small>Falta S/.600</small></div>
-          <div class="category-item">Internet <span>S/. 700</span> <small>Falta $325</small></div>
-        </div>
-        <div class="category-card">
-          <div class="category-title">Servicios</div>
-          <div class="category-item">Publicidad <span>S/. 500</span> <small>Falta S/.0</small></div>
-          <div class="category-item">Transporte <span>S/. 700</span> <small>Falta S/.100</small></div>
-          <div class="category-item">Servicios cloud <span>S/. 300</span> <small>Falta S/.50</small></div>
+      
+      <!-- TAB: ELIMINAR META -->
+      <div *ngIf="activeTab === 'delete'" class="tab-content">
+        <div class="delete-section">
+          <h2>Eliminar Meta de Ahorro</h2>
+          
+          <div *ngIf="loading" class="loading-message">Cargando...</div>
+          <div *ngIf="error" class="error-message">{{ error }}</div>
+          
+          <div *ngIf="savingGoals.length === 0 && !loading" class="empty-list-message">
+            No tienes metas de ahorro creadas. Dirígete a la pestaña "Crear" para agregar una nueva meta.
+          </div>
+          
+          <ul *ngIf="savingGoals.length > 0" class="delete-list">
+            <li *ngFor="let goal of savingGoals" class="goal-list-item">
+              <div class="goal-info">
+                <div class="goal-list-name">{{ goal.name }}</div>
+                <div class="goal-list-amount">
+                  <span class="current-amount">S/. {{ goal.currentAmount }}</span>
+                  <span class="target-amount">/ S/. {{ goal.targetAmount }}</span>
+                </div>
+              </div>
+              <button type="button" class="delete-button" (click)="confirmDelete(goal)">
+                <img src="assets/icons/x.png" alt="Eliminar" class="delete-icon" />
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

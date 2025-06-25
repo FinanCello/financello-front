@@ -27,13 +27,16 @@ export class SavingGoalListComponent implements OnInit {
 
   fetchSavingGoals() {
     this.loading = true;
+    this.error = null;
+    
     this.savingGoalService.listSavingGoals().subscribe({
       next: (goals) => {
         this.savingGoals = goals;
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Error al cargar las metas de ahorro';
+        console.error('Error fetching saving goals:', err);
+        this.error = 'Error al cargar las metas de ahorro. Por favor, intenta nuevamente.';
         this.loading = false;
       }
     });
@@ -45,14 +48,18 @@ export class SavingGoalListComponent implements OnInit {
 
   onDelete(goal: AddSavingGoalResponse) {
     if (confirm(`¿Seguro que deseas eliminar la meta "${goal.name}"?`)) {
+      this.loading = true;
+      
       this.savingGoalService.deleteSavingGoal(Number(goal.id)).subscribe({
-        next: () => this.fetchSavingGoals(),
-        error: () => alert('No se pudo eliminar la meta.')
+        next: () => {
+          this.fetchSavingGoals();
+        },
+        error: (err) => {
+          console.error('Error deleting saving goal:', err);
+          this.error = 'No se pudo eliminar la meta. Por favor, intenta nuevamente.';
+          this.loading = false;
+        }
       });
     }
-  }
-
-  onCreate() {
-    this.router.navigate(['/dashboard/savinggoals/new']);
   }
 }
