@@ -4,7 +4,7 @@
 }
 .content {
   background: #dcdcd1;
-  padding: 17px 20px 17px 20px;
+  border-radius: 0px 0px 0px 15px;
   height: 944px;
   position: absolute;
   overflow: hidden;
@@ -33,16 +33,6 @@
   width: 358px;
   height: 33px;
 }
-.cambiar {
-  color: #dcdcd1;
-  text-align: left;
-  font-family: "PalanquinDark-Regular", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  position: absolute;
-  left: -12px;
-  top: -226px;
-}
 .frame-239183 {
   border-radius: 15px;
   border-style: solid;
@@ -55,9 +45,14 @@
   top: 79px;
   overflow: hidden;
 }
-.group-239183 {
+.group-239199 {
   position: absolute;
   inset: 0;
+}
+.group-239183 {
+  width: 268px;
+  height: 77px;
+  position: static;
 }
 .jhon-doe {
   color: #000000;
@@ -108,6 +103,157 @@
   left: -62.5px;
   top: 167px;
 }
+.frame-239185 {
+  width: 1222.41px;
+  height: 286.84px;
+  position: absolute;
+  left: 12px;
+  top: 317px;
+}
+.group-239189 {
+  position: absolute;
+  inset: 0;
+}
+.last-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.8;
+  position: absolute;
+  left: 636.05px;
+  top: 0px;
+  width: 128px;
+  height: 22px;
+}
+.group-239188 {
+  width: 586px;
+  height: 48px;
+  position: static;
+}
+.rectangle-6698 {
+  background: #f9f9f9;
+  border-radius: 7.49px;
+  width: 47.94%;
+  height: 16.73%;
+  position: absolute;
+  right: 0%;
+  left: 52.06%;
+  bottom: 73.56%;
+  top: 9.71%;
+}
+.last-name2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.4;
+  position: absolute;
+  right: 31.5%;
+  left: 53.7%;
+  width: 14.81%;
+  bottom: 78.44%;
+  top: 14.24%;
+  height: 7.32%;
+}
+.group-239191 {
+  position: absolute;
+  inset: 0;
+}
+.country {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.8;
+  position: absolute;
+  left: 636.05px;
+  top: 104px;
+  width: 128px;
+  height: 22px;
+}
+.group-239190 {
+  width: 586px;
+  height: 48px;
+  position: static;
+}
+.rectangle-66982 {
+  background: #f9f9f9;
+  border-radius: 7.49px;
+  width: 47.94%;
+  height: 16.73%;
+  position: absolute;
+  right: 0%;
+  left: 52.06%;
+  bottom: 37.3%;
+  top: 45.96%;
+}
+.your-country {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.4;
+  position: absolute;
+  right: 31.5%;
+  left: 53.7%;
+  width: 14.81%;
+  bottom: 42.18%;
+  top: 50.5%;
+  height: 7.32%;
+}
+.group-239197 {
+  position: absolute;
+  inset: 0;
+}
+.gender {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.8;
+  position: absolute;
+  left: 0.05px;
+  top: 104px;
+  width: 128px;
+  height: 22px;
+}
+.group-239196 {
+  width: 520.25px;
+  height: 47.5px;
+  position: static;
+}
+.rectangle-66983 {
+  background: #f9f9f9;
+  border-radius: 7.49px;
+  width: 42.56%;
+  height: 16.56%;
+  position: absolute;
+  right: 57.34%;
+  left: 0.1%;
+  bottom: 37.39%;
+  top: 46.05%;
+}
+.your-gender {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.4;
+  position: absolute;
+  right: 85.29%;
+  left: 1.55%;
+  width: 13.16%;
+  bottom: 42.13%;
+  top: 50.55%;
+  height: 7.32%;
+}
 .group-239182 {
   position: absolute;
   inset: 0;
@@ -120,21 +266,26 @@
   font-weight: 400;
   opacity: 0.8;
   position: absolute;
-  left: 12px;
-  top: 317px;
+  left: 0px;
+  top: 0px;
   width: 128px;
   height: 22px;
 }
-.rectangle-6698 {
+.group-239187 {
+  width: 520.25px;
+  height: 47.5px;
+  position: static;
+}
+.rectangle-66984 {
   background: #f9f9f9;
   border-radius: 7.49px;
-  width: 41.19%;
-  height: 5.65%;
+  width: 42.56%;
+  height: 16.56%;
   position: absolute;
-  right: 57.77%;
-  left: 1.04%;
-  bottom: 53.32%;
-  top: 41.03%;
+  right: 57.35%;
+  left: 0.1%;
+  bottom: 73.65%;
+  top: 9.79%;
 }
 .your-first-name {
   color: #000000;
@@ -144,184 +295,14 @@
   font-weight: 400;
   opacity: 0.4;
   position: absolute;
-  right: 84.82%;
-  left: 2.44%;
-  width: 12.74%;
-  bottom: 54.93%;
-  top: 42.57%;
-  height: 2.5%;
+  right: 85.29%;
+  left: 1.54%;
+  width: 13.16%;
+  bottom: 78.39%;
+  top: 14.29%;
+  height: 7.32%;
 }
-.group-239184 {
-  position: absolute;
-  inset: 0;
-}
-.last-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.8;
-  position: absolute;
-  left: 648.05px;
-  top: 317px;
-  width: 128px;
-  height: 22px;
-}
-.rectangle-66982 {
-  background: #f9f9f9;
-  border-radius: 7.49px;
-  width: 46.4%;
-  height: 5.71%;
-  position: absolute;
-  right: 2.26%;
-  left: 51.34%;
-  bottom: 53.29%;
-  top: 41%;
-}
-.last-name2 {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 32.75%;
-  left: 52.92%;
-  width: 14.33%;
-  bottom: 54.95%;
-  top: 42.55%;
-  height: 2.5%;
-}
-.group-2391822 {
-  width: 1222.35px;
-  height: 182.84px;
-  position: static;
-}
-.country {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.8;
-  position: absolute;
-  left: 648.05px;
-  top: 421px;
-  width: 128px;
-  height: 22px;
-}
-.rectangle-66983 {
-  background: #f9f9f9;
-  border-radius: 7.49px;
-  width: 46.4%;
-  height: 5.71%;
-  position: absolute;
-  right: 2.26%;
-  left: 51.34%;
-  bottom: 40.92%;
-  top: 53.37%;
-}
-.your-country {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 32.75%;
-  left: 52.92%;
-  width: 14.33%;
-  bottom: 42.59%;
-  top: 54.92%;
-  height: 2.5%;
-}
-.gender {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.8;
-  position: absolute;
-  left: 12.05px;
-  top: 421px;
-  width: 128px;
-  height: 22px;
-}
-.rectangle-66984 {
-  background: #f9f9f9;
-  border-radius: 7.49px;
-  width: 41.19%;
-  height: 5.65%;
-  position: absolute;
-  right: 57.76%;
-  left: 1.05%;
-  bottom: 40.95%;
-  top: 53.4%;
-}
-.your-gender {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 84.81%;
-  left: 2.45%;
-  width: 12.74%;
-  bottom: 42.57%;
-  top: 54.93%;
-  height: 2.5%;
-}
-.group-2391823 {
-  width: 1222.35px;
-  height: 75.84px;
-  position: static;
-}
-.language {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.8;
-  position: absolute;
-  left: 12.05px;
-  top: 528px;
-  width: 128px;
-  height: 22px;
-}
-.rectangle-66985 {
-  background: #f9f9f9;
-  border-radius: 7.49px;
-  width: 41.19%;
-  height: 5.65%;
-  position: absolute;
-  right: 57.76%;
-  left: 1.05%;
-  bottom: 28.23%;
-  top: 66.12%;
-}
-.your-language {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 84.81%;
-  left: 2.45%;
-  width: 12.74%;
-  bottom: 29.85%;
-  top: 67.66%;
-  height: 2.5%;
-}
-.group-2391824 {
+.group-239193 {
   width: 586.35px;
   height: 75.84px;
   position: static;
@@ -334,21 +315,26 @@
   font-weight: 400;
   opacity: 0.8;
   position: absolute;
-  left: 648.05px;
-  top: 528px;
+  left: 636.05px;
+  top: 211px;
   width: 128px;
   height: 22px;
 }
-.rectangle-66986 {
+.group-239192 {
+  width: 586px;
+  height: 48px;
+  position: static;
+}
+.rectangle-66985 {
   background: #f9f9f9;
   border-radius: 7.49px;
-  width: 46.4%;
-  height: 5.71%;
+  width: 47.94%;
+  height: 16.73%;
   position: absolute;
-  right: 2.26%;
-  left: 51.34%;
-  bottom: 28.2%;
-  top: 66.09%;
+  right: 0%;
+  left: 52.06%;
+  bottom: 0%;
+  top: 83.27%;
 }
 .your-bussines-name {
   color: #000000;
@@ -358,12 +344,69 @@
   font-weight: 400;
   opacity: 0.4;
   position: absolute;
-  right: 29.9%;
-  left: 52.92%;
-  width: 17.18%;
-  bottom: 29.86%;
-  top: 67.64%;
-  height: 2.5%;
+  right: 28.55%;
+  left: 53.7%;
+  width: 17.75%;
+  bottom: 4.88%;
+  top: 87.8%;
+  height: 7.32%;
+}
+.group-239195 {
+  position: absolute;
+  inset: 0;
+}
+.language {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.8;
+  position: absolute;
+  left: 0.05px;
+  top: 211px;
+  width: 128px;
+  height: 22px;
+}
+.group-239194 {
+  width: 520.25px;
+  height: 47.5px;
+  position: static;
+}
+.rectangle-66986 {
+  background: #f9f9f9;
+  border-radius: 7.49px;
+  width: 42.56%;
+  height: 16.56%;
+  position: absolute;
+  right: 57.34%;
+  left: 0.1%;
+  bottom: 0.09%;
+  top: 83.35%;
+}
+.your-language {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  opacity: 0.4;
+  position: absolute;
+  right: 85.29%;
+  left: 1.55%;
+  width: 13.16%;
+  bottom: 4.83%;
+  top: 87.85%;
+  height: 7.32%;
+}
+.group-239200 {
+  position: absolute;
+  inset: 0;
+}
+.group-239198 {
+  width: 179px;
+  height: 50.08px;
+  position: static;
 }
 .jhondoe-example-com2 {
   color: #000000;
@@ -385,6 +428,11 @@
   position: absolute;
   left: 93.61px;
   top: 716.12px;
+}
+.button-edit-email {
+  width: 243.81px;
+  height: 40.19px;
+  position: static;
 }
 .rectangle-1072 {
   background: #4182f9;
@@ -424,6 +472,13 @@
   width: 152px;
   height: 25px;
 }
+.user {
+  width: 44.93px;
+  height: 44.93px;
+  position: absolute;
+  left: 29.96px;
+  top: 688.04px;
+}
 .ellipse-1697 {
   background: #4182f9;
   border-radius: 50%;
@@ -431,23 +486,50 @@
   width: 44.93px;
   height: 44.93px;
   position: absolute;
-  left: 29.96px;
-  top: 688.04px;
+  left: 0px;
+  top: 0px;
 }
-.button {
+.icons {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 6.04px;
+  top: 4.96px;
+  overflow: visible;
+}
+.edit-button {
   background: #0ea49b;
-  border-radius: 100px;
-  padding: 12px 24px 12px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
   position: absolute;
   left: 993px;
   top: 116px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(14, 164, 155, 0.3);
 }
+
+.edit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(14, 164, 155, 0.4);
+}
+
+.edit-button:active {
+  transform: scale(0.96);
+  box-shadow: 0 3px 6px rgba(14, 164, 155, 0.2);
+}
+
+.edit-button .text {
+  color: #fff;
+  width: auto;
+  text-align: center;
+}
+
 .text {
   color: #000000;
   text-align: center;
@@ -456,4 +538,32 @@
   font-weight: 600;
   position: relative;
   width: 460px;
+}
+.edit-email-button {
+  background: #4182f9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  left: 93px;
+  top: 760px; /* Ajusta según diseño */
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 8px rgba(65, 130, 249, 0.2);
+}
+
+.edit-email-button:hover {
+  background: #2f6df1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(65, 130, 249, 0.3);
+}
+
+.edit-email-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(65, 130, 249, 0.2);
 }
