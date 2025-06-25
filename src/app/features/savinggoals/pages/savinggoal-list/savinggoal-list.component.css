@@ -114,7 +114,504 @@
   width: 128.05px;
   height: 20.12px;
 }
-.icons2 {
+.presupuesto-mensual {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 348.87px;
+  top: 708.51px;
+  width: 151.6px;
+  height: 20.12px;
+}
+.name {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 751px;
+  top: 148px;
+}
+.cate-icon {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.rectangle-6 {
+  background: var(--purple-8, #6a43dd);
+  border-radius: 14px;
+  opacity: 0.1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.div {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 26.25px;
+  font-weight: 400;
+  position: absolute;
+  right: 66.39%;
+  left: 20%;
+  width: 13.61%;
+  bottom: 46.67%;
+  top: 22.22%;
+  height: 31.11%;
+}
+.pagos {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  position: relative;
+}
+.s-3500 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  position: absolute;
+  left: 976px;
+  top: 156.5px;
+}
+.pago-membresias {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 751px;
+  top: 213px;
+}
+.s-2800 {
+  color: var(--neutral-1000, #303048);
+  text-align: right;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 974px;
+  top: 213px;
+}
+.falta-s-600 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 973px;
+  top: 243px;
+}
+.internet {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 751px;
+  top: 286px;
+}
+.rectangle-3 {
+  background: #dcdcd1;
+  border-radius: 10px;
+  width: 199px;
+  height: 4px;
+  position: absolute;
+  left: 751px;
+  top: 325px;
+}
+.rectangle-131 {
+  background: #dcdcd1;
+  border-radius: 10px;
+  width: 199px;
+  height: 4px;
+  position: absolute;
+  left: 751px;
+  top: 252px;
+}
+.s-700 {
+  color: var(--neutral-1000, #303048);
+  text-align: right;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 985px;
+  top: 286px;
+}
+.falta-325 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 980px;
+  top: 316px;
+}
+.s-1500 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  position: absolute;
+  left: 970px;
+  top: 462px;
+}
+.rectangle-62 {
+  background: var(--secondary-1, #f46040);
+  border-radius: 14px;
+  opacity: 0.1;
+  width: 3.75%;
+  height: 4.77%;
+  position: absolute;
+  right: 33.67%;
+  left: 62.58%;
+  bottom: 47.03%;
+  top: 48.2%;
+}
+.div2 {
+  color: #000000;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 25px;
+  line-height: 29.17px;
+  font-weight: 400;
+  position: absolute;
+  right: 34.5%;
+  left: 63.42%;
+  width: 2.08%;
+  bottom: 47.98%;
+  top: 49.26%;
+  height: 2.76%;
+}
+.servicios {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  position: absolute;
+  left: 817px;
+  top: 464px;
+}
+.publicidad {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 751px;
+  top: 515px;
+}
+.rectangle-32 {
+  border-radius: 0px;
+  width: 208px;
+  height: 4px;
+  position: absolute;
+  left: 751px;
+  top: 554px;
+  overflow: visible;
+}
+.s-500 {
+  color: var(--neutral-1000, #303048);
+  text-align: right;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 984px;
+  top: 515px;
+}
+.falta-s-0 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 985px;
+  top: 545px;
+}
+.transporte {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 751px;
+  top: 588px;
+}
+.rectangle-33 {
+  background: #1acbcb;
+  border-radius: 10px;
+  width: 194px;
+  height: 4px;
+  position: absolute;
+  left: 751px;
+  top: 627px;
+}
+.s-7002 {
+  color: var(--neutral-1000, #303048);
+  text-align: right;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 985px;
+  top: 588px;
+}
+.group-201 {
+  position: absolute;
+  inset: 0;
+}
+.servicios-cloud {
+  color: var(--neutral-1000, #303048);
+  text-align: left;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 751px;
+  top: 659px;
+}
+.rectangle-34 {
+  background: #149696;
+  border-radius: 10px;
+  width: 194px;
+  height: 4px;
+  position: absolute;
+  left: 751px;
+  top: 698px;
+}
+.s-300 {
+  color: var(--neutral-1000, #303048);
+  text-align: right;
+  font-family: "DmSans-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+  position: absolute;
+  left: 984px;
+  top: 659px;
+}
+.falta-s-50 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 977px;
+  top: 682px;
+}
+.falta-s-100 {
+  color: var(--neutral-800, #67677a);
+  text-align: right;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 973px;
+  top: 618px;
+}
+.rectangle-35 {
+  background: #c8f8f8;
+  border-radius: 10px;
+  width: 146px;
+  height: 4px;
+  position: absolute;
+  left: 751px;
+  top: 252px;
+}
+
+.circle-button {
+  width: 50px; /* Puedes ajustar el tamaño */
+  height: 50px;
+  background-color: #1b325f; /* Usa aquí tu azul oscuro de la paleta */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; /* Centrar horizontalmente */
+  position: relative;
+  top: -10px;
+}
+
+.plus-icon {
+  width: 24px; /* Ajusta el tamaño del ícono */
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+/* Estilos comunes para ambos cuadros */
+.rectangle-30 {
+  position: absolute;
+  width: 270px;
+  height: 160px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+/* Posiciones específicas */
+.pagos-box {
+  top: 200px;
+  left: 65%;
+}
+
+.servicios-box {
+  top: 600px;
+  left: 65%;
+}
+
+.icon-text {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.pagos,
+.servicios {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.line-color {
+  height: 4px;
+  width: 80%;
+  margin-top: 12px;
+  border-radius: 4px;
+}
+
+.line-color.crema {
+  background-color: #e8d7c6; /* color crema bajo de tu paleta */
+}
+
+.line-color.celeste {
+  background-color: #d3eef5; /* color celeste claro de tu paleta */
+}
+
+.s-3500, .s-2800, .falta-s-600, .publicidad, .pago-membresias, .internet {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+/* Centrar el emoji dentro del contenedor */
+.emoji-icon {
+  font-size: 40px; /* Ajusta el tamaño */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Tamaño del contenedor */
+  height: 60px;
+  background-color: transparent; /* Fondo opcional */
+  border-radius: 50%; /* Opcional si quieres que sea circular */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Línea de color crema debajo de Internet */
+.line-color.crema {
+  width: 200px;
+  height: 4px;
+  background-color: #f1e0c5; /* Color crema según paleta */
+  position: absolute;
+  top: 320px; /* Ajusta según ubicación */
+  left: 62.5%;
+}
+
+/* Línea de color celeste debajo de Publicidad */
+.line-color.celeste {
+  width: 195px;
+  height: 4.5px;
+  background-color: #c9eaf3; /* Color celeste según paleta */
+  position: absolute;
+  top: 545px; /* Ajusta según ubicación */
+  left: 62.5%;
+}
+
+.donut {
+  transform: rotate(-90deg); /* Para que inicie desde la parte superior */
+}
+
+.donut-segment {
+  fill: none;
+  stroke-linecap: round; /* Bordes redondeados */
+}
+
+.alice-in-chains-man-in-the-box,
+.alice-in-chains-man-in-the-box * {
+  box-sizing: border-box;
+}
+.alice-in-chains-man-in-the-box {
+  background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  position: fixed; /* Ventana flotante */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; /* Encima de todo */
+  
+  /* Centramos el contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle-329 {
+  background: #ffffff;
+  border-radius: 35px;
+  width: 738px;
+  height: 520px;
+  position: relative; /* ✔️ Esto sí */
+}
+
+.icons {
   width: 32px;
   height: 32px;
   position: absolute;
@@ -197,12 +694,308 @@
   top: 74.26%;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
-.image-14 {
-  width: 445px;
-  height: 61px;
+
+/* Layout principal */
+.savinggoals-main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 32px 40px 32px 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: #f3f2ea;
+  margin-left: 260px; /* igual al ancho del sidebar */
+
+}
+
+.savinggoals-left {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 32px;
+  width: 100%;
+}
+
+.savinggoals-donut-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Asegura alineación al tope */
+  justify-content: flex-start; /* Alinea los cards al inicio, no centrados */
+  gap: 40px;
+  width: 100%;
+  margin-left: 0;
+}
+
+.savinggoals-donut-container {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 32px;
+  min-width: 340px;
+  max-width: 400px;
+  font-family: 'Poppins-Regular', 'DmSans-Regular', Arial, sans-serif;
+  margin-left: 0; /* Elimina cualquier centrado, alinea con el main container */
+}
+
+.donut-chart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  min-width: 260px;
+  min-height: 260px;
+}
+
+.donut-center-label {
   position: absolute;
-  left: 380px;
-  top: 727px;
-  object-fit: cover;
-  aspect-ratio: 445/61;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-family: 'Poppins-Regular', Arial, sans-serif;
+  font-weight: 700;
+  color: #149696;
+  background: #fff;
+  border-radius: 50%;
+  padding: 18px 28px;
+  box-shadow: 0 2px 8px rgba(26,203,203,0.08);
+  text-align: center;
+}
+
+.donut-legend-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #222;
+  gap: 8px;
+  font-family: 'Poppins-Regular', Arial, sans-serif;
+}
+.legend-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  border: 2px solid #e0e0e0;
+}
+
+.new-goal-btn-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-left: 0;
+  margin-top: 40px;
+}
+
+.savinggoals-summary-row.shifted {
+  /* margin-left: 80px; */
+  justify-content: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .savinggoals-summary-row.shifted {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+
+.savinggoals-summary-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+}
+.summary-box {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 18px 48px 18px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+  font-family: 'Poppins-Regular', 'DmSans-Regular', Arial, sans-serif;
+}
+.summary-label {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+.summary-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #149696;
+}
+
+.add-goal-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.add-label {
+  font-size: 0.95rem;
+  color: #149696;
+  font-weight: 500;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 28px 32px 24px 32px;
+  margin-bottom: 16px;
+  min-width: 300px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.emoji-icon {
+  position: static !important;
+  margin-right: 8px;
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
+.pagos-title, .servicios-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #149696;
+  flex: 1;
+}
+.pagos-total, .servicios-total {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1acbcb;
+}
+.card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+}
+.card-item:last-child {
+  border-bottom: none;
+}
+.item-label {
+  color: #444;
+  flex: 1;
+}
+.item-value {
+  color: #149696;
+  font-weight: 600;
+  margin-left: 12px;
+}
+.item-extra {
+  color: #888;
+  font-size: 0.95rem;
+  margin-left: 12px;
+}
+
+@media (max-width: 1100px) {
+  .savinggoals-main-container {
+    flex-direction: column;
+    padding: 24px 8px;
+  }
+  .savinggoals-left, .savinggoals-right {
+    width: 100%;
+    margin: 0;
+  }
+  .savinggoals-right {
+    margin-top: 32px;
+  }
+  .savinggoals-donut-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    margin-left: 0;
+  }
+  .savinggoals-summary-row.shifted {
+    margin-left: 0;
+  }
+}
+@media (max-width: 700px) {
+  .savinggoals-donut-container, .card, .summary-box {
+    padding: 16px 8px;
+  }
+  .donut-center-label {
+    font-size: 1.1rem;
+    padding: 8px 10px;
+  }
+  .savinggoals-summary-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Bloque agrupado para resumen y botón añadir */
+.savinggoals-summary-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 32px 24px;
+  min-width: 220px;
+  max-width: 260px;
+  margin-left: 40px;
+}
+.savinggoals-summary-block .summary-label,
+.savinggoals-summary-block .summary-value {
+  margin-bottom: 0;
+  text-align: center;
+}
+.savinggoals-summary-block .add-goal-btn {
+  margin-top: 12px;
+}
+
+/* Ajuste para alinear el bloque al lado del donut */
+.savinggoals-donut-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+}
+
+@media (max-width: 1100px) {
+  .savinggoals-donut-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .savinggoals-summary-block {
+    margin-left: 0;
+    margin-top: 24px;
+  }
 }

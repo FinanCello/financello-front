@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
+import { EditMailComponent } from './features/profile/edit/mail/editmail.component';
 import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
 import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
 import { CATEGORIES_ROUTES } from './features/categories/categories-routes';
