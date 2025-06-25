@@ -53,6 +53,10 @@ export const routes: Routes = [
       {
         path: 'alerts',
         loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
+      },
+      {
+        path: 'finances',
+        loadComponent: () => import('./features/finances/finances.component').then(m => m.FinancesComponent)
       }
       // Puedes agregar más rutas hijas aquí
     ]
