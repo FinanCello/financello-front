@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/auth.guard';
 import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
-
+import { SettingsComponent } from './features/settings/settings.component';
 export const routes: Routes = [
   {
     path: '',
@@ -30,7 +30,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'categories', loadComponent: () => import('./features/categories/pages/category-form/category-form.component').then(m => m.CategoryFormComponent) }
      // { path: 'load-files', component: LoadFilesComponent },

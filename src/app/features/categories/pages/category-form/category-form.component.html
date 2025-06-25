@@ -57,7 +57,7 @@
           <li
             *ngFor="let cat of categories"
             (click)="selectCategoryToDelete(cat)"
-            [class.selected]="selectedCategory?.name === cat.name"
+            [class.selected]="selectedCategory?.id === cat.id"
           >
             {{ cat.name }}
           </li>

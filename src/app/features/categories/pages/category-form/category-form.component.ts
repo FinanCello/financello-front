@@ -17,10 +17,16 @@ import Swal from 'sweetalert2';
 export class CategoryFormComponent {
   categoryForm!: FormGroup;
   action: 'create' | 'edit' | 'delete' = 'create';
-  selectedCategory: any = null;
+  selectedCategory: CategorySimpleResponse | null = null;
   categories: CategorySimpleResponse[] = [];
+  userInfo: any;
 
-  constructor(private fb: FormBuilder, private categoryService: CategoryService) {}
+  constructor(private fb: FormBuilder, private categoryService: CategoryService) {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      this.userInfo = JSON.parse(userStr);
+    }
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -28,11 +34,21 @@ export class CategoryFormComponent {
   }
 
   loadCategories(): void {
+    if (!this.userInfo?.id) {
+      this.showError({ message: 'Usuario no autenticado' });
+      return;
+    }
     
-    const userId = 1; //hardcoded
-    this.categoryService.getCategories(userId).subscribe({
+    this.categoryService.getCategories(this.userInfo.id).subscribe({
         next: (res) => (this.categories = res),
-        error: (err) => this.showError(err)
+        error: (err) => {
+          if (err.status === 404) {
+            this.categories = [];
+            console.log('Usuario no tiene categorías aún');
+          } else {
+            this.showError(err);
+          }
+        }
     })
   }
 
@@ -58,7 +74,7 @@ export class CategoryFormComponent {
     this.categoryForm.reset();
   }
 
-  selectCategoryToEdit(cat: any): void {
+  selectCategoryToEdit(cat: CategorySimpleResponse): void {
     this.selectedCategory = cat;
     this.categoryForm.patchValue(cat);
   }
@@ -72,11 +88,17 @@ export class CategoryFormComponent {
     if (!this.categoryForm.valid) return;
 
     const data = this.categoryForm.value as CategoryRequest;
-    const userId = 1; //mas hardcodeo
+    
+    if (!this.userInfo?.id) {
+      this.showError({ message: 'Usuario no autenticado' });
+      return;
+    }
+    
     if (this.action === 'create') {
-        this.categoryService.createCategory(userId, data).subscribe({
+        this.categoryService.createCategory(this.userInfo.id, data).subscribe({
             next: () => {
                 Swal.fire('Creado', 'La categoría fue creada correctamente', 'success');
+                this.loadCategories();
             },
             error: (err) => this.showError(err)
         });
@@ -93,7 +115,7 @@ export class CategoryFormComponent {
     }
   }
 
-  selectCategoryToDelete(cat: any): void {
+  selectCategoryToDelete(cat: CategorySimpleResponse): void {
     this.selectedCategory = cat;
   }
 

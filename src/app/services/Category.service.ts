@@ -11,7 +11,7 @@ import {
     CategorySimpleResponse,
     CategoryResponse,
 } from '../models/Category';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
     providedIn: 'root',
