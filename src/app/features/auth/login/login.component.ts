@@ -56,7 +56,7 @@ export class LoginComponent {
           email: response.email,
           firstName: response.firstName,
           lastName: response.lastName,
-          userType: response.userType
+          userType: response.userType,
         }));
 
         this.snackbarService.showSnackbar(

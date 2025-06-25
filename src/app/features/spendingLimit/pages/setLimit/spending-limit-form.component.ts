@@ -6,6 +6,7 @@ import { SpendingLimitService } from  '../../../../services/SpendingLimit.servic
 import { CategoryService } from '../../../../services/Category.service';
 import {SpendingLimitRequest, SpendingLimitResponse} from '../../../../models/SpendingLimit';
 import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
+import { AuthService } from '../../../../services/Auth.service';
 
 @Component({
   selector: 'app-spending-limit-form',
@@ -25,7 +26,8 @@ export class SpendingLimitFormComponent implements OnInit {
     private spendingLimitService: SpendingLimitService,
     private categoryService: CategoryService,
     private snackbarService: SnackbarService,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -35,30 +37,47 @@ export class SpendingLimitFormComponent implements OnInit {
       return;
     }
 
-    const parsedUser = JSON.parse(userStr);
+    const user = JSON.parse(userStr);
 
-    const knownUsers: Record<string, number> = {
-      'Prueba02@gmail.com': 3,
-      'ejemplo@correo.com': 4,
-
-    };
-
-    if (!parsedUser.id && knownUsers[parsedUser.email]) {
-      parsedUser.id = knownUsers[parsedUser.email];
-      localStorage.setItem('user', JSON.stringify(parsedUser));
-      console.log(`ID asignado manualmente: ${parsedUser.id}`);
+    if (!user.token) {
+      console.error('No se encontró el token en el objeto user');
+      return;
     }
 
-    this.userInfo = parsedUser;
+    const decoded = this.decodeToken(user.token);
+    const email = decoded?.sub;
 
-    this.limitForm = this.fb.group({
-      categoryId: ['', Validators.required],
-      monthlyLimit: [null, [Validators.required, Validators.min(1)]],
+    if (!email) {
+      console.error('No se pudo extraer el email del token');
+      return;
+    }
+
+
+    this.authService.getUserByEmail(email).subscribe({
+      next: (userData) => {
+        this.userInfo = userData;
+
+        this.limitForm = this.fb.group({
+          categoryId: ['', Validators.required],
+          monthlyLimit: [null, [Validators.required, Validators.min(1)]],
+        });
+
+        this.loadCategories();
+      },
+      error: () => {
+        console.error('Error al obtener el usuario por email');
+      }
     });
-
-    this.loadCategories();
   }
-
+  decodeToken(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      return JSON.parse(atob(payload));
+    } catch (e) {
+      console.error('Error al decodificar el token:', e);
+      return null;
+    }
+  }
 
   initForm(): void {
     this.limitForm = this.fb.group({
