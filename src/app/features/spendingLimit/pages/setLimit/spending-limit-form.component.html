@@ -3,7 +3,7 @@
 </div>
 
 <div class="form-container">
-  <form [formGroup]="limitForm" (ngSubmit)="onSubmit()">
+  <form *ngIf="limitForm" [formGroup]="limitForm" (ngSubmit)="onSubmit()">
     <div *ngIf="createdLimit" class="limit-alert-box">
       <h3 class="alert-title">¡Límite creado!</h3>
       <p><strong>Categoría:</strong> {{ createdLimit.categoryName }}</p>
@@ -12,6 +12,7 @@
     <div class="form-group">
       <label for="category">Agregar categoría:</label>
       <select id="category" formControlName="categoryId">
+        <option value="" disabled selected>-- Selecciona una categoría --</option>
         <option *ngFor="let category of categories" [value]="category.id">
           {{ category.name }}
         </option>

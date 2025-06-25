@@ -41,14 +41,15 @@ export class LoginComponent {
       );
       return;
     }
-  
+
     this.isLoading = true;
     this.errorMessage = '';
-  
+
     const loginRequest: LoginRequest = this.loginForm.value;
-  
+
     this.authService.login(loginRequest).subscribe({
       next: (response) => {
+        console.log('Login response:', response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify({
           id: response.id,
@@ -57,19 +58,19 @@ export class LoginComponent {
           lastName: response.lastName,
           userType: response.userType
         }));
-  
+
         this.snackbarService.showSnackbar(
           'Successful Record',
           'The user was created correctly',
           'icons/success.png'
         );
-  
+
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         this.isLoading = false;
         const backendMsg = error.error?.detail || 'Access Denied';
-      
+
         if (backendMsg.includes('Incorrect password')) {
           this.snackbarService.showSnackbar(
             'Access Denied',
@@ -90,11 +91,11 @@ export class LoginComponent {
           );
         }
       }
-      
+
     });
   }
 
   goToSignup() {
     this.router.navigate(['/auth/register']);
-  }  
+  }
 }
