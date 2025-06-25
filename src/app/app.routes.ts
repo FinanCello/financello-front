@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
-import { EditMailComponent } from './features/profile/edit/mail/editmail.component';
+import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
 
 export const routes: Routes = [
   {
@@ -43,7 +43,8 @@ export const routes: Routes = [
         { path: '', component: SavingGoalListComponent },
         { path: 'new', component: SavingGoalFormComponent },
         { path: 'edit/:id', component: SavingGoalFormComponent }
-      ] }
+      ] },
+      { path: 'transactions', component: TransactionHistoryComponent }
       // Puedes agregar más rutas hijas aquí
     ]
   },
