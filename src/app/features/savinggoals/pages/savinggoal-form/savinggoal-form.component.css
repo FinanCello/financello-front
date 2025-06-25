@@ -1528,4 +1528,42 @@ src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
   top: 24px;
   cursor: pointer;
 }
+/*
+Acomodo visual para que el formulario de saving goal respete el espacio del sidebar y navbar.
+*/
+.savinggoal-form-outer {
+  width: 100%;
+  min-height: calc(100vh - 80px); /* 80px navbar */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 32px;
+  box-sizing: border-box;
+}
+
+.savinggoal-form-inner {
+  margin-left: 260px; /* Sidebar width */
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .savinggoal-form-inner {
+    margin-left: 60px;
+    padding: 16px 4px;
+  }
+}
+@media (max-width: 600px) {
+  .savinggoal-form-inner {
+    margin-left: 0;
+    padding: 8px 2px;
+  }
+}
 

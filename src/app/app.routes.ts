@@ -35,11 +35,9 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
-      { path: 'savinggoals', component: SavingGoalListComponent, children: [
-        { path: '', component: SavingGoalListComponent },
-        { path: 'new', component: SavingGoalFormComponent },
-        { path: 'edit/:id', component: SavingGoalFormComponent }
-      ] },
+      { path: 'savinggoals', component: SavingGoalListComponent },
+      { path: 'savinggoals/new', component: SavingGoalFormComponent },
+      { path: 'savinggoals/edit/:id', component: SavingGoalFormComponent },
       {
         path: 'categories',
         loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
@@ -55,7 +53,8 @@ export const routes: Routes = [
       {
         path: 'alerts',
         loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
-      }
+      },
+      { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
       // Puedes agregar más rutas hijas aquí
     ]
   },

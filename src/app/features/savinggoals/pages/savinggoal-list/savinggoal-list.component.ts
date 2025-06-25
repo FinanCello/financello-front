@@ -1,4 +1,3 @@
-/*
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
@@ -41,7 +40,7 @@ export class SavingGoalListComponent implements OnInit {
   }
 
   onEdit(goal: AddSavingGoalResponse) {
-    this.router.navigate(['/savinggoals/edit', goal.id]);
+    this.router.navigate(['/dashboard/savinggoals/edit', goal.id]);
   }
 
   onDelete(goal: AddSavingGoalResponse) {
@@ -54,22 +53,6 @@ export class SavingGoalListComponent implements OnInit {
   }
 
   onCreate() {
-    this.router.navigate(['/savinggoals/new']);
+    this.router.navigate(['/dashboard/savinggoals/new']);
   }
-}
-*/
-
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-savinggoal-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './savinggoal-list.component.html',
-  styleUrls: ['./savinggoal-list.component.css']
-})
-export class SavingGoalListComponent {
-
 }
