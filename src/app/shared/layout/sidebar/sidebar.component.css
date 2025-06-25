@@ -1,0 +1,319 @@
+@font-face {
+  font-family: "PalanquinDark-Medium";
+  src: url("/assets/fonts/PalanquinDark-Medium.ttf") format("truetype");
+}
+.sidebar,
+.sidebar * {
+  box-sizing: border-box;
+}
+.sidebar {
+  background: #092c36;
+  width: 260px;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 208px;
+  height: 45px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 15px; /* TAMAÑO ORIGINAL */
+  font-weight: 500;
+  color: #ffffff;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease, color 0.3s ease;
+  outline: none;
+}
+.sidebar-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+.sidebar-button:focus-visible {
+  outline: none;
+}
+.sidebar-button.active {
+  background-color: #0b6862;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+.sidebar-button img {
+  width: 20px;  /* TAMAÑO ORIGINAL */
+  height: 20px;
+  filter: brightness(0) invert(1); /* blanco */
+  transition: transform 0.2s ease;
+}
+.sidebar-button:hover {
+  background-color: #119488;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+.sidebar-button:hover img {
+  transform: scale(1.05);
+}
+.sidebar-button:not(.active):hover {
+  background-color: transparent;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+.sidebar-button:not(.active):hover img {
+  transform: scale(1.05);
+}
+.sidebar-button.home-button.active {
+  background-color: #0b6862;
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+
+/* HOME INACTIVO: sin fondo + borde */
+.sidebar-button.home-button:not(.active) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+/* Solo aplica borde si está activo */
+.sidebar-button.active {
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+
+/* Elimina el fondo en botones no activos excepto el HOME */
+.sidebar-button:not(.active):not(.home-button) {
+  background-color: transparent;
+}
+
+.icons-logo {
+  padding: 10px 15px 10px 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 258px;
+  height: 120px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.cello-3-1 {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.financello {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Cinzel-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  width: 160px;
+  height: 21px;
+}
+.frame-228 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 240px;
+  position: absolute;
+  left: 0px;
+  top: 137px;
+}
+.links {
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 265px;
+  position: relative;
+  overflow: hidden;
+}
+.home {
+  background: #0b6862;
+  border-radius: 10px;
+  flex-shrink: 0;
+  width: 208px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.home2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  right: -2.4%;
+  left: 26.44%;
+  width: 75.96%;
+  bottom: 31.82%;
+  top: 15.91%;
+  height: 52.27%;
+}
+.icons {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}
+.load-files {
+  border-radius: 10px;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.home3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  left: 55px;
+  top: 7px;
+  width: 158px;
+  height: 23px;
+}
+.icons2 {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}
+.my-finances {
+  border-radius: 10px;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.icons3 {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}
+.saving-goals {
+  border-radius: 10px;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.icons-piggy-bank-1 {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}
+.analytics {
+  border-radius: 10px;
+  flex-shrink: 0;
+  width: 208px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.icons4 {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}
+.line-6 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #0b6862;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.links2 {
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+.profile {
+  border-radius: 10px;
+  flex-shrink: 0;
+  width: 208px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.icons5 {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}
+.page-link {
+  border-radius: 10px;
+  flex-shrink: 0;
+  width: 208px;
+  height: 45px;
+  position: relative;
+  overflow: hidden;
+}
+.icons6 {
+  width: 15.38%;
+  height: 72.73%;
+  position: absolute;
+  right: 79.81%;
+  left: 4.81%;
+  bottom: 13.64%;
+  top: 13.64%;
+  overflow: visible;
+}

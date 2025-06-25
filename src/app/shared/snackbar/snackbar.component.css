@@ -1,0 +1,112 @@
+.snackbar,
+.snackbar * {
+  box-sizing: border-box;
+}
+.snackbar {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 340px;
+  background: #092c36;
+  border-radius: 5px;
+  padding: 26px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: slideIn 0.4s ease forwards;
+}
+
+.snackbar.hide {
+  animation: slideOut 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.content {
+  flex-shrink: 0;
+  width: 340px;
+  height: 71.5px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.icons {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 10px;
+  top: 28px;
+  overflow: visible;
+}
+.frame-65 {
+  width: 219px;
+  height: 63px;
+  position: absolute;
+  left: 49px;
+  top: 8.5px;
+}
+.post-submitted {
+  color: #fafafa;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 0px;
+  top: 5.5px;
+  width: 234px;
+}
+.check-back-later-for-updates {
+  color: #fafafa;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 37.5px;
+  width: 219px;
+}
+.undo {
+  color: #0ea49b;
+  text-align: left;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 283px;
+  top: 28px;
+}
+.rectangle-326 {
+  background: #0ea49b;
+  width: 340px;
+  height: 5px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}

@@ -1,0 +1,264 @@
+.nirvana-sappy,
+.nirvana-sappy * {
+  box-sizing: border-box;
+}
+.nirvana-sappy {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 212px 231px 212px 231px;
+  height: 944px;
+  position: absolute;
+  width: 100%;
+}
+.rectangle-329 {
+  background: #ffffff;
+  border-radius: 35px;
+  width: 738px;
+  height: 520px;
+  position: absolute;
+  left: 471px;
+  top: 201px;
+}
+.icons {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1138px;
+  top: 229px;
+  overflow: visible;
+}
+.button {
+  background: #0ea49b;
+  border-radius: 100px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  position: absolute;
+  left: 750px;
+  top: 660px;
+}
+.text {
+  color: #000000;
+  text-align: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  width: 460px;
+}
+.new-movement {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 720px;
+  top: 210px;
+  width: 240px;
+  height: 58px;
+}
+.frame-226 {
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px;
+  padding: 15px 0px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 251px;
+  position: absolute;
+  left: 714px;
+  top: 270px;
+  overflow: hidden;
+}
+.rectangle-333 {
+  background: #092c36;
+  border-radius: 15px;
+  opacity: 0.2;
+  flex-shrink: 0;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+.line-4 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0.155deg) scale(1, 1);
+}
+.rectangle-332 {
+  background: #092c36;
+  border-radius: 15px;
+  opacity: 0.2;
+  flex-shrink: 0;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+.line-2 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0.155deg) scale(1, 1);
+}
+.frame-66 {
+  background: #ced5d7;
+  border-radius: 15px;
+  padding: 2px 6px 2px 6px;
+  flex-shrink: 0;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+.e-mail {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 6px;
+  top: 2px;
+}
+.line-5 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 0px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0.155deg) scale(1, 1);
+}
+.rectangle-331 {
+  background: #092c36;
+  border-radius: 15px;
+  opacity: 0.2;
+  flex-shrink: 0;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+.icons2 {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 200px;
+  top: 149px;
+  overflow: visible;
+}
+.currency-type {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 19px;
+  top: 212px;
+  width: 193px;
+  height: 36px;
+}
+.movement-type {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 19px;
+  top: 17px;
+  width: 181px;
+  height: 36px;
+}
+.category {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 19px;
+  top: 83px;
+  width: 132px;
+  height: 18px;
+}
+.chevron-down {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 212px;
+  top: 92px;
+  overflow: visible;
+}
+.chevron-down2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 212px;
+  top: 223px;
+  overflow: visible;
+}
+.chevron-down3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 212px;
+  top: 27px;
+  overflow: visible;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 90%;
+  max-width: 225px;
+}
+
+.label {
+  color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}

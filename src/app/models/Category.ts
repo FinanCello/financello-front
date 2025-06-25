@@ -9,5 +9,6 @@ export interface CategoryResponse {
 }
 
 export interface CategorySimpleResponse {
+  id: number;
   name: string;
 }
