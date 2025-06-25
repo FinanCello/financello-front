@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
+import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-savinggoal-list',
@@ -18,7 +19,8 @@ export class SavingGoalListComponent implements OnInit {
 
   constructor(
     private savingGoalService: SavingGoalService,
-    private router: Router
+    private router: Router,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -38,6 +40,11 @@ export class SavingGoalListComponent implements OnInit {
         console.error('Error fetching saving goals:', err);
         this.error = 'Error al cargar las metas de ahorro. Por favor, intenta nuevamente.';
         this.loading = false;
+        this.snackbarService.showSnackbar(
+          'Error',
+          'No se pudieron cargar las metas de ahorro',
+          'assets/icons/error.png'
+        );
       }
     });
   }
@@ -52,12 +59,22 @@ export class SavingGoalListComponent implements OnInit {
       
       this.savingGoalService.deleteSavingGoal(goal.id).subscribe({
         next: () => {
+          this.snackbarService.showSnackbar(
+            'Meta eliminada',
+            'La meta de ahorro se ha eliminado exitosamente',
+            'assets/icons/success.png'
+          );
           this.fetchSavingGoals();
         },
         error: (err) => {
           console.error('Error deleting saving goal:', err);
           this.error = 'No se pudo eliminar la meta. Por favor, intenta nuevamente.';
           this.loading = false;
+          this.snackbarService.showSnackbar(
+            'Error',
+            'No se pudo eliminar la meta de ahorro',
+            'assets/icons/error.png'
+          );
         }
       });
     }

@@ -87,12 +87,31 @@
 }
 
 /* Formulario */
-.goal-form h2 {
+.goal-form h2, .edit-goal-title {
   font-family: "PalanquinDark-SemiBold", sans-serif;
   font-size: 24px;
   color: #303048;
   margin: 0 0 30px 0;
   text-align: center;
+}
+
+.form-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-header h2 {
+  margin-bottom: 10px;
+}
+
+.edit-meta {
+  background-color: #e9f7f7;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #149696;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  display: inline-block;
 }
 
 /* Mensajes de carga y error */
@@ -190,6 +209,10 @@
   padding: 10px 0;
 }
 
+.edit-form {
+  padding: 10px 0;
+}
+
 .empty-list-message {
   text-align: center;
   color: #67677a;
@@ -208,12 +231,14 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .goal-list-item:hover {
   background-color: #e9f7f7;
   transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-color: #149696;
 }
 
 .goal-list-name {
@@ -225,6 +250,7 @@
 .goal-list-amount {
   font-family: "Poppins-Regular", sans-serif;
   font-size: 14px;
+  margin-top: 4px;
 }
 
 .current-amount {
@@ -239,6 +265,31 @@
 .goal-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.goal-action-hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e0f5f5;
+  color: #149696;
+  margin-left: 12px;
+  transition: all 0.2s ease;
+}
+
+.goal-list-item:hover .goal-action-hint {
+  background-color: #149696;
+  color: white;
+  transform: scale(1.1);
+}
+
+.hint-icon {
+  font-style: normal;
+  font-size: 18px;
 }
 
 /* Botón de eliminar */
@@ -253,10 +304,16 @@
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-left: 12px;
 }
 
 .delete-button:hover {
   background-color: #ff4242;
+  transform: rotate(90deg);
+}
+
+.delete-button:hover .delete-icon {
+  filter: brightness(5);
 }
 
 .delete-icon {
@@ -270,6 +327,65 @@
   text-align: center;
   font-size: 14px;
   color: #67677a;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Información actual en edición */
+.current-info {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.current-amount-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.current-amount-info label {
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 14px;
+  color: #67677a;
+}
+
+.current-value {
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #149696;
+}
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #149696 0%, #4cc1c1 100%);
+  border-radius: 4px;
+}
+
+.progress-percentage {
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  color: #303048;
+  min-width: 40px;
+  text-align: right;
 }
 
 /* Estilos para la lista */
@@ -281,5 +397,14 @@ ul {
 
 .delete-list .goal-list-item {
   cursor: default;
+}
+
+/* Sección de eliminación */
+.delete-section h2 {
+  font-family: "PalanquinDark-SemiBold", sans-serif;
+  font-size: 24px;
+  color: #303048;
+  margin: 0 0 30px 0;
+  text-align: center;
 }
 

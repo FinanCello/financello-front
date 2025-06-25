@@ -42,7 +42,7 @@
       <div *ngIf="activeTab === 'edit'" class="tab-content">
         <!-- Lista de metas para seleccionar -->
         <div *ngIf="!selectedGoal" class="goals-list">
-          <h2>Editar Meta de Ahorro</h2>
+          <h2 class="edit-goal-title">Editar Meta de Ahorro</h2>
           
           <div *ngIf="loading" class="loading-message">Cargando...</div>
           <div *ngIf="error" class="error-message">{{ error }}</div>
@@ -53,10 +53,15 @@
           
           <ul *ngIf="savingGoals.length > 0">
             <li *ngFor="let goal of savingGoals" (click)="selectGoalToEdit(goal)" class="goal-list-item">
-              <div class="goal-list-name">{{ goal.name }}</div>
-              <div class="goal-list-amount">
-                <span class="current-amount">S/. {{ goal.currentAmount }}</span>
-                <span class="target-amount">/ S/. {{ goal.targetAmount }}</span>
+              <div class="goal-info">
+                <div class="goal-list-name">{{ goal.name }}</div>
+                <div class="goal-list-amount">
+                  <span class="current-amount">S/. {{ goal.currentAmount }}</span>
+                  <span class="target-amount">/ S/. {{ goal.targetAmount }}</span>
+                </div>
+              </div>
+              <div class="goal-action-hint">
+                <i class="hint-icon">✎</i>
               </div>
             </li>
           </ul>
@@ -65,7 +70,12 @@
         <!-- Formulario de edición -->
         <div *ngIf="selectedGoal" class="edit-form">
           <form (ngSubmit)="submitEditForm()" #editForm="ngForm" class="goal-form">
-            <h2>Editar Meta de Ahorro</h2>
+            <div class="form-header">
+              <h2>Editar Meta de Ahorro</h2>
+              <div class="edit-meta">
+                <span>Estás editando: <strong>{{ selectedGoal.name }}</strong></span>
+              </div>
+            </div>
             
             <div *ngIf="loading" class="loading-message">Cargando...</div>
             <div *ngIf="error" class="error-message">{{ error }}</div>
@@ -85,13 +95,22 @@
               <input type="date" id="editDueDate" [(ngModel)]="editGoal.dueDate" name="dueDate" required />
             </div>
             
+            <div class="current-info">
+              <div class="current-amount-info">
+                <label>Monto actual:</label>
+                <div class="current-value">S/. {{ selectedGoal.currentAmount }}</div>
+              </div>
+              <div class="progress-indicator">
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width.%]="(selectedGoal.currentAmount / selectedGoal.targetAmount) * 100"></div>
+                </div>
+                <div class="progress-percentage">{{ (selectedGoal.currentAmount / selectedGoal.targetAmount) * 100 | number:'1.0-0' }}%</div>
+              </div>
+            </div>
+            
             <div class="form-actions">
               <button type="submit" class="btn-primary">Actualizar</button>
               <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancelar</button>
-            </div>
-            
-            <div class="edit-note">
-              <small>Editando: {{ selectedGoal.name }}</small>
             </div>
           </form>
         </div>

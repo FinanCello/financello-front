@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalRequest, AddSavingGoalResponse } from '../../../../models/SavingGoal';
+import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-savinggoal-form',
@@ -39,7 +40,8 @@ export class SavingGoalFormComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private savingGoalService: SavingGoalService
+    private savingGoalService: SavingGoalService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -137,13 +139,22 @@ export class SavingGoalFormComponent implements OnInit {
     this.loading = true;
     this.savingGoalService.addSavingGoal(this.createGoal).subscribe({
       next: () => {
-        alert('✅ Meta de ahorro creada exitosamente');
+        this.snackbarService.showSnackbar(
+          'Meta creada',
+          'La meta de ahorro se ha creado exitosamente',
+          'assets/icons/success.png'
+        );
         this.router.navigate(['/dashboard/savinggoals']);
       },
       error: (err) => {
         console.error('Error creating goal:', err);
         this.error = 'Error al crear la meta de ahorro';
         this.loading = false;
+        this.snackbarService.showSnackbar(
+          'Error',
+          'No se pudo crear la meta de ahorro',
+          'assets/icons/error.png'
+        );
       }
     });
   }
@@ -160,15 +171,24 @@ export class SavingGoalFormComponent implements OnInit {
       dueDate: this.editGoal.dueDate
     };
     
-    this.savingGoalService.updateSavingGoal(Number(this.selectedGoal.id), updateRequest).subscribe({
+    this.savingGoalService.updateSavingGoal(this.selectedGoal.id, updateRequest).subscribe({
       next: () => {
-        alert('✅ Meta de ahorro actualizada exitosamente');
+        this.snackbarService.showSnackbar(
+          'Meta actualizada',
+          'La meta de ahorro se ha actualizado exitosamente',
+          'assets/icons/success.png'
+        );
         this.router.navigate(['/dashboard/savinggoals']);
       },
       error: (err) => {
         console.error('Error updating goal:', err);
         this.error = 'Error al actualizar la meta de ahorro';
         this.loading = false;
+        this.snackbarService.showSnackbar(
+          'Error',
+          'No se pudo actualizar la meta de ahorro',
+          'assets/icons/error.png'
+        );
       }
     });
   }
@@ -177,15 +197,25 @@ export class SavingGoalFormComponent implements OnInit {
   confirmDelete(goal: AddSavingGoalResponse) {
     if (confirm(`¿Estás seguro de que deseas eliminar la meta "${goal.name}"?`)) {
       this.loading = true;
-      this.savingGoalService.deleteSavingGoal(Number(goal.id)).subscribe({
+      this.savingGoalService.deleteSavingGoal(goal.id).subscribe({
         next: () => {
-          alert('✅ Meta de ahorro eliminada exitosamente');
+          this.snackbarService.showSnackbar(
+            'Meta eliminada',
+            'La meta de ahorro se ha eliminado exitosamente',
+            'assets/icons/success.png'
+          );
           this.loadSavingGoals();
+          this.loading = false;
         },
         error: (err) => {
           console.error('Error deleting goal:', err);
           this.error = 'Error al eliminar la meta de ahorro';
           this.loading = false;
+          this.snackbarService.showSnackbar(
+            'Error',
+            'No se pudo eliminar la meta de ahorro',
+            'assets/icons/error.png'
+          );
         }
       });
     }
@@ -197,12 +227,20 @@ export class SavingGoalFormComponent implements OnInit {
     const dueDate = new Date(goal.dueDate);
 
     if (goal.targetAmount <= 0) {
-      alert('❌ Monto incorrecto. No se permiten valores cero o negativos para el monto objetivo.');
+      this.snackbarService.showSnackbar(
+        'Datos incorrectos',
+        'No se permiten valores cero o negativos para el monto objetivo',
+        'assets/icons/warning.png'
+      );
       return false;
     }
 
     if (dueDate <= today) {
-      alert('❌ Fecha límite incorrecta. La fecha debe ser futura.');
+      this.snackbarService.showSnackbar(
+        'Fecha incorrecta',
+        'La fecha límite debe ser futura',
+        'assets/icons/warning.png'
+      );
       return false;
     }
 
