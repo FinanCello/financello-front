@@ -43,6 +43,10 @@ export const routes: Routes = [
       {
         path: 'categories',
         loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
+      },
+      {
+        path: 'load-files',
+        loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
       }
       // Puedes agregar más rutas hijas aquí
     ]

@@ -37,21 +37,10 @@ export class FinancialMovementService {
         return this.http.get<RegisterFinancialMovementResponse[]>(`${this.apiUrl}/filter`, { params });
     }
 
-    //uploadExcel(file: File): Observable<string> {
-    //    const formData = new FormData();
-    //    formData.append('file', file);
-
-    //    return this.http.post(`${this.apiUrl}/upload`, formData, { responseType: 'text' });
-    //}
     uploadExcel(file: File): Observable<string> {
-    console.log('Simulando subida de archivo:', file.name);
+        const formData = new FormData();
+        formData.append('file', file);
 
-    return new Observable<string>(observer => {
-        setTimeout(() => {
-            observer.next('Archivo subido exitosamente (simulado)');
-            observer.complete();
-
-        }, 1000); // error simulado
-    });
-}
+        return this.http.post(`${this.apiUrl}/upload`, formData, { responseType: 'text' });
+    }
 }
