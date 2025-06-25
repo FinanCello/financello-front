@@ -53,8 +53,7 @@ export const routes: Routes = [
       {
         path: 'alerts',
         loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
-      },
-      { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
+      }
       // Puedes agregar más rutas hijas aquí
     ]
   },

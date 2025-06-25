@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FinancialMovementService } from '../../../../services/FinancialMovement.service';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
 interface FileUpload {
   id: string;
@@ -15,7 +14,7 @@ interface FileUpload {
   selector: 'app-movement-upload',
   templateUrl: './movement-upload.component.html',
   styleUrls: ['./movement-upload.component.css'],
-  imports: [CommonModule, RouterOutlet]
+  imports: [CommonModule]
 })
 export class MovementUploadComponent {
   isDragging = false;

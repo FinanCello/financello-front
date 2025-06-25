@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SpendingLimitService } from '../../../../services/SpendingLimit.service';
 import { SpendingLimitAlertResponse } from '../../../../models/SpendingLimit';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-spending-limit-alert',
   templateUrl: './spending-limit-alert.component.html',
   styleUrls: ['./spending-limit-alert.component.css'],
   standalone: true,
+  imports: [CommonModule],
 })
 export class SpendingLimitAlertComponent implements OnInit {
   alerts: SpendingLimitAlertResponse[] = [];
