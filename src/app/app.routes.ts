@@ -5,6 +5,8 @@ import { authGuard } from './core/auth.guard';
 import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
+import { EditProfileComponent } from './features/profile/edit/editprofile.component';
+import { EditMailComponent } from './features/profile/edit/mail/editmail.component';
 
 export const routes: Routes = [
   {
@@ -33,28 +35,15 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent, children:[
+        { path: 'edit', component: EditProfileComponent }
+      ] },
       { path: 'settings', component: SettingsComponent },
-      { path: 'savinggoals', component: SavingGoalListComponent },
-      { path: 'savinggoals/new', component: SavingGoalFormComponent },
-      { path: 'savinggoals/edit/:id', component: SavingGoalFormComponent },
-      {
-        path: 'categories',
-        loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
-      },
-      {
-        path: 'load-files',
-        loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
-      },
-      {
-        path: 'spending-limit',
-        loadComponent: () => import('./features/spendingLimit/pages/setLimit/spending-limit-form.component').then(m => m.SpendingLimitFormComponent)
-      },
-      {
-        path: 'alerts',
-        loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
-      },
-      //{ path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
+      { path: 'savinggoals', component: SavingGoalListComponent, children: [
+        { path: '', component: SavingGoalListComponent },
+        { path: 'new', component: SavingGoalFormComponent },
+        { path: 'edit/:id', component: SavingGoalFormComponent }
+      ] }
       // Puedes agregar más rutas hijas aquí
     ]
   },
