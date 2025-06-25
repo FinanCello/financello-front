@@ -27,11 +27,6 @@
           </div>
           
           <div class="form-group">
-            <label for="currentAmount">Monto actual</label>
-            <input type="number" id="currentAmount" [(ngModel)]="createGoal.currentAmount" name="currentAmount" placeholder="0.00" required />
-          </div>
-          
-          <div class="form-group">
             <label for="dueDate">Fecha límite</label>
             <input type="date" id="dueDate" [(ngModel)]="createGoal.dueDate" name="dueDate" required />
           </div>
@@ -83,11 +78,6 @@
             <div class="form-group">
               <label for="editTargetAmount">Monto objetivo</label>
               <input type="number" id="editTargetAmount" [(ngModel)]="editGoal.targetAmount" name="targetAmount" placeholder="0.00" required />
-            </div>
-            
-            <div class="form-group">
-              <label for="editCurrentAmount">Monto actual</label>
-              <input type="number" id="editCurrentAmount" [(ngModel)]="editGoal.currentAmount" name="currentAmount" placeholder="0.00" required disabled />
             </div>
             
             <div class="form-group">

@@ -50,7 +50,7 @@ export class SavingGoalListComponent implements OnInit {
     if (confirm(`¿Seguro que deseas eliminar la meta "${goal.name}"?`)) {
       this.loading = true;
       
-      this.savingGoalService.deleteSavingGoal(Number(goal.id)).subscribe({
+      this.savingGoalService.deleteSavingGoal(goal.id).subscribe({
         next: () => {
           this.fetchSavingGoals();
         },

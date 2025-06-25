@@ -25,7 +25,6 @@ export class SavingGoalFormComponent implements OnInit {
   createGoal: AddSavingGoalRequest = {
     name: '',
     targetAmount: 0,
-    currentAmount: 0,
     dueDate: this.getTomorrowDate()
   };
   
@@ -34,7 +33,6 @@ export class SavingGoalFormComponent implements OnInit {
   editGoal: AddSavingGoalRequest = {
     name: '',
     targetAmount: 0,
-    currentAmount: 0,
     dueDate: this.getTomorrowDate()
   };
 
@@ -90,13 +88,12 @@ export class SavingGoalFormComponent implements OnInit {
     this.loading = true;
     this.savingGoalService.listSavingGoals().subscribe({
       next: (goals) => {
-        const goalToEdit = goals.find(g => g.id === String(goalId));
+        const goalToEdit = goals.find(g => g.id === goalId);
         if (goalToEdit) {
           this.selectedGoal = goalToEdit;
           this.editGoal = {
             name: goalToEdit.name,
             targetAmount: goalToEdit.targetAmount,
-            currentAmount: goalToEdit.currentAmount,
             dueDate: goalToEdit.dueDate
           };
         } else {
@@ -119,7 +116,6 @@ export class SavingGoalFormComponent implements OnInit {
     this.editGoal = {
       name: goal.name,
       targetAmount: goal.targetAmount,
-      currentAmount: goal.currentAmount,
       dueDate: goal.dueDate
     };
   }
@@ -130,7 +126,6 @@ export class SavingGoalFormComponent implements OnInit {
     this.editGoal = {
       name: '',
       targetAmount: 0,
-      currentAmount: 0,
       dueDate: ''
     };
   }
@@ -201,7 +196,7 @@ export class SavingGoalFormComponent implements OnInit {
     const today = new Date();
     const dueDate = new Date(goal.dueDate);
 
-    if (goal.targetAmount <= 0 || goal.currentAmount < 0) {
+    if (goal.targetAmount <= 0) {
       alert('❌ Monto incorrecto. No se permiten valores cero o negativos para el monto objetivo.');
       return false;
     }
