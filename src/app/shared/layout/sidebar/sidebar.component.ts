@@ -18,10 +18,10 @@ export class SidebarComponent {
     home: '/home',
     //'load-files': '/load-files',
     //'my-finances': '/my-finances',
-    //'saving-goals': '/saving-goals',
+    savinggoals: '/dashboard/savinggoals',
     //analytics: '/analytics',
     profile: '/dashboard/profile',
-    settings: '/settings'
+    settings: '/dashboard/settings'
   };
   
 

@@ -1,0 +1,46 @@
+<div class="the-warning-more">
+  <div class="weolcome-buttons">
+    <div class="my-profile">My Profile</div>
+  </div>
+  <div class="cambiar">Cambiar</div>
+
+  <!-- Comienzo del formulario reactivo -->
+  <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+    <div class="frame-239183">
+      <div class="group-239183">
+        <div class="jhon-doe">{{ userInfo.firstName }} {{ userInfo.lastName }}</div>
+        <div class="jhondoe-example-com">{{ userInfo.email }}</div>
+      </div>
+
+      <div class="avatar-user-250">
+        <div class="rectangle"></div>
+        <div class="rectangle2"></div>
+      </div>
+
+      <div class="frame-239185">
+        <!-- Last Name -->
+        <div class="last-name">Last Name</div>
+        <div class="group-239188">
+          <input type="text" formControlName="lastName" class="rectangle-6698 input-field" />
+        </div>
+
+        <!-- Password -->
+        <div class="password">Password</div>
+        <div class="group-239196">
+          <input type="password" formControlName="password" class="rectangle-66982 input-field" />
+        </div>
+
+        <!-- First Name -->
+        <div class="first-name">First Name</div>
+        <div class="group-239187">
+          <input type="text" formControlName="firstName" class="rectangle-66983 input-field" />
+        </div>
+      </div>
+
+      <!-- Botón de submit -->
+      <button class="edit-button" type="submit">
+        <div class="text">Accept</div>
+      </button>
+    </div>
+  </form>
+</div>
