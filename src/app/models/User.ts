@@ -1,9 +1,14 @@
+export enum UserType {
+  PERSONAL = 'PERSONAL',
+  BUSINESS = 'BUSINESS'
+}
+
 export interface RegisterRequest {
   email: string;
   password: string;
   firstName: string;
   lastName: string;
-  userType: string;       // UserType enum → string
+  userType: UserType;
 }
 
 export interface LoginRequest {
@@ -12,13 +17,14 @@ export interface LoginRequest {
 }
 
 export interface UpdateProfileRequest {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   password?: string;
 }
 
 export interface AuthResponse {
+  id: number;
   email: string;
   firstName: string;
   lastName: string;
