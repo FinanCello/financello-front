@@ -45,6 +45,10 @@ export const routes: Routes = [
         loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
       },
       {
+        path: 'load-files',
+        loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
+      },
+      {
         path: 'spending-limit',
         loadComponent: () => import('./features/spendingLimit/pages/setLimit/spending-limit-form.component').then(m => m.SpendingLimitFormComponent)
       },
