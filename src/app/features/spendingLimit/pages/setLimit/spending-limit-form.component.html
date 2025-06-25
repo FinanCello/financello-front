@@ -1,0 +1,31 @@
+<div class="title-container">
+  <h2 class="limit-title">Establece tus límites</h2>
+</div>
+
+<div class="form-container">
+  <form [formGroup]="limitForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="createdLimit" class="limit-alert-box">
+      <h3 class="alert-title">¡Límite creado!</h3>
+      <p><strong>Categoría:</strong> {{ createdLimit.categoryName }}</p>
+      <p><strong>Límite mensual:</strong> S/ {{ createdLimit.monthlyLimit }}</p>
+    </div>
+    <div class="form-group">
+      <label for="category">Agregar categoría:</label>
+      <select id="category" formControlName="categoryId">
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="limit">Agregar límite:</label>
+      <input type="number" id="limit" formControlName="monthlyLimit" placeholder="Monto del límite" />
+    </div>
+
+    <div class="button-group">
+      <button type="button" (click)="onCancel()">Cancelar</button>
+      <button type="submit">Guardar límite</button>
+    </div>
+  </form>
+</div>

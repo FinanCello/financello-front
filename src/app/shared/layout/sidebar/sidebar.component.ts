@@ -16,8 +16,8 @@ export class SidebarComponent {
 
   sectionRoutes: { [key: string]: string } = {
     home: '/home',
-    //'load-files': '/load-files',
-    //'my-finances': '/my-finances',
+    loadfiles: '/dashboard/load-files',
+    myfinances: '/dashboard/finances',
     savinggoals: '/dashboard/savinggoals',
     //analytics: '/analytics',
     profile: '/dashboard/profile',

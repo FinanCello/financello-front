@@ -1,26 +1,26 @@
 @font-face {
   font-family: "PalanquinDark-Bold";
-  src: url("/fonts/PalanquinDark-Bold.ttf") format("truetype");
+  src: url("/assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
 }
 @font-face {
 font-family: "PalanquinDark-Medium";
-src: url("/fonts/PalanquinDark-Medium.ttf") format("truetype");
+src: url("/assets/fonts/PalanquinDark-Medium.ttf") format("truetype");
 }
 @font-face {
 font-family: "PalanquinDark-Regular";
-src: url("/fonts/PalanquinDark-Regular.ttf") format("truetype");
+src: url("/assets/fonts/PalanquinDark-Regular.ttf") format("truetype");
 }
 @font-face {
 font-family: "Cinzel-Bold";
-src: url("/fonts/Cinzel-Bold.otf") format("truetype");
+src: url("/assets/fonts/Cinzel-Bold.otf") format("truetype");
 }
 @font-face {
 font-family: "PalanquinDark-SemiBold";
-src: url("/fonts/PalanquinDark-SemiBold.ttf") format("truetype");
+src: url("/assets/fonts/PalanquinDark-SemiBold.ttf") format("truetype");
 }
 @font-face {
 font-family: "Poppins-Regular";
-src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 .us-09-visualizar-historial-de-aportes-organizados-por-tipo-de-ahorro,
 .us-09-visualizar-historial-de-aportes-organizados-por-tipo-de-ahorro * {
@@ -1105,7 +1105,7 @@ src: url("/fonts/Poppins-Regular.ttf") format("truetype");
 .circle-button {
   width: 50px; /* Puedes ajustar el tamaño */
   height: 50px;
-  background-color: #1B325F; /* Usa aquí tu azul oscuro de la paleta */
+  background-color: #1b325f; /* Usa aquí tu azul oscuro de la paleta */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -1165,11 +1165,11 @@ src: url("/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
 .line-color.crema {
-  background-color: #E8D7C6; /* color crema bajo de tu paleta */
+  background-color: #e8d7c6; /* color crema bajo de tu paleta */
 }
 
 .line-color.celeste {
-  background-color: #D3EEF5; /* color celeste claro de tu paleta */
+  background-color: #d3eef5; /* color celeste claro de tu paleta */
 }
 
 .s-3500, .s-2800, .falta-s-600, .publicidad, .pago-membresias, .internet {
@@ -1527,5 +1527,43 @@ src: url("/fonts/Poppins-Regular.ttf") format("truetype");
   right: 24px;
   top: 24px;
   cursor: pointer;
+}
+/*
+Acomodo visual para que el formulario de saving goal respete el espacio del sidebar y navbar.
+*/
+.savinggoal-form-outer {
+  width: 100%;
+  min-height: calc(100vh - 80px); /* 80px navbar */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 32px;
+  box-sizing: border-box;
+}
+
+.savinggoal-form-inner {
+  margin-left: 260px; /* Sidebar width */
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .savinggoal-form-inner {
+    margin-left: 60px;
+    padding: 16px 4px;
+  }
+}
+@media (max-width: 600px) {
+  .savinggoal-form-inner {
+    margin-left: 0;
+    padding: 8px 2px;
+  }
 }
 

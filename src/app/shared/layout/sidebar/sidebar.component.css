@@ -1,6 +1,6 @@
 @font-face {
   font-family: "PalanquinDark-Medium";
-  src: url("/fonts/PalanquinDark-Medium.ttf") format("truetype");
+  src: url("/assets/fonts/PalanquinDark-Medium.ttf") format("truetype");
 }
 .sidebar,
 .sidebar * {

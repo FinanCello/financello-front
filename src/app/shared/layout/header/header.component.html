@@ -2,10 +2,10 @@
   <div class="dashboard">DASHBOARD</div>
   <div class="user-profile-icon">
     <div class="circle button-hover" (click)="goToDashboard()">
-      <img class="chart-pie" src="icons/chart-pie.svg" />
+      <img class="chart-pie" src="/assets/icons/chart-pie.svg" />
     </div>
     <div class="circle button-hover" (click)="showNotifications()">
-      <img class="notification" src="icons/notification.svg" />
+      <img class="notification" src="/assets/icons/notification.svg" />
     </div>
     <div class="user-dropdown">
       <div class="frame-5 button-hover" (click)="toggleUserMenu()">
@@ -14,7 +14,7 @@
           <div class="rectangle2"></div>
         </div>
         <div class="jhon-doe">{{ userInfo?.firstName + ' ' + userInfo?.lastName || 'John Doe' }}</div>
-        <img class="icons" src="icons/down.svg" />
+        <img class="icons" src="/assets/icons/down.svg" />
       </div>
   
     </div>
