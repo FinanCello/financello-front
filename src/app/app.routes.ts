@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
+import { SavingGoalListComponent } from './features/savinggoals/pages/savinggoal-list/savinggoal-list.component';
+import { SavingGoalFormComponent } from './features/savinggoals/pages/savinggoal-form/savinggoal-form.component';
 import { authGuard } from './core/auth.guard';
 import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
-import {SettingsComponent} from './features/settings/settings.component';
+import { SettingsComponent } from './features/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -16,12 +18,12 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () => import('./features/auth/login/login.component').then(m => m.LoginComponent),
-        data: {animation: 'LoginPage'}
+        data: { animation: 'LoginPage' }
       },
       {
         path: 'register',
         loadComponent: () => import('./features/auth/register/register.component').then(m => m.RegisterComponent),
-        data: {animation: 'RegisterPage'}
+        data: { animation: 'RegisterPage' }
       }
     ]
   },
@@ -33,17 +35,25 @@ export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
-      //{ path: 'categories', loadComponent: () => import('./features/categories/pages/category-form/category-form.component').then(m => m.CategoryFormComponent) }
-     // { path: 'load-files', component: LoadFilesComponent },
-      //{ path: 'my-finances', component: MyFinancesComponent },
-      //{ path: 'saving-goals', component: SavingGoalsComponent }
+      { path: 'savinggoals', component: SavingGoalListComponent, children: [
+        { path: '', component: SavingGoalListComponent },
+        { path: 'new', component: SavingGoalFormComponent },
+        { path: 'edit/:id', component: SavingGoalFormComponent }
+      ] },
+      {
+        path: 'categories',
+        loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
+      },
+      {
+        path: 'load-files',
+        loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
+      },
       { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
+      // Puedes agregar más rutas hijas aquí
     ]
   },
   {
     path: '**',
     redirectTo: '/dashboard'
-  },
-
-
+  }
 ];
