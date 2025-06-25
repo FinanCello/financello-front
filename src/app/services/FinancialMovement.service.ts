@@ -16,20 +16,27 @@ export class FinancialMovementService {
 
     constructor(private http: HttpClient) {}
 
-    getMovements(userId: number, type: string, categoryId: number): Observable<TransactionResponse[]> {
+    getMovements(userId: number, type?: string, categoryId?: number): Observable<TransactionResponse[]> {
         let params = new HttpParams();
-        if (type) params = params.set('type', type);
-        if (categoryId !== undefined) params = params.set('categoryId', categoryId);
-
+      
+        if (type && type.trim() !== '') {
+          params = params.set('type', type);
+        }
+      
+        if (categoryId !== undefined && categoryId !== 0) {
+          params = params.set('categoryId', categoryId.toString());
+        }
+      
+        const fullUrl = `${this.apiUrl}/${userId}?${params.toString()}`;
         return this.http.get<TransactionResponse[]>(`${this.apiUrl}/${userId}`, { params });
-    }
+      }
 
     register(userId: number, request: RegisterFinancialMovementRequest): Observable<RegisterFinancialMovementResponse> {
         const params = new HttpParams().set('userId', userId.toString());
         return this.http.post<RegisterFinancialMovementResponse>(`${this.apiUrl}/register`, request, { params });
     }
 
-  filter(userId: number, categoryId: number | null, type: string | null): Observable<RegisterFinancialMovementResponse[]> {
+    filter(userId: number, categoryId: number | null, type: string | null): Observable<RegisterFinancialMovementResponse[]> {
     let params = new HttpParams().set('userId', userId.toString());
     if (categoryId !== null) params = params.set('categoryId', categoryId.toString());
     if (type) params = params.set('type', type);

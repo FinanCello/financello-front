@@ -23,6 +23,10 @@
   src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 @font-face {
+  font-family: "Poppins-Medium";
+  src: url("/assets/fonts/Poppins-Medium.ttf") format("truetype");
+}
+@font-face {
   font-family: "DmSans-Regular";
   src: url("/assets/fonts/DMSans-Regular.ttf") format("truetype");
 }

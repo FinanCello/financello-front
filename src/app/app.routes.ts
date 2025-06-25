@@ -6,10 +6,11 @@ import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
-//import { EditMailComponent } from './features/profile/edit/mail/editmail.component';
 import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
 import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
 import { CATEGORIES_ROUTES } from './features/categories/categories-routes';
+import { FinancesComponent } from './features/finances/finances.component';
+import { AddMovementComponent } from './features/finances/addMovement/addmovement.component';
 
 export const routes: Routes = [
   {
@@ -47,7 +48,10 @@ export const routes: Routes = [
       { path: 'savinggoals', component: SavingGoalListComponent },
       { path: 'savinggoals/new', component: SavingGoalFormComponent },
       { path: 'savinggoals/edit/:id', component: SavingGoalFormComponent },
-      { path: 'transactions', component: TransactionHistoryComponent }
+      { path: 'transactions', component: TransactionHistoryComponent },
+      { path: 'finances', component: FinancesComponent, children: [
+        { path: 'addmovement', component: AddMovementComponent }
+      ] },
       // Puedes agregar más rutas hijas aquí
     ]
   },
