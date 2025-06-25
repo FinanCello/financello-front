@@ -3,6 +3,14 @@ import { FinancialMovementService } from '../../../../services/FinancialMovement
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
+interface FileUpload {
+  id: string;
+  file: File;
+  status: 'uploading' | 'success' | 'error';
+  error?: string;
+  uploadedAt?: Date;
+}
+
 @Component({
   selector: 'app-movement-upload',
   templateUrl: './movement-upload.component.html',
@@ -15,6 +23,7 @@ export class MovementUploadComponent {
   isUploading = false;
   uploadSuccess = false;
   uploadError: string | null = null;
+  uploadedFiles: FileUpload[] = [];
 
   constructor(private financialService: FinancialMovementService) {}
 
@@ -39,7 +48,7 @@ export class MovementUploadComponent {
         this.uploadSuccess = false;
         this.uploadError = null;
       } else {
-        this.uploadError = 'Solo se permiten archivos .xlsx';
+        this.uploadError = 'Solo archivos .xlsx';
       }
     }
   }
@@ -53,7 +62,7 @@ export class MovementUploadComponent {
         this.uploadSuccess = false;
         this.uploadError = null;
       } else {
-        this.uploadError = 'Solo se permiten archivos .xlsx';
+        this.uploadError = 'Solo archivos .xlsx';
       }
     }
   }
@@ -61,21 +70,53 @@ export class MovementUploadComponent {
   upload() {
     if (!this.selectedFile) return;
 
+    const fileUpload: FileUpload = {
+      id: Date.now().toString(),
+      file: this.selectedFile,
+      status: 'uploading'
+    };
+
+    this.uploadedFiles.unshift(fileUpload);
     this.isUploading = true;
     this.uploadSuccess = false;
     this.uploadError = null;
 
     this.financialService.uploadExcel(this.selectedFile).subscribe({
       next: () => {
+        fileUpload.status = 'success';
+        fileUpload.uploadedAt = new Date();
         this.uploadSuccess = true;
         this.selectedFile = null;
       },
       error: (err) => {
-        this.uploadError = err.error || 'Error inesperado al subir';
+        fileUpload.status = 'error';
+        fileUpload.error = err.error || 'Error al subir';
+        this.uploadError = err.error || 'Error al subir';
       },
       complete: () => {
         this.isUploading = false;
       },
     });
+  }
+
+  removeFile(fileId: string) {
+    this.uploadedFiles = this.uploadedFiles.filter(f => f.id !== fileId);
+  }
+
+  formatFileSize(bytes: number): string {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  getStatusClass(status: string): string {
+    switch (status) {
+      case 'uploading': return 'status-uploading';
+      case 'success': return 'status-success';
+      case 'error': return 'status-error';
+      default: return '';
+    }
   }
 }
