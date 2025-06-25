@@ -46,6 +46,14 @@ export const routes: Routes = [
         path: 'load-files',
         loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
       },
+      {
+        path: 'spending-limit',
+        loadComponent: () => import('./features/spendingLimit/pages/setLimit/spending-limit-form.component').then(m => m.SpendingLimitFormComponent)
+      },
+      {
+        path: 'alerts',
+        loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
+      },
       { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
       // Puedes agregar más rutas hijas aquí
     ]
