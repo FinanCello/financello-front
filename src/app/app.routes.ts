@@ -36,8 +36,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'profile', component: ProfileComponent, children:[
-        { path: 'edit', component: EditProfileComponent },
-        { path: 'edit/email', component: EditMailComponent }
+        { path: 'edit', component: EditProfileComponent }
       ] },
       { path: 'settings', component: SettingsComponent },
       { path: 'savinggoals', component: SavingGoalListComponent, children: [

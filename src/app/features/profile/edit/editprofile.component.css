@@ -170,7 +170,7 @@
   height: 47.5px;
   position: static;
 }
-.rectangle-66982 {
+.rectangle-669820 {
   background: #f9f9f9;
   border-radius: 7.49px;
   width: 42.56%;
@@ -268,4 +268,32 @@
     background-color: #fff;
     box-shadow: 0 0 0 2px #0ea49b;
   }
-  
+  .e-mail {
+    color: #000000;
+    text-align: left;
+    font-family: "Poppins-Regular", sans-serif;
+    font-size: 14.977777481079102px;
+    font-weight: 400;
+    opacity: 0.8;
+    position: absolute;
+    left: 636px;
+    top: 104px;
+    width: 128px;
+    height: 22px;
+  }
+  .group-239188 {
+    width: 586px;
+    height: 48px;
+    position: static;
+  }
+  .rectangle-66982 {
+    background: #f9f9f9;
+    border-radius: 7.49px;
+    width: 39.96%;
+  height: 16.56%;
+    position: absolute;
+    right: 0%;
+    left: 52.06%;
+    bottom: 37.3%;
+    top: 45.96%;
+  }
