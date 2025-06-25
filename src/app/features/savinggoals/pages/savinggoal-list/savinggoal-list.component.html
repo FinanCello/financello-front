@@ -1,130 +1,87 @@
-<div class="savinggoals-content">
-  <div class="weolcome-buttons">
-    <div class="welcome-back-jhon-doe">Welcome back Jhon Doe!</div>
+<div class="savinggoals-main-container">
+  <div class="savinggoals-left">
+    <div class="savinggoals-donut-row">
+      <div class="savinggoals-donut-container">
+        <div class="donut-chart-wrapper">
+          <svg width="260" height="260" viewBox="0 0 42 42" class="donut">
+            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#1acbcb" stroke-width="10" stroke-dasharray="15 85" stroke-dashoffset="29.05" />
+            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#149696" stroke-width="10" stroke-dasharray="20 80" stroke-dashoffset="10" />
+            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#e0ffff" stroke-width="10" stroke-dasharray="12 88" stroke-dashoffset="-10" />
+            <circle class="donut-segment" cx="21" cy="21" r="15.9155" stroke="#0da0a0" stroke-width="10" stroke-dasharray="45 55" stroke-dashoffset="-22" />
+          </svg>
+          <div class="donut-center-label">S/. 3,925</div>
+        </div>
+        <div class="donut-legend-row">
+          <div class="legend-item"><span class="legend-dot" style="background:#1acbcb"></span><span style="color:#1acbcb;font-weight:600;">15%</span></div>
+          <div class="legend-item"><span class="legend-dot" style="background:#149696"></span><span style="color:#149696;font-weight:600;">20%</span></div>
+          <div class="legend-item"><span class="legend-dot" style="background:#e0ffff"></span><span style="color:#149696;font-weight:600;">12%</span></div>
+          <div class="legend-item"><span class="legend-dot" style="background:#0da0a0"></span><span style="color:#0da0a0;font-weight:600;">45%</span></div>
+        </div>
+      </div>
+      <div class="new-goal-btn-vertical">
+        <button class="circle-button" [routerLink]="['/savinggoals/new']">
+          <img src="assets/icons/plus.png" alt="Nueva Meta" class="plus-icon" />
+        </button>
+        <span class="nueva-meta-label">Nueva meta</span>
+      </div>
+    </div>
+    <div class="savinggoals-summary-row shifted">
+      <div class="summary-box">
+        <div class="summary-label">Falta para gastar</div>
+        <div class="summary-value">S/. 1175</div>
+      </div>
+      <div class="summary-box">
+        <div class="summary-label">Presupuesto mensual</div>
+        <div class="summary-value">S/. 5000</div>
+      </div>
+      <div class="add-goal-btn">
+        <button class="circle-button">
+          <img src="assets/icons/plus.png" alt="Añadir" class="plus-icon" />
+        </button>
+        <span class="add-label">Añadir</span>
+      </div>
+    </div>
   </div>
-
-  <!-- Circulo Nueva Meta -->
-  <div class="circle-button" [routerLink]="['/savinggoals/new']" style="top: 140px; left: 53%; transform: translateX(-50%); position: absolute; z-index: 10; cursor: pointer;">
-    <img src="assets/icons/plus.png" alt="Nueva Meta" class="plus-icon" />
+  <div class="savinggoals-right">
+    <div class="card pagos-card">
+      <div class="card-header">
+        <span class="emoji-icon static">🪪</span>
+        <span class="pagos-title">Pagos</span>
+        <span class="pagos-total">S/. 3500</span>
+      </div>
+      <div class="card-item">
+        <span class="item-label">Pago Membresias</span>
+        <span class="item-value">S/. 2800</span>
+        <span class="item-extra">Falta S/.600</span>
+      </div>
+      <div class="card-item">
+        <span class="item-label">Internet</span>
+        <span class="item-value">S/. 700</span>
+        <span class="item-extra">Falta S/.325</span>
+      </div>
+    </div>
+    <div class="card servicios-card">
+      <div class="card-header">
+        <span class="emoji-icon static">💸</span>
+        <span class="servicios-title">Servicios</span>
+        <span class="servicios-total">S/. 1500</span>
+      </div>
+      <div class="card-item">
+        <span class="item-label">Publicidad</span>
+        <span class="item-value">S/. 500</span>
+        <span class="item-extra">Falta S/.0</span>
+      </div>
+      <div class="card-item">
+        <span class="item-label">Transporte</span>
+        <span class="item-value">S/. 700</span>
+        <span class="item-extra">Falta S/.100</span>
+      </div>
+      <div class="card-item">
+        <span class="item-label">Servicios cloud</span>
+        <span class="item-value">S/. 300</span>
+        <span class="item-extra">Falta S/.50</span>
+      </div>
+    </div>
   </div>
-  <div class="rectangle-130"></div>
-  <div class="nueva-meta">Nueva meta</div>
- 
-
-  <img class="union" src="assets/icons/union0.svg" />
-  <div class="ellipse-91"></div>
-  <div class="ellipse-103"></div>
-  <div class="ellipse-93"></div>
-  <div class="ellipse-92"></div>
-  <div class="_15">15%</div>
-  <div class="_20">20%</div>
-  <div class="_12">12%</div>
-  <div class="_8">8%</div>
-  <div class="ellipse-94"></div>
-  <div class="ellipse-95"></div>
-  <div class="ellipse-96"></div>
-  <div class="ellipse-97"></div>
-  <div class="_45">45%</div>
-
-  <!-- Donut Chart SVG -->
-<svg width="260" height="260" viewBox="0 0 42 42" class="donut" style="position: absolute; top: 190px; left: 22.05%;">
-
-  <!-- Segmento 1: 15% -->
-  <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-    stroke="#1acbcb"
-    stroke-width="10"
-    stroke-dasharray="15 85"
-    stroke-dashoffset="29.05" /> <!-- Ajusta el offset según el porcentaje -->   
-
-  <!-- Segmento 2: 20% -->
-  <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-    stroke="#149696"
-    stroke-width="10"
-    stroke-dasharray="20 80"
-    stroke-dashoffset="10" />
-
-  <!-- Segmento 3: 12% -->
-  <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-    stroke="#e0ffff"
-    stroke-width="10"
-    stroke-dasharray="12 88"
-    stroke-dashoffset="-10" />
-
-  <!-- Segmento 4: 45% -->
-  <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-    stroke="#0da0a0"
-    stroke-width="10"
-    stroke-dasharray="45 55"
-    stroke-dashoffset="-22" />
-
-</svg>
-
-    
-
-  <div class="ellipse-98"></div>
-  <div class="s-3-925">S/. 3,925</div>
-
-  <div class="rectangle-1302"></div>
-
-  <!-- Circulo Añadir -->
-  <div class="circle-button" style="top: 683px; left: 5%; transform: translateX(-50%);">
-    <img src="assets/icons/plus.png" alt="Añadir" class="plus-icon" />
-  </div>
-  <div class="a-adir">Añadir</div>
-
-  <img class="group-207" src="assets/icons/group-2070.svg" />
-  <img class="group-202" src="assets/icons/group-2020.svg" />
-  <img class="group-199" src="assets/icons/group-1990.svg" />
-  <img class="group-200" src="assets/icons/group-2000.svg" />
-  <div class="rectangle-1303"></div>
-  <div class="s-5000">S/.5000</div>
-  <div class="s-1175">S/.1175</div>
-  <div class="falta-para-gastar">Falta para gastar</div>
-  <div class="presupuesto-mensual">Presupuesto mensual</div>
-
-  <!-- Cuadro PAGOS -->
-<div class="rectangle-30" style="top: 127px; left: 61%; width: 320px; height: 235px;"></div>
-
-<div class="emoji-icon" style="top: 131px; left: 62%;">🪪</div> <!-- Centrado -->
-
-<div class="name">
-  <div class="cate-icon">
-    <div class="rectangle-6"></div>
-  </div>
-  <div class="pagos">Pagos</div>
-</div>
-
-<div class="s-3500">S/. 3500</div>
-<div class="pago-membresias">Pago Membresias</div>
-<div class="s-2800">S/. 2800</div>
-<div class="falta-s-600">Falta S/.600</div>
-<div class="internet">Internet</div>
-<div class="line-color crema"></div> <!-- Línea crema -->
-
-<!-- Cuadro SERVICIOS -->
-<div class="rectangle-30" style="top: 412px; left: 61%; width: 330px; height: 380px;"></div>
-
-<div class="rectangle-131"></div>
-<div class="s-700">S/. 700</div>
-<div class="falta-325">Falta $325<br /></div>
-<div class="s-1500">S/. 1500</div>
-<div class="rectangle-62"></div>
-<div class="emoji-icon" style="top: 446px; left: 62%;">💸</div> <!-- Centrado -->
-<div class="servicios">Servicios</div>
-<div class="publicidad">Publicidad</div>
-<div class="line-color celeste"></div> <!-- Línea celeste -->
-
-<img class="rectangle-32" src="assets/icons/rectangle-31.svg" />
-<div class="s-500">S/. 500</div>
-<div class="falta-s-0">Falta S/. 0</div>
-<div class="transporte">Transporte</div>
-<div class="rectangle-33"></div>
-<div class="s-7002">S/. 700</div>
-<div class="servicios-cloud">Servicios cloud</div>
-<div class="rectangle-34"></div>
-<div class="s-300">S/. 300</div>
-<div class="falta-s-50">Falta S/. 50</div>
-<div class="falta-s-100">Falta S/. 100</div>
-<div class="rectangle-35"></div>
 </div>
 
