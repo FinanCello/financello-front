@@ -1,0 +1,279 @@
+.upload-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.upload-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.upload-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+  font-weight: 500;
+}
+
+.upload-zone {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  background: #f9f9f9;
+  margin-bottom: 2rem;
+}
+
+.upload-zone:hover {
+  border-color: #999;
+  background: #f5f5f5;
+}
+
+.upload-zone.dragover {
+  border-color: #007acc;
+  background: #f0f8ff;
+}
+
+.upload-icon {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.upload-icon svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.upload-text h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.upload-text p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.selected-file {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e1e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-icon {
+  color: #666;
+}
+
+.file-details h4 {
+  margin: 0 0 0.25rem 0;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.file-details p {
+  margin: 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.upload-btn {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background: #005a9e;
+}
+
+.upload-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.status-messages {
+  margin-bottom: 2rem;
+}
+
+.success-message {
+  background: #f0f9ff;
+  color: #1e40af;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #3b82f6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #ef4444;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.files-list {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e1e1;
+}
+
+.files-list h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.file-item {
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fafafa;
+}
+
+.file-item.status-success {
+  border-left: 4px solid #10b981;
+  background: #f0fdf4;
+}
+
+.file-item.status-error {
+  border-left: 4px solid #ef4444;
+  background: #fef2f2;
+}
+
+.file-item.status-uploading {
+  border-left: 4px solid #f59e0b;
+  background: #fffbeb;
+}
+
+.file-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.file-item-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+}
+
+.status-icon {
+  margin-top: 0.25rem;
+  color: #666;
+}
+
+.status-icon.status-success {
+  color: #10b981;
+}
+
+.status-icon.status-error {
+  color: #ef4444;
+}
+
+.status-icon.status-uploading {
+  color: #f59e0b;
+}
+
+.file-details h4 {
+  margin: 0 0 0.25rem 0;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.file-details p {
+  margin: 0;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: #666;
+}
+
+.remove-btn:hover {
+  background: #f3f4f6;
+  color: #dc2626;
+}
+
+.error-details {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.error-text {
+  color: #dc2626;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .upload-page {
+    padding: 1rem;
+  }
+  
+  .upload-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .upload-zone {
+    padding: 2rem 1rem;
+  }
+  
+  .selected-file {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .file-item-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .remove-btn {
+    align-self: flex-end;
+  }
+}
