@@ -1,14 +1,14 @@
 @font-face {
   font-family: "PalanquinDark-Bold";
-  src: url("/fonts/PalanquinDark-Bold.ttf") format("truetype");
+  src: url("/assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "DmSans-Regular";
-  src: url("/fonts/DMSans-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/DMSans-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Poppins-Medium";
-  src: url("/fonts/Poppins-Medium.ttf") format("truetype");
+  src: url("/assets/fonts/Poppins-Medium.ttf") format("truetype");
 }
 .login,
 .login * {
@@ -246,7 +246,6 @@
 }
 .forgot-password {
   left: 270px;
-  top: 415px;
 }
 .forgot-password:hover,
 .create-an-account:hover {

@@ -15,13 +15,13 @@ export class SidebarComponent {
   constructor(private router: Router) {}
 
   sectionRoutes: { [key: string]: string } = {
-    home: '/home',
-    'load-files': '/dashboard/load-files',
-    //'my-finances': '/my-finances',
-    'saving-goals': '/dashboard/savinggoals',
+    home: '/dashboard',
+    loadfiles: '/dashboard/load-files',
+    myfinances: '/dashboard/finances',
+    savinggoals: '/dashboard/savinggoals',
     //analytics: '/analytics',
     profile: '/dashboard/profile',
-    settings: '/settings'
+    settings: '/dashboard/settings'
   };
   
 

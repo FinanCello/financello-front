@@ -7,6 +7,9 @@ import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
 import { EditMailComponent } from './features/profile/edit/mail/editmail.component';
+import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
+import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
+import { CATEGORIES_ROUTES } from './features/categories/categories-routes';
 
 export const routes: Routes = [
   {
@@ -39,11 +42,14 @@ export const routes: Routes = [
         { path: 'edit', component: EditProfileComponent }
       ] },
       { path: 'settings', component: SettingsComponent },
+      { path: 'categories', children: CATEGORIES_ROUTES },
+      { path: 'load-files', component: MovementUploadComponent },
       { path: 'savinggoals', component: SavingGoalListComponent, children: [
         { path: '', component: SavingGoalListComponent },
         { path: 'new', component: SavingGoalFormComponent },
         { path: 'edit/:id', component: SavingGoalFormComponent }
-      ] }
+      ] },
+      { path: 'transactions', component: TransactionHistoryComponent }
       // Puedes agregar más rutas hijas aquí
     ]
   },
