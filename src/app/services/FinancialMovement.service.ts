@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
     providedIn: 'root',
 })
 export class FinancialMovementService {
-    private apiUrl = `${environment.apiUrl}/movements`; 
+    private apiUrl = `${environment.apiUrl}/movements`;
 
     constructor(private http: HttpClient) {}
 
@@ -29,10 +29,10 @@ export class FinancialMovementService {
         return this.http.post<RegisterFinancialMovementResponse>(`${this.apiUrl}/register`, request, { params });
     }
 
-    filter(userId: number, categoryId: number, type: string): Observable<RegisterFinancialMovementResponse[]> {
-        let params = new HttpParams().set('userId', userId.toString());
-        if (categoryId !== undefined) params = params.set('categoryId', categoryId.toString());
-        if (type) params = params.set('type', type);
+  filter(userId: number, categoryId: number | null, type: string | null): Observable<RegisterFinancialMovementResponse[]> {
+    let params = new HttpParams().set('userId', userId.toString());
+    if (categoryId !== null) params = params.set('categoryId', categoryId.toString());
+    if (type) params = params.set('type', type);
 
         return this.http.get<RegisterFinancialMovementResponse[]>(`${this.apiUrl}/filter`, { params });
     }

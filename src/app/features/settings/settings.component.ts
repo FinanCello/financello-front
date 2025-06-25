@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
 
         <div class="settings-buttons">
           <button class="setting-btn">Currency conversion</button>
-          <button class="setting-btn">Cost planning</button>
+          <button class="setting-btn" [routerLink]="['/dashboard/filter-movements']">Filter Movements</button>
           <button class="setting-btn" [routerLink]="['/dashboard/categories']">Create categories</button>
           <button class="setting-btn">Spending preferences</button>
           <button class="setting-btn">Custom reminders</button>

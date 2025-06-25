@@ -45,7 +45,8 @@ export const routes: Routes = [
       {
         path: 'load-files',
         loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
-      }
+      },
+      { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
       // Puedes agregar más rutas hijas aquí
     ]
   },
