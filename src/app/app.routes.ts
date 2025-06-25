@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
+import { SavingGoalListComponent } from './features/savinggoals/pages/savinggoal-list/savinggoal-list.component';
+import { SavingGoalFormComponent } from './features/savinggoals/pages/savinggoal-form/savinggoal-form.component';
 import { authGuard } from './core/auth.guard';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home.component';
-import { spendingLimitRoutes } from './features/spendingLimit/spendingLimit-routes';
+import { ProfileComponent } from './features/profile/profile.component';
+import { SettingsComponent } from './features/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -16,12 +18,12 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () => import('./features/auth/login/login.component').then(m => m.LoginComponent),
-        data: {animation: 'LoginPage'}
+        data: { animation: 'LoginPage' }
       },
       {
         path: 'register',
         loadComponent: () => import('./features/auth/register/register.component').then(m => m.RegisterComponent),
-        data: {animation: 'RegisterPage'}
+        data: { animation: 'RegisterPage' }
       }
     ]
   },
@@ -30,26 +32,27 @@ export const routes: Routes = [
     loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
     canActivate: [authGuard],
     children: [
-      { path: '', component: HomeComponent }
-     // { path: 'load-files', component: LoadFilesComponent },
-      //{ path: 'my-finances', component: MyFinancesComponent },
-      //{ path: 'saving-goals', component: SavingGoalsComponent }
+      { path: '', component: HomeComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'settings', component: SettingsComponent },
+      { path: 'savinggoals', component: SavingGoalListComponent, children: [
+        { path: '', component: SavingGoalListComponent },
+        { path: 'new', component: SavingGoalFormComponent },
+        { path: 'edit/:id', component: SavingGoalFormComponent }
+      ] },
+      {
+        path: 'categories',
+        loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
+      },
+      {
+        path: 'spending-limit',
+        loadComponent: () => import('./features/spendingLimit/pages/setLimit/spending-limit-form.component').then(m => m.SpendingLimitFormComponent)
+      }
+      // Puedes agregar más rutas hijas aquí
     ]
-  },
-  {
-    path: 'profile',
-    loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
-    canActivate: [authGuard]
   },
   {
     path: '**',
     redirectTo: '/dashboard'
-  },
-  {
-    path: 'spending-limit',
-    children: spendingLimitRoutes
-  },
-
-
+  }
 ];
-
