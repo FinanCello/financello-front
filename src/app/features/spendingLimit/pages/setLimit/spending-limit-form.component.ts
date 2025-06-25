@@ -16,6 +16,7 @@ import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
 export class SpendingLimitFormComponent implements OnInit {
   limitForm!: FormGroup;
   categories: any[] = [];
+  userInfo: any;
 
   createdLimit: SpendingLimitResponse | null = null;
 
@@ -24,7 +25,13 @@ export class SpendingLimitFormComponent implements OnInit {
     private spendingLimitService: SpendingLimitService,
     private categoryService: CategoryService,
     private snackbarService: SnackbarService
-  ) {}
+  ) {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      this.userInfo = JSON.parse(userStr);
+    }
+
+  }
 
   ngOnInit(): void {
     this.limitForm = this.fb.group({

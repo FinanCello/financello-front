@@ -47,6 +47,10 @@ export const routes: Routes = [
       {
         path: 'spending-limit',
         loadComponent: () => import('./features/spendingLimit/pages/setLimit/spending-limit-form.component').then(m => m.SpendingLimitFormComponent)
+      },
+      {
+        path: 'alerts',
+        loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
       }
       // Puedes agregar más rutas hijas aquí
     ]

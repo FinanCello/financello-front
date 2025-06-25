@@ -21,7 +21,7 @@ import { RouterModule } from '@angular/router';
           <button class="setting-btn">Cost planning</button>
           <button class="setting-btn" [routerLink]="['/dashboard/categories']">Create categories</button>
           <button class="setting-btn" [routerLink]="['/dashboard/spending-limit']">Spending preferences</button>
-          <button class="setting-btn">Custom reminders</button>
+          <button class="setting-btn" [routerLink]="['/dashboard/alerts']">Custom reminders</button>
           <button class="setting-btn">Unit segmentation</button>
         </div>
         <router-outlet></router-outlet>
