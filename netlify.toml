@@ -7,7 +7,7 @@
 
 [build.environment]
   # Versión de Node.js
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
 
 # Configuración para SPA routing
 [[redirects]]
