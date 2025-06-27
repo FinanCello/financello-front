@@ -1,6 +1,7 @@
+<div class="upload-wrapper">
 <div class="upload-page">
   <div class="upload-header">
-    <h1>Carga de Archivos</h1>
+    <h1>File upload</h1>
   </div>
 
   <div class="upload-zone"
@@ -19,8 +20,8 @@
     </div>
     
     <div class="upload-text">
-      <h3>Arrastra archivo aquí</h3>
-      <p>o haz clic para seleccionar</p>
+      <h3>Drag and drop your files</h3>
+      <p>or select your files</p>
     </div>
 
     <input type="file" accept=".xlsx" hidden (change)="onFileSelected($event)" #fileInput>
@@ -45,13 +46,13 @@
     <button class="upload-btn" 
             [disabled]="isUploading" 
             (click)="upload()">
-      <span *ngIf="!isUploading">Subir</span>
-      <span *ngIf="isUploading">Subiendo...</span>
+      <span *ngIf="!isUploading">Upload</span>
+      <span *ngIf="isUploading">Uploading...</span>
     </button>
   </div>
 
   <div class="status-messages">
-    <p *ngIf="uploadSuccess" class="success-message">Archivo subido</p>
+    <p *ngIf="uploadSuccess" class="success-message">File uploaded</p>
     <p *ngIf="uploadError" class="error-message">{{ uploadError }}</p>
   </div>
 
@@ -97,4 +98,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

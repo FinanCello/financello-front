@@ -15,7 +15,7 @@ interface FileUpload {
   selector: 'app-movement-upload',
   templateUrl: './movement-upload.component.html',
   styleUrls: ['./movement-upload.component.css'],
-  imports: [CommonModule, RouterOutlet]
+  imports: [CommonModule]
 })
 export class MovementUploadComponent {
   isDragging = false;
@@ -48,7 +48,7 @@ export class MovementUploadComponent {
         this.uploadSuccess = false;
         this.uploadError = null;
       } else {
-        this.uploadError = 'Solo archivos .xlsx';
+        this.uploadError = 'Only .xlsx files';
       }
     }
   }
@@ -62,7 +62,7 @@ export class MovementUploadComponent {
         this.uploadSuccess = false;
         this.uploadError = null;
       } else {
-        this.uploadError = 'Solo archivos .xlsx';
+        this.uploadError = 'Only .xlsx files';
       }
     }
   }
@@ -90,8 +90,8 @@ export class MovementUploadComponent {
       },
       error: (err) => {
         fileUpload.status = 'error';
-        fileUpload.error = err.error || 'Error al subir';
-        this.uploadError = err.error || 'Error al subir';
+        fileUpload.error = err.error || 'Error on upload';
+        this.uploadError = err.error || 'Error on upload';
       },
       complete: () => {
         this.isUploading = false;
