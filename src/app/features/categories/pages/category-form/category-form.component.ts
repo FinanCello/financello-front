@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -21,7 +21,11 @@ export class CategoryFormComponent {
   categories: CategorySimpleResponse[] = [];
   userInfo: any;
 
-  constructor(private fb: FormBuilder, private categoryService: CategoryService) {
+  constructor(
+    private fb: FormBuilder, 
+    private categoryService: CategoryService,
+    private cdr: ChangeDetectorRef
+  ) {
     const userStr = localStorage.getItem('user');
     if (userStr) {
       this.userInfo = JSON.parse(userStr);
@@ -40,7 +44,10 @@ export class CategoryFormComponent {
     }
     
     this.categoryService.getCategories(this.userInfo.id).subscribe({
-        next: (res) => (this.categories = res),
+        next: (res) => {
+          this.categories = res;
+          this.cdr.detectChanges();
+        },
         error: (err) => {
           if (err.status === 404) {
             this.categories = [];
@@ -48,6 +55,7 @@ export class CategoryFormComponent {
           } else {
             this.showError(err);
           }
+          this.cdr.detectChanges();
         }
     })
   }
@@ -99,6 +107,7 @@ export class CategoryFormComponent {
             next: () => {
                 Swal.fire('Creado', 'La categoría fue creada correctamente', 'success');
                 this.loadCategories();
+                this.categoryForm.reset();
             },
             error: (err) => this.showError(err)
         });
