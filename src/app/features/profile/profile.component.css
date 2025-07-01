@@ -1,8 +1,8 @@
-.content,
-.content * {
+.the-warning-more,
+.the-warning-more * {
   box-sizing: border-box;
 }
-.content {
+.the-warning-more {
   background: #dcdcd1;
   border-radius: 0px 0px 0px 15px;
   height: 944px;
@@ -33,46 +33,22 @@
   width: 358px;
   height: 33px;
 }
-.frame-239183 {
-  border-radius: 15px;
-  border-style: solid;
-  border-color: #bababa;
-  border-width: 1px;
-  width: 1263px;
-  height: 841px;
-  position: absolute;
-  left: 150px;
-  top: 79px;
-  overflow: hidden;
-}
-.group-239199 {
-  position: absolute;
-  inset: 0;
-}
-.group-239183 {
-  width: 268px;
-  height: 77px;
-  position: static;
-}
-.jhon-doe {
-  color: #000000;
+.cambiar {
+  color: #dcdcd1;
   text-align: left;
-  font-family: "DmSans-Medium", sans-serif;
-  font-size: 32px;
-  font-weight: 500;
-  position: absolute;
-  left: 337px;
-  top: 107px;
-}
-.jhondoe-example-com {
-  color: #000000;
-  text-align: left;
-  font-family: "DmSans-Medium", sans-serif;
+  font-family: "PalanquinDark-Regular", sans-serif;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 400;
   position: absolute;
-  left: 337px;
-  top: 153px;
+  left: -12px;
+  top: -226px;
+}
+.frame-239231 {
+  width: 268px;
+  height: 335px;
+  position: absolute;
+  left: 126px;
+  top: 111px;
 }
 .avatar-user-250 {
   background: #ffffff;
@@ -80,8 +56,8 @@
   width: 250px;
   height: 250px;
   position: absolute;
-  left: 49px;
-  top: 24px;
+  left: 0px;
+  top: 0px;
   overflow: hidden;
   aspect-ratio: 1;
 }
@@ -103,12 +79,58 @@
   left: -62.5px;
   top: 167px;
 }
-.frame-239185 {
-  width: 1222.41px;
-  height: 286.84px;
+.group-239183 {
   position: absolute;
-  left: 12px;
-  top: 317px;
+  inset: 0;
+}
+.jhon-doe {
+  color: #000000;
+  text-align: left;
+  font-family: "DmSans-Medium", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  position: absolute;
+  left: 0px;
+  top: 258px;
+}
+.jhondoe-example-com {
+  color: #000000;
+  text-align: left;
+  font-family: "DmSans-Medium", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 0px;
+  top: 304px;
+}
+.frame-239232 {
+  background: #ffffff;
+  border-radius: 15px;
+  width: 112px;
+  height: 33px;
+  position: absolute;
+  left: 160px;
+  top: 262px;
+  overflow: hidden;
+}
+.basic {
+  color: #bababa;
+  text-align: center;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14.977777481079102px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 6px;
+  width: 112px;
+  height: 21px;
+}
+.frame-239185 {
+  width: 1158px;
+  height: 287px;
+  position: absolute;
+  left: 496px;
+  top: 446px;
 }
 .group-239189 {
   position: absolute;
@@ -122,14 +144,14 @@
   font-weight: 400;
   opacity: 0.8;
   position: absolute;
-  left: 636.05px;
+  left: 540.41px;
   top: 0px;
   width: 128px;
   height: 22px;
 }
 .group-239188 {
-  width: 586px;
-  height: 48px;
+  width: 555.12px;
+  height: 48.03px;
   position: static;
 }
 .rectangle-6698 {
@@ -138,31 +160,16 @@
   width: 47.94%;
   height: 16.73%;
   position: absolute;
-  right: 0%;
-  left: 52.06%;
+  right: 5.29%;
+  left: 46.77%;
   bottom: 73.56%;
   top: 9.71%;
 }
-.last-name2 {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 31.5%;
-  left: 53.7%;
-  width: 14.81%;
-  bottom: 78.44%;
-  top: 14.24%;
-  height: 7.32%;
-}
-.group-239191 {
+.group-239198 {
   position: absolute;
   inset: 0;
 }
-.country {
+.e-mail {
   color: #000000;
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
@@ -170,15 +177,10 @@
   font-weight: 400;
   opacity: 0.8;
   position: absolute;
-  left: 636.05px;
+  left: 540.47px;
   top: 104px;
   width: 128px;
   height: 22px;
-}
-.group-239190 {
-  width: 586px;
-  height: 48px;
-  position: static;
 }
 .rectangle-66982 {
   background: #f9f9f9;
@@ -186,31 +188,16 @@
   width: 47.94%;
   height: 16.73%;
   position: absolute;
-  right: 0%;
-  left: 52.06%;
+  right: 5.28%;
+  left: 46.78%;
   bottom: 37.3%;
   top: 45.96%;
-}
-.your-country {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 31.5%;
-  left: 53.7%;
-  width: 14.81%;
-  bottom: 42.18%;
-  top: 50.5%;
-  height: 7.32%;
 }
 .group-239197 {
   position: absolute;
   inset: 0;
 }
-.gender {
+.password {
   color: #000000;
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
@@ -224,8 +211,8 @@
   height: 22px;
 }
 .group-239196 {
-  width: 520.25px;
-  height: 47.5px;
+  width: 492.84px;
+  height: 47.53px;
   position: static;
 }
 .rectangle-66983 {
@@ -238,21 +225,6 @@
   left: 0.1%;
   bottom: 37.39%;
   top: 46.05%;
-}
-.your-gender {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 85.29%;
-  left: 1.55%;
-  width: 13.16%;
-  bottom: 42.13%;
-  top: 50.55%;
-  height: 7.32%;
 }
 .group-239182 {
   position: absolute;
@@ -272,8 +244,8 @@
   height: 22px;
 }
 .group-239187 {
-  width: 520.25px;
-  height: 47.5px;
+  width: 492.84px;
+  height: 47.53px;
   position: static;
 }
 .rectangle-66984 {
@@ -287,283 +259,15 @@
   bottom: 73.65%;
   top: 9.79%;
 }
-.your-first-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
+.frame-239233 {
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px;
+  width: 1129px;
+  height: 400px;
   position: absolute;
-  right: 85.29%;
-  left: 1.54%;
-  width: 13.16%;
-  bottom: 78.39%;
-  top: 14.29%;
-  height: 7.32%;
-}
-.group-239193 {
-  width: 586.35px;
-  height: 75.84px;
-  position: static;
-}
-.bussines-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.8;
-  position: absolute;
-  left: 636.05px;
-  top: 211px;
-  width: 128px;
-  height: 22px;
-}
-.group-239192 {
-  width: 586px;
-  height: 48px;
-  position: static;
-}
-.rectangle-66985 {
-  background: #f9f9f9;
-  border-radius: 7.49px;
-  width: 47.94%;
-  height: 16.73%;
-  position: absolute;
-  right: 0%;
-  left: 52.06%;
-  bottom: 0%;
-  top: 83.27%;
-}
-.your-bussines-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 28.55%;
-  left: 53.7%;
-  width: 17.75%;
-  bottom: 4.88%;
-  top: 87.8%;
-  height: 7.32%;
-}
-.group-239195 {
-  position: absolute;
-  inset: 0;
-}
-.language {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.8;
-  position: absolute;
-  left: 0.05px;
-  top: 211px;
-  width: 128px;
-  height: 22px;
-}
-.group-239194 {
-  width: 520.25px;
-  height: 47.5px;
-  position: static;
-}
-.rectangle-66986 {
-  background: #f9f9f9;
-  border-radius: 7.49px;
-  width: 42.56%;
-  height: 16.56%;
-  position: absolute;
-  right: 57.34%;
-  left: 0.1%;
-  bottom: 0.09%;
-  top: 83.35%;
-}
-.your-language {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.4;
-  position: absolute;
-  right: 85.29%;
-  left: 1.55%;
-  width: 13.16%;
-  bottom: 4.83%;
-  top: 87.85%;
-  height: 7.32%;
-}
-.group-239200 {
-  position: absolute;
-  inset: 0;
-}
-.group-239198 {
-  width: 179px;
-  height: 50.08px;
-  position: static;
-}
-.jhondoe-example-com2 {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  position: absolute;
-  left: 93.61px;
-  top: 688.04px;
-}
-._1-month-ago {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  opacity: 0.5;
-  position: absolute;
-  left: 93.61px;
-  top: 716.12px;
-}
-.button-edit-email {
-  width: 243.81px;
-  height: 40.19px;
-  position: static;
-}
-.rectangle-1072 {
-  background: #4182f9;
-  border-radius: 7.49px;
-  opacity: 0.1;
-  width: 19.3%;
-  height: 4.78%;
-  position: absolute;
-  right: 77.74%;
-  left: 2.96%;
-  bottom: 6.05%;
-  top: 89.17%;
-}
-.edit-email-address {
-  color: #4182f9;
-  text-align: left;
-  font-family: "Poppins-Regular", sans-serif;
-  font-size: 14.977777481079102px;
-  font-weight: 400;
-  position: absolute;
-  right: 79.93%;
-  left: 5.17%;
-  width: 14.9%;
-  bottom: 7.19%;
-  top: 90.26%;
-  height: 2.55%;
-}
-.my-email-address {
-  color: #000000;
-  text-align: right;
-  font-family: "Poppins-Medium", sans-serif;
-  font-size: 16.850000381469727px;
-  font-weight: 500;
-  position: absolute;
-  left: 29.96px;
-  top: 644.04px;
-  width: 152px;
-  height: 25px;
-}
-.user {
-  width: 44.93px;
-  height: 44.93px;
-  position: absolute;
-  left: 29.96px;
-  top: 688.04px;
-}
-.ellipse-1697 {
-  background: #4182f9;
-  border-radius: 50%;
-  opacity: 0.1;
-  width: 44.93px;
-  height: 44.93px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-}
-.icons {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  left: 6.04px;
-  top: 4.96px;
-  overflow: visible;
-}
-.edit-button {
-  background: #0ea49b;
-  border: none;
-  border-radius: 50px;
-  color: #fff;
-  cursor: pointer;
-  font-family: "Poppins-SemiBold", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 24px;
-  position: absolute;
-  left: 993px;
-  top: 116px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(14, 164, 155, 0.3);
-}
-
-.edit-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(14, 164, 155, 0.4);
-}
-
-.edit-button:active {
-  transform: scale(0.96);
-  box-shadow: 0 3px 6px rgba(14, 164, 155, 0.2);
-}
-
-.edit-button .text {
-  color: #fff;
-  width: auto;
-  text-align: center;
-}
-
-.text {
-  color: #000000;
-  text-align: center;
-  font-family: "Poppins-SemiBold", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  position: relative;
-  width: 460px;
-}
-.edit-email-button {
-  background: #4182f9;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 18px;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  position: absolute;
-  left: 93px;
-  top: 760px; /* Ajusta según diseño */
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 8px rgba(65, 130, 249, 0.2);
-}
-
-.edit-email-button:hover {
-  background: #2f6df1;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(65, 130, 249, 0.3);
-}
-
-.edit-email-button:active {
-  transform: scale(0.97);
-  box-shadow: 0 3px 6px rgba(65, 130, 249, 0.2);
+  left: -15px;
+  top: -13px;
+  overflow: hidden;
 }

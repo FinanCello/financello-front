@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -14,6 +14,8 @@ export class SnackbarComponent implements OnInit {
   @Input() icon: string = '';
   @Input() showUndo: boolean = false;
 
+  @Output() undoClicked = new EventEmitter<void>();
+  
   visible = true;
   isHiding = false;
 
@@ -22,12 +24,15 @@ export class SnackbarComponent implements OnInit {
       this.isHiding = true;
       setTimeout(() => {
         this.visible = false;
-      }, 400); // Espera a que termine la animación
+      }, 400);
     }, 3000);
   }
 
-  onUndo() {
-    console.log('Undo clicked');
-    // Aquí puedes disparar alguna acción
+  onUndoSnackbar() {
+    this.isHiding = true;
+    setTimeout(() => {
+      this.visible = false;
+      this.undoClicked.emit();
+    }, 300);
   }
 }

@@ -5,7 +5,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { SpendingLimitService } from  '../../../../services/SpendingLimit.service';
 import { CategoryService } from '../../../../services/Category.service';
 import {SpendingLimitRequest, SpendingLimitResponse} from '../../../../models/SpendingLimit';
-import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-spending-limit-form',

@@ -1,55 +1,265 @@
-<div class="savinggoals-main-container">
-  <div class="savinggoals-content">
-    <div class="savinggoals-header">
-      <h2 class="page-title">Metas de Ahorro</h2>
-      <div class="savinggoals-buttons">
-        <div class="button-container">
-          <button class="circle-button" [routerLink]="['/dashboard/savinggoals/new']">
-            <img src="assets/icons/plus.png" alt="Nueva Meta" class="plus-icon" />
-          </button>
-          <span class="button-label">Nueva meta</span>
-        </div>
+<div class="content">
+  <div class="weolcome-buttons">
+    <div class="metas-de-ahorro">Metas de Ahorro</div>
+  </div>
+  <div class="transactions-history">
+    <div class="frame-32">
+      <div class="historial-de-transacciones">Historial de transacciones</div>
+      <div class="view-all">
+        <div class="nueva-meta">Nueva Meta</div>
+        <img class="icons" src="icons0.svg" />
       </div>
     </div>
-    
-    <!-- Lista de metas de ahorro -->
-    <div *ngIf="savingGoals.length > 0" class="savinggoals-list">
-      <h3 class="section-title">Mis metas de ahorro</h3>
-      <div class="goal-cards-container">
-        <div *ngFor="let goal of savingGoals" class="goal-card">
-          <div class="goal-card-header">
-            <h4 class="goal-name">{{ goal.name }}</h4>
-            <div class="goal-actions">
-              <button class="action-button edit" (click)="onEdit(goal)">
-                <img src="assets/icons/gear-six.png" alt="Editar" class="action-icon" />
-              </button>
-              <button class="action-button delete" (click)="onDelete(goal)">
-                <img src="assets/icons/x.png" alt="Eliminar" class="action-icon" />
-              </button>
-            </div>
-          </div>
-          <div class="goal-amounts">
-            <div class="goal-current">Actual: S/. {{ goal.currentAmount }}</div>
-            <div class="goal-target">Meta: S/. {{ goal.targetAmount }}</div>
-          </div>
-          <div class="goal-progress-bar">
-            <div class="progress-fill" [style.width.%]="(goal.currentAmount / goal.targetAmount) * 100"></div>
-          </div>
-          <div class="goal-date">Fecha límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}</div>
+    <div class="table">
+      <div class="table-column">
+        <div class="table-header">
+          <div class="date">Fecha</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">2025-12-27</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">2025-12-27</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">2025-12-25</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
         </div>
       </div>
-    </div>
-    
-    <div *ngIf="savingGoals.length === 0 && !loading && !error" class="empty-state">
-      <p>No tienes metas de ahorro. ¡Crea una nueva!</p>
-    </div>
-    
-    <div *ngIf="loading" class="loading-state">
-      <p>Cargando metas de ahorro...</p>
-    </div>
-    
-    <div *ngIf="error" class="error-state">
-      <p>{{ error }}</p>
+      <div class="table-column2">
+        <div class="table-header">
+          <div class="date3">Name</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">Entretenimiento del cliente</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">
+            Campaña de publicidad digital en redes sociales
+          </div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">Venta de servicios de consultoría financiera</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+      </div>
+      <div class="table-column3">
+        <div class="table-header">
+          <div class="date3">Monto Objetivo</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">$4,200.00</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">$4,000.00</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">$4,500.00</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+      </div>
+      <div class="table-column4">
+        <div class="table-header">
+          <div class="date3">Monto Actual</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">$0</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">$0</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">$0</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+      </div>
+      <div class="table-column5">
+        <div class="table-header">
+          <div class="date3">Progeso</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">0%</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">0%</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">0%</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date2">-</div>
+        </div>
+      </div>
+      <div class="table-column6">
+        <div class="table-header">
+          <div class="date3">Contribution</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">0</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">0</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">0</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">-</div>
+        </div>
+      </div>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>

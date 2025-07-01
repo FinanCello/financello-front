@@ -8,9 +8,12 @@ import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
 import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
 import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
-import { CATEGORIES_ROUTES } from './features/categories/categories-routes';
 import { FinancesComponent } from './features/finances/finances.component';
 import { AddMovementComponent } from './features/finances/addMovement/addmovement.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { CategoryComponent } from './features/categories/pages/category.component';
+import { CategoryFormComponent } from './features/categories/pages/category-form/category-form.component';
+
 
 export const routes: Routes = [
   {
@@ -43,16 +46,19 @@ export const routes: Routes = [
         { path: 'edit', component: EditProfileComponent }
       ] },
       { path: 'settings', component: SettingsComponent },
-      { path: 'categories', children: CATEGORIES_ROUTES },
       { path: 'load-files', component: MovementUploadComponent },
-      { path: 'savinggoals', component: SavingGoalListComponent },
-      { path: 'savinggoals/new', component: SavingGoalFormComponent },
-      { path: 'savinggoals/edit/:id', component: SavingGoalFormComponent },
+      { path: 'savinggoals', component: SavingGoalListComponent, children: [
+        { path: 'new', component: SavingGoalFormComponent },
+        { path: 'edit/:id', component: SavingGoalFormComponent }
+      ] },
       { path: 'transactions', component: TransactionHistoryComponent },
       { path: 'finances', component: FinancesComponent, children: [
         { path: 'addmovement', component: AddMovementComponent }
       ] },
-      // Puedes agregar más rutas hijas aquí
+      { path: 'analytics', component: AnalyticsComponent },
+      { path: 'categories', component: CategoryComponent, children:[
+        { path: 'new', component: CategoryFormComponent }
+      ] }
     ]
   },
   {

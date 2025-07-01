@@ -30,6 +30,10 @@
   font-family: "DmSans-Regular";
   src: url("/assets/fonts/DMSans-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "PlusJakartaSans-SemiBold";
+  src: url("/assets/fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+}
 /* Estilo general del layout */
 .dashboard-layout {
   display: flex;

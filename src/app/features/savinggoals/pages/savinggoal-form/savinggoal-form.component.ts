@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalRequest, AddSavingGoalResponse } from '../../../../models/SavingGoal';
-import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-savinggoal-form',

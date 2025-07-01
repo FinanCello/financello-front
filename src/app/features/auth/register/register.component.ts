@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/Auth.service';
 import { RegisterRequest, UserType } from '../../../models/User';
-import { SnackbarService } from '../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-register',
@@ -45,7 +45,8 @@ export class RegisterComponent {
       this.snackbarService.showSnackbar(
         'Data are Missing',
         'Complete all the required fields',
-        'icons/warning.png'
+        'assets/icons/warning.png',
+        true
       );
       return;
     }
@@ -60,7 +61,8 @@ export class RegisterComponent {
         this.snackbarService.showSnackbar(
           'Successful Record',
           'User created correctly',
-          'icons/success.png'
+          'assets/icons/success.png',
+          true
         );
         this.router.navigate(['/auth/login']);
       },
@@ -74,25 +76,29 @@ export class RegisterComponent {
           this.snackbarService.showSnackbar(
             'Duplicate Mail',
             'Email is already in use',
-            'icons/error.png'
+            'assets/icons/error.png',
+            true
           );
         } else if (backendMsg.includes('Username already exists')) {
           this.snackbarService.showSnackbar(
             'Existing User',
             'Name was already registered',
-            'icons/error.png'
+            'assets/icons/error.png',
+            true
           );
         } else if (backendMsg.includes('blank spaces')) {
           this.snackbarService.showSnackbar(
             'Data are Missing',
             'Complete all the required fields',
-            'icons/warning.png'
+            'assets/icons/warning.png',
+            true
           );
         } else {
           this.snackbarService.showSnackbar(
             'Error',
             backendMsg,
-            'icons/error.png'
+            'assets/icons/error.png',
+            true
           );
         }
       }

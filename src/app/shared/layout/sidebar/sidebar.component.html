@@ -16,18 +16,18 @@
 <!-- LOAD FILES -->
 <div 
   class="sidebar-button" 
-  [ngClass]="{ 'active': activeSection === 'load-files' }"
+  [ngClass]="{ 'active': activeSection === 'loadfiles' }"
   (click)="setActive('loadfiles')">
-  <img src="/assets/icons/file.svg" alt="load-files" />
+  <img src="/assets/icons/file.svg" alt="loadfiles" />
   <span>LOAD FILES</span>
 </div>
 
 <!-- MY FINANCES -->
 <div 
   class="sidebar-button" 
-  [ngClass]="{ 'active': activeSection === 'my-finances' }"
+  [ngClass]="{ 'active': activeSection === 'myfinances' }"
   (click)="setActive('myfinances')">
-  <img src="/assets/icons/my-finances.svg" alt="my-finances" />
+  <img src="/assets/icons/my-finances.svg" alt="myfinances" />
   <span>MY FINANCES</span>
 </div>
 
@@ -66,23 +66,12 @@ class="sidebar-button"
 <div 
 class="sidebar-button" 
 [ngClass]="{ 'active': activeSection === 'settings' }"
-[routerLink]="['/dashboard/settings']">
+(click)="setActive('settings')">
 <img src="/assets/icons/settings.svg" alt="settings" />
-
 <span>SETTINGS</span>
 </div>
+
       </div>
     </div>
   </div>
-  
-  <script>
-    const buttons = document.querySelectorAll('.sidebar-button');
-  
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        buttons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-      });
-    });
-  </script>
   

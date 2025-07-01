@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
-import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-savinggoal-list',
