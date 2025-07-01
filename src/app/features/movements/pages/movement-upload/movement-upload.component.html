@@ -1,102 +1,135 @@
-<div class="upload-wrapper">
-<div class="upload-page">
-  <div class="upload-header">
-    <h1>File upload</h1>
+<div class="content">
+  <div class="welcome">
+    <div class="carga-de-archivos-csv">Carga de archivos CSV</div>
   </div>
-
-  <div class="upload-zone"
-       (dragover)="onDragOver($event)"
-       (dragleave)="onDragLeave($event)"
-       (drop)="onDrop($event)"
-       [class.dragover]="isDragging"
-       (click)="fileInput.click()">
-
-    <div class="upload-icon">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7,10 12,15 17,10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-    </div>
-    
-    <div class="upload-text">
-      <h3>Drag and drop your files</h3>
-      <p>or select your files</p>
-    </div>
-
-    <input type="file" accept=".xlsx" hidden (change)="onFileSelected($event)" #fileInput>
-  </div>
-
-  <div class="selected-file" *ngIf="selectedFile">
-    <div class="file-info">
-      <div class="file-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14,2 14,8 20,8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10,9 9,9 8,9"/>
-        </svg>
-      </div>
-      <div class="file-details">
-        <h4>{{ selectedFile.name }}</h4>
-        <p>{{ formatFileSize(selectedFile.size) }}</p>
-      </div>
-    </div>
-    <button class="upload-btn" 
-            [disabled]="isUploading" 
-            (click)="upload()">
-      <span *ngIf="!isUploading">Upload</span>
-      <span *ngIf="isUploading">Uploading...</span>
-    </button>
-  </div>
-
-  <div class="status-messages">
-    <p *ngIf="uploadSuccess" class="success-message">File uploaded</p>
-    <p *ngIf="uploadError" class="error-message">{{ uploadError }}</p>
-  </div>
-
-  <div class="files-list" *ngIf="uploadedFiles.length > 0">
-    <h3>Archivos</h3>
-    
-    <div class="file-item" *ngFor="let fileUpload of uploadedFiles" [class]="getStatusClass(fileUpload.status)">
-      <div class="file-item-header">
-        <div class="file-item-info">
-          <div class="status-icon" [class]="getStatusClass(fileUpload.status)">
-            <svg *ngIf="fileUpload.status === 'uploading'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7,10 12,15 17,10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            <svg *ngIf="fileUpload.status === 'success'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20,6 9,17 4,12"/>
-            </svg>
-            <svg *ngIf="fileUpload.status === 'error'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="15" y1="9" x2="9" y2="15"/>
-              <line x1="9" y1="9" x2="15" y2="15"/>
-            </svg>
-          </div>
-          <div class="file-details">
-            <h4>{{ fileUpload.file.name }}</h4>
-            <p>{{ formatFileSize(fileUpload.file.size) }}</p>
-          </div>
+  <div class="upload-place">
+    <div class="frame-47">
+      <img class="group-5" src="assets/img/Charge.circle.png" />
+      <div class="drag-files-text">
+        <div class="arrastre-y-suelte-sus-archivos-aqu">
+          Arrastre y suelte sus archivos aquí
         </div>
-        
-        <button class="remove-btn" 
-                (click)="removeFile(fileUpload.id)"
-                title="Eliminar">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="3,6 5,6 21,6"/>
-            <path d="M19,6v14a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2V6"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="error-details" *ngIf="fileUpload.status === 'error' && fileUpload.error">
-        <p class="error-text">{{ fileUpload.error }}</p>
+        <div class="o-seleccionar-archivos">
+          <span>
+            <span class="o-seleccionar-archivos-span">o</span>
+            <span class="o-seleccionar-archivos-span2">
+              seleccionar archivos
+            </span>
+          </span>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="transactions-history">
+    <div class="archivos-de-programaci-n">Archivos de programación</div>
+    <div class="table">
+      <div class="table-column">
+        <div class="table-header">
+          <div class="name">Nombre</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">income_december.csv</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">expenses_q1.csv</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">marketing_leads.csv</div>
+        </div>
+      </div>
+      <div class="table-column2">
+        <div class="table-header">
+          <div class="date2">Fecha</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">2025-12-25</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">2025-11-24</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">2025-11-21</div>
+        </div>
+      </div>
+      <div class="table-column3">
+        <div class="table-header">
+          <div class="weigth">Peso</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">1.2 MB</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">850 KB</div>
+        </div>
+        <div class="table-header2">
+          <div class="date">750 KB</div>
+        </div>
+      </div>
+      <div class="table-column4">
+        <div class="table-header">
+          <div class="status">Estado</div>
+        </div>
+        <div class="table-header2">
+          <div class="date3">Processing</div>
+        </div>
+        <div class="table-header2">
+          <div class="date4">Faild</div>
+        </div>
+        <div class="table-header2">
+          <div class="date5">Uploaded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="my-files">
+    <div class="my-files2">
+      <div class="my-files3">Mis archivos</div>
+      <img class="icons" src="assets/icons/dots-three.svg" />
+    </div>
+    <div class="shedule-contacs">
+      <div class="file-details">
+        <img class="vector" src="assets/icons/file-xls.svg" />
+        <div class="frame-16">
+          <div class="gastos-t-1">gastos_t1</div>
+          <div class="dec-24-2025">Dec 24, 2025</div>
+        </div>
+        <img class="icons-trash-1" src="assets/icons/trash.png" />
+      </div>
+      <div class="file-details2">
+        <img class="vector2" src="assets/icons/file-csv.svg" />
+        <div class="frame-16">
+          <div class="marketing-oportunid">marketing_oportunid</div>
+          <div class="dec-21-2025">Dec 21, 2025</div>
+        </div>
+        <img class="icons-trash-12" src="assets/icons/trash.png" />
+      </div>
+      <div class="file-details2">
+        <img class="vector3" src="assets/icons/file-csv.svg" />
+        <div class="frame-162">
+          <div class="run-name">Run Name</div>
+          <div class="nov-28-2025">Nov 28, 2025</div>
+        </div>
+        <img class="icons-trash-13" src="assets/icons/trash.png" />
+      </div>
+      <div class="file-details3">
+        <img class="vector4" src="assets/icons/file-csv.svg" />
+        <div class="frame-16">
+          <div class="country-travel">Country Travel</div>
+          <div class="oct-29-2025">Oct 29, 2025</div>
+        </div>
+        <img class="icons-trash-14" src="assets/icons/trash.png" />
+      </div>
+      <div class="file-details3">
+        <img class="vector5" src="assets/icons/file-xls.svg" />
+        <div class="frame-16">
+          <div class="job-income">Job Income</div>
+          <div class="sept-29-2025">Sept 29, 2025</div>
+        </div>
+        <img class="icons-trash-15" src="assets/icons/trash.png" />
+      </div>
+    </div>
+    <div class="view-balance-history">
+      <div class="ver-historial-de-archivos">Ver historial</div>
+    </div>
+  </div>
 </div>

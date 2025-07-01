@@ -5,6 +5,15 @@ import { authGuard } from './core/auth.guard';
 import { HomeComponent } from './pages/home.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
+import { EditProfileComponent } from './features/profile/edit/editprofile.component';
+import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
+import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
+import { FinancesComponent } from './features/finances/finances.component';
+import { AddMovementComponent } from './features/finances/addMovement/addmovement.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { CategoryComponent } from './features/categories/pages/category.component';
+import { CategoryFormComponent } from './features/categories/pages/category-form/category-form.component';
+
 
 export const routes: Routes = [
   {
@@ -33,22 +42,23 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent, children:[
+        { path: 'edit', component: EditProfileComponent }
+      ] },
       { path: 'settings', component: SettingsComponent },
+      { path: 'load-files', component: MovementUploadComponent },
       { path: 'savinggoals', component: SavingGoalListComponent, children: [
-        { path: '', component: SavingGoalListComponent },
         { path: 'new', component: SavingGoalFormComponent },
         { path: 'edit/:id', component: SavingGoalFormComponent }
       ] },
-      {
-        path: 'categories',
-        loadChildren: () => import('./features/categories/categories-routes').then(m => m.CATEGORIES_ROUTES)
-      },
-      {
-        path: 'load-files',
-        loadComponent: () => import('./features/movements/pages/movement-upload/movement-upload.component').then(m => m.MovementUploadComponent)
-      }
-      // Puedes agregar más rutas hijas aquí
+      { path: 'transactions', component: TransactionHistoryComponent },
+      { path: 'finances', component: FinancesComponent, children: [
+        { path: 'addmovement', component: AddMovementComponent }
+      ] },
+      { path: 'analytics', component: AnalyticsComponent },
+      { path: 'categories', component: CategoryComponent, children:[
+        { path: 'new', component: CategoryFormComponent }
+      ] }
     ]
   },
   {

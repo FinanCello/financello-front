@@ -11,20 +11,19 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
   userInfo: any;
-  activeSection = 'home';
+  activeSection: string = 'home';
+  
   constructor(private router: Router) {}
 
   sectionRoutes: { [key: string]: string } = {
-    home: '/home',
-    'load-files': '/dashboard/load-files',
-    //'my-finances': '/my-finances',
-    //'saving-goals': '/saving-goals',
-    //analytics: '/analytics',
+    home: '/dashboard',
+    loadfiles: '/dashboard/load-files',
+    myfinances: '/dashboard/finances',
+    savinggoals: '/dashboard/savinggoals',
+    analytics: '/dashboard/analytics',
     profile: '/dashboard/profile',
-    settings: '/settings'
+    settings: '/dashboard/settings'
   };
-  
-
   
   setActive(section: string): void {
     this.activeSection = section;

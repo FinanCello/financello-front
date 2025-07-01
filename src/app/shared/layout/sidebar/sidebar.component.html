@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="icons-logo">
-      <img class="cello-3-1" src="icons/favicon.png" />
+      <img class="cello-3-1" src="/assets/icons/favicon.png" />
       <div class="financello">FINANCELLO</div>
     </div>
     <div class="frame-228">
@@ -9,34 +9,34 @@
   class="sidebar-button home-button"
   [ngClass]="{ 'active': activeSection === 'home' }"
   (click)="setActive('home')">
-  <img src="icons/home.svg" alt="home" />
+  <img src="/assets/icons/home.svg" alt="home" />
   <span>HOME</span>
 </div>
 
 <!-- LOAD FILES -->
 <div 
   class="sidebar-button" 
-  [ngClass]="{ 'active': activeSection === 'load-files' }"
-  (click)="setActive('load-files')">
-  <img src="icons/file.svg" alt="load-files" />
+  [ngClass]="{ 'active': activeSection === 'loadfiles' }"
+  (click)="setActive('loadfiles')">
+  <img src="/assets/icons/file.svg" alt="loadfiles" />
   <span>LOAD FILES</span>
 </div>
 
 <!-- MY FINANCES -->
 <div 
   class="sidebar-button" 
-  [ngClass]="{ 'active': activeSection === 'my-finances' }"
-  (click)="setActive('my-finances')">
-  <img src="icons/my-finances.svg" alt="my-finances" />
+  [ngClass]="{ 'active': activeSection === 'myfinances' }"
+  (click)="setActive('myfinances')">
+  <img src="/assets/icons/my-finances.svg" alt="myfinances" />
   <span>MY FINANCES</span>
 </div>
 
 <!-- SAVING GOALS -->
 <div 
   class="sidebar-button" 
-  [ngClass]="{ 'active': activeSection === 'saving-goals' }"
-  (click)="setActive('saving-goals')">
-  <img src="icons/saving-goals.svg" alt="saving-goals" />
+  [ngClass]="{ 'active': activeSection === 'savinggoals' }"
+  (click)="setActive('savinggoals')">
+  <img src="/assets/icons/saving-goals.svg" alt="savinggoals" />
   <span>SAVING GOALS</span>
 </div>
 
@@ -45,7 +45,7 @@
   class="sidebar-button" 
   [ngClass]="{ 'active': activeSection === 'analytics' }"
   (click)="setActive('analytics')">
-  <img src="icons/analytics.svg" alt="analytics" />
+  <img src="/assets/icons/analytics.svg" alt="analytics" />
   <span>ANALYTICS</span>
 </div>
 
@@ -58,7 +58,7 @@
 class="sidebar-button" 
 [ngClass]="{ 'active': activeSection === 'profile' }"
 (click)="setActive('profile')">
-<img src="icons/profile.svg" alt="profile" />
+<img src="/assets/icons/profile.svg" alt="profile" />
 <span>PROFILE</span>
 </div>
 
@@ -66,23 +66,12 @@ class="sidebar-button"
 <div 
 class="sidebar-button" 
 [ngClass]="{ 'active': activeSection === 'settings' }"
-[routerLink]="['/dashboard/settings']">
-<img src="icons/settings.svg" alt="settings" />
-
+(click)="setActive('settings')">
+<img src="/assets/icons/settings.svg" alt="settings" />
 <span>SETTINGS</span>
 </div>
+
       </div>
     </div>
   </div>
-  
-  <script>
-    const buttons = document.querySelectorAll('.sidebar-button');
-  
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        buttons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-      });
-    });
-  </script>
   

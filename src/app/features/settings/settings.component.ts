@@ -5,29 +5,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-settings',
   standalone: true,
   imports: [RouterModule],
-  template: `
-    <div class="settings-wrapper">
-      <div class="settings-header">
-        <h1>Settings</h1>
-      </div>
-
-      <div class="settings-container">
-        <p class="settings-description">
-          Variety of tools to tailor the user experience
-        </p>
-
-        <div class="settings-buttons">
-          <button class="setting-btn">Currency conversion</button>
-          <button class="setting-btn">Cost planning</button>
-          <button class="setting-btn" [routerLink]="['/dashboard/categories']">Create categories</button>
-          <button class="setting-btn">Spending preferences</button>
-          <button class="setting-btn">Custom reminders</button>
-          <button class="setting-btn">Unit segmentation</button>
-        </div>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  `,
+  templateUrl: './settings.component.html',
   styleUrl: './settings.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -37,4 +15,6 @@ export class SettingsComponent {
   goToCategories() {
     this.router.navigate(['categories'], { relativeTo: this.route });
   }
+
+
 }
