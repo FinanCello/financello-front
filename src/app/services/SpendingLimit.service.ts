@@ -26,8 +26,13 @@ export class SpendingLimitService {
 
   getSpendingLimitAlerts(userId: number): Observable<SpendingLimitAlertResponse[]> {
     return this.http.get<SpendingLimitAlertResponse[]>(
-      `${this.apiUrl}/alerts?userId=${userId}`
+      `${this.apiUrl}/alerts`,
+      { params: new HttpParams().set('userId', String(userId)) }
     );
+  }
+
+  deleteSpendingLimit(limitId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/limits/${limitId}`);
   }
 
 }

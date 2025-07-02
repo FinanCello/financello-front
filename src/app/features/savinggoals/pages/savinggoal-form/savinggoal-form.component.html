@@ -1,59 +1,32 @@
-<!-- Contenedor principal del formulario de meta de ahorro, ordenado y limpio -->
-<div class="savinggoal-form-outer">
-  <div class="savinggoal-form-inner">
-    <!-- Donut Chart y monto principal -->
-    <div class="savinggoal-header">
-      <div class="donut-chart-container">
-        <svg width="220" height="220" viewBox="0 0 42 42" class="donut">
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#1acbcb" stroke-width="10" stroke-dasharray="15 85" stroke-dashoffset="29.05" />
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#149696" stroke-width="10" stroke-dasharray="20 80" stroke-dashoffset="10" />
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#e0ffff" stroke-width="10" stroke-dasharray="12 88" stroke-dashoffset="-10" />
-          <circle class="donut-segment" cx="21" cy="21" r="15.9155"
-            stroke="#0da0a0" stroke-width="10" stroke-dasharray="45 55" stroke-dashoffset="-22" />
-        </svg>
-        <div class="savinggoal-amount">S/. 3,925</div>
-      </div>
-      <div class="savinggoal-form-card">
-        <form (ngSubmit)="submitForm()" #savingGoalForm="ngForm" class="modal-form">
-          <h2>Nueva Meta de Ahorro</h2>
-          <input type="text" [(ngModel)]="goal.name" name="name" placeholder="Nombre de la meta" required />
-          <input type="number" [(ngModel)]="goal.targetAmount" name="targetAmount" placeholder="Monto objetivo" required />
-          <input type="number" [(ngModel)]="goal.currentAmount" name="currentAmount" placeholder="Monto actual" required />
-          <input type="date" [(ngModel)]="goal.dueDate" name="dueDate" required />
-          <button type="submit">Aceptar</button>
-        </form>
-      </div>
+<div class="pearl-jam-black">
+  <div class="rectangle-329"></div>
+  <div class="button">
+    <div class="text">Aceptar</div>
+  </div>
+  <div class="button2">
+    <div class="text">Cancelar</div>
+  </div>
+  <div class="new-goal-contribution">New Goal Contribution</div>
+  <div class="frame-226">
+    <div class="frame-66">
+      <div class="e-mail">Amount</div>
     </div>
-
-    <!-- Sección de detalles y tarjetas -->
-    <div class="savinggoal-details">
-      <div class="savinggoal-stats">
-        <div class="stat-card">
-          <div class="stat-label">Falta para gastar</div>
-          <div class="stat-value">S/. 1175</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Presupuesto mensual</div>
-          <div class="stat-value">S/. 5000</div>
-        </div>
-      </div>
-      <div class="savinggoal-categories">
-        <div class="category-card">
-          <div class="category-title">Pagos</div>
-          <div class="category-item">Pago Membresías <span>S/. 2800</span> <small>Falta S/.600</small></div>
-          <div class="category-item">Internet <span>S/. 700</span> <small>Falta $325</small></div>
-        </div>
-        <div class="category-card">
-          <div class="category-title">Servicios</div>
-          <div class="category-item">Publicidad <span>S/. 500</span> <small>Falta S/.0</small></div>
-          <div class="category-item">Transporte <span>S/. 700</span> <small>Falta S/.100</small></div>
-          <div class="category-item">Servicios cloud <span>S/. 300</span> <small>Falta S/.50</small></div>
-        </div>
-      </div>
+    <img class="icons" src="icons0.svg" />
+    <div class="line-5"></div>
+    <div class="line-6"></div>
+    <div class="frame-239229">
+      <div class="due-date">Due Date</div>
+      <img class="icons2" src="icons1.svg" />
     </div>
+    <div class="frame-239230">
+      <div class="goal-name">Goal Name</div>
+    </div>
+    <img class="icon" src="icon0.svg" />
+  </div>
+  <div class="table-top">
+    <div class="create">Create</div>
+    <div class="update">Update</div>
+    <div class="delete">Delete</div>
+    <img class="divider-line-horizontal" src="divider-line-horizontal0.svg" />
   </div>
 </div>
-

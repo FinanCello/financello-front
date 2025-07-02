@@ -1,31 +1,37 @@
 <div class="page-container">
-    <form class="form-container">
-        <ng-container *ngIf="selectedAlert">
-            <div class="form-fields" style="text-align: center;">
-                <h2
-                        style="background-color: #0EA49B; color: white; padding: 10px 20px; border-radius: 15px; display: inline-block;">
-                    ¡Límite superado!
-                </h2>
+  <div class="reminders-container" *ngIf="alerts.length; else noAlerts">
+    <div class="reminder-card" *ngFor="let alert of alerts" (click)="selectAlert(alert)">
 
-                <p><strong>Categoría:</strong> {{ selectedAlert.categoryName }}</p>
+      <span>{{alert.categoryName}}</span>
+      <button (click)="dismiss(alert); $event.stopPropagation()">×</button>
+    </div>
+  </div>
+  <ng-template #noAlerts>
+    <p>No tienes recordatorios activos.</p>
+  </ng-template>
 
-                <div style="background-color: #f0f0f0; padding: 15px; border-radius: 12px;">
-                    <p style="font-weight: bold;">
-                        ${{ selectedAlert.totalSpent }} gastados de ${{ selectedAlert.monthlyLimit }} permitidos
-                    </p>
-                    <div style="background-color: #ccc; border-radius: 20px; height: 20px; overflow: hidden;">
-                        <div style="background-color: #0EA49B; height: 100%;" [style.width]="barWidth"></div>
-                    </div>
-                </div>
+  <form class="form-container" *ngIf="selectedAlert">
+    <div class="form-fields" style="text-align: center;">
+      <h2 style="background-color: #0EA49B; color: white; …">
+        ¡Límite superado!
+      </h2>
 
-                <p *ngIf="exceededAmount > 0" style="color: #f15e63; font-weight: bold; margin-top: 12px;">
-                    Has excedido tu límite por <strong>${{ exceededAmount }}</strong>
-                </p>
+      <p><strong>Categoría:</strong> {{ selectedAlert.categoryName }}</p>
 
-                <button type="button" class="accept-button" (click)="goBack()">Aceptar</button>
-            </div>
-        </ng-container>
-    </form>
+      <div style="background-color: #f0f0f0; padding: 15px; border-radius: 12px;">
+        <p style="font-weight: bold;">
+          ${{ selectedAlert.totalSpent }} gastados de ${{ selectedAlert.monthlyLimit }} permitidos
+        </p>
+        <div style="background-color: #ccc; border-radius: 20px; height: 20px; overflow: hidden;">
+          <div style="background-color: #0EA49B; height: 100%;" [style.width]="barWidth"></div>
+        </div>
+      </div>
+
+      <p *ngIf="exceededAmount > 0" style="color: #f15e63; font-weight: bold; margin-top: 12px;">
+        Has excedido tu límite por <strong>${{ exceededAmount }}</strong>
+      </p>
+
+      <button type="button" class="accept-button" (click)="goBack()">Aceptar</button>
+    </div>
+  </form>
 </div>
-
-

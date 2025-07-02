@@ -7,6 +7,14 @@ import { ProfileComponent } from './features/profile/profile.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
 import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
+import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
+import { FinancesComponent } from './features/finances/finances.component';
+import { AddMovementComponent } from './features/finances/addMovement/addmovement.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { CategoryComponent } from './features/categories/pages/category.component';
+import { CategoryFormComponent } from './features/categories/pages/category-form/category-form.component';
+import { SpendingLimitFormComponent } from './features/spendingLimit/pages/setLimit/spending-limit-form.component';
+import { SpendingLimitAlertComponent } from './features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component';
 
 export const routes: Routes = [
   {
@@ -39,22 +47,21 @@ export const routes: Routes = [
         { path: 'edit', component: EditProfileComponent }
       ] },
       { path: 'settings', component: SettingsComponent },
+      { path: 'load-files', component: MovementUploadComponent },
       { path: 'savinggoals', component: SavingGoalListComponent, children: [
-        { path: '', component: SavingGoalListComponent },
         { path: 'new', component: SavingGoalFormComponent },
         { path: 'edit/:id', component: SavingGoalFormComponent }
       ] },
       { path: 'transactions', component: TransactionHistoryComponent },
-      {
-        path: 'spending-limit',
-        loadComponent: () => import('./features/spendingLimit/pages/setLimit/spending-limit-form.component').then(m => m.SpendingLimitFormComponent)
-      },
-      {
-        path: 'alerts',
-        loadComponent: () => import('./features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component').then(m => m.SpendingLimitAlertComponent)
-      },
-      { path: 'filter-movements', loadComponent: () => import('./features/movements/pages/filterMovement/filter-movement.component').then(m => m.FilterFinancialMovementComponent) }
-      // Puedes agregar más rutas hijas aquí
+      { path: 'finances', component: FinancesComponent, children: [
+        { path: 'addmovement', component: AddMovementComponent }
+      ] },
+      { path: 'analytics', component: AnalyticsComponent },
+      { path: 'categories', component: CategoryComponent, children:[
+        { path: 'new', component: CategoryFormComponent }
+      ] },
+      { path: 'spending-limit', component: SpendingLimitFormComponent },
+      { path: 'alerts', component: SpendingLimitAlertComponent },
     ]
   },
   {

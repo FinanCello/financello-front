@@ -12,34 +12,37 @@ import { CommonModule } from '@angular/common';
 })
 export class SpendingLimitAlertComponent implements OnInit {
   alerts: SpendingLimitAlertResponse[] = [];
-  selectedAlert!: SpendingLimitAlertResponse;
+  selectedAlert: SpendingLimitAlertResponse | null = null;
   barWidth = '0%';
   exceededAmount = 0;
 
   constructor(private spendingLimitService: SpendingLimitService) {}
 
   ngOnInit(): void {
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      const user = JSON.parse(userStr);
-      const userId = user.id;
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const userId = user.id as number;
 
-      this.spendingLimitService.getSpendingLimitAlerts(userId).subscribe(response => {
-        this.alerts = response;
+    this.spendingLimitService.getSpendingLimitAlerts(userId)
+      .subscribe(alerts => {
+        this.alerts = alerts.filter(a => a.overLimit);
 
-        if (this.alerts.length > 0) {
-          this.selectedAlert = this.alerts[0];
-
-          const percent = Math.min(
-              (this.selectedAlert.totalSpent / this.selectedAlert.monthlyLimit) * 100,
-              150
-          );
-          this.barWidth = `${percent}%`;
-
-          const exceeded = this.selectedAlert.totalSpent - this.selectedAlert.monthlyLimit;
-          this.exceededAmount = exceeded > 0 ? exceeded : 0;
+        if (this.alerts.length) {
+          this.selectAlert(this.alerts[0]);
         }
       });
+  }
+
+  selectAlert(alert: SpendingLimitAlertResponse) {
+    this.selectedAlert = alert;
+    const pct = Math.min((alert.totalSpent / alert.monthlyLimit) * 100, 150);
+    this.barWidth = `${pct}%`;
+    this.exceededAmount = Math.max(alert.totalSpent - alert.monthlyLimit, 0);
+  }
+
+  dismiss(alert: SpendingLimitAlertResponse) {
+    this.alerts = this.alerts.filter(a => a !== alert);
+    if (this.selectedAlert === alert) {
+      this.selectedAlert = null;
     }
   }
 

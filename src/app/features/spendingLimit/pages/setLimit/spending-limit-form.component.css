@@ -1,105 +1,123 @@
-body {
-  background-color: #E8E8DC;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
+.nirvana-sappy,
+.nirvana-sappy * {
+  box-sizing: border-box;
 }
-/* Título centrado */
-.limit-title {
-  font-size: 30px;
-  font-weight: bold;
-  color: #0B6862;
-  border: 2px solid #0B6862;
-  border-radius: 12px;
-  padding: 10px 20px;
-  background-color: transparent;
-  display: inline-block;
-  margin: 30px auto 20px;
-  text-align: center;
+.nirvana-sappy {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 212px 231px 212px 231px;
+  height: 944px;
+  position: absolute;
+  width: 100%;
 }
-
-/* Centrar el título */
-.title-container {
-  text-align: center;
+.rectangle-329 {
+  background: #ffffff;
+  border-radius: 35px;
+  width: 738px;
+  height: 520px;
+  position: absolute;
+  left: 471px;
+  top: 201px;
 }
-
-/* Cuadro del formulario */
-.form-container {
-  background-color: #7AAAAA;
-  padding: 40px;
-  border-radius: 20px;
-  width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-input,
-select {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-/* Eliminar flechas del input number */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 30px;
-}
-
-button {
-  background-color: #002B2B;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 12px;
-  border: none;
-  font-weight: bold;
+.icons {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1138px;
+  top: 229px;
   cursor: pointer;
 }
-
-button[type="button"] {
-  background-color: #e0e0e0;
+.button {
+  background: #0ea49b;
+  border-radius: 100px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  position: absolute;
+  left: 750px;
+  top: 660px;
+  cursor: pointer;
+}
+.text {
   color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.new-movement {
+  color: #000;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  position: absolute;
+  left: 720px;
+  top: 210px;
+  width: 240px;
+  height: 58px;
+}
+.frame-226 {
+  border-radius: 15px;
+  border: 1px solid #bababa;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 251px;
+  position: absolute;
+  left: 714px;
+  top: 270px;
+  overflow: hidden;
 }
 
-.limit-alert-box {
-  background-color: #C9F6EF;
-  border-radius: 35px;
-  padding: 24px;
-  margin-top: 30px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  color: #002B2B;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+/* Inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 90%;
+  max-width: 225px;
 }
 
-.alert-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.label {
+  color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Select básico */
+.rectangle-331 {
+  background: #092c36;
+  border-radius: 15px;
+  opacity: 0.2;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+.select-container {
+  position: relative;
+  width: 100%;
+}
+.chevron-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* Input numérico */
+.rectangle-333 {
+  background: #092c36;
+  border-radius: 15px;
+  opacity: 0.2;
+  width: 225px;
+  height: 40px;
+  padding: 0 8px;
 }

@@ -1,0 +1,416 @@
+.content,
+.content * {
+  box-sizing: border-box;
+}
+.content {
+  background: #dcdcd1;
+  border-radius: 0px 0px 0px 15px;
+  height: 944px;
+  position: absolute;
+  overflow: hidden;
+  margin-left: 220px;
+  margin-right: 1000px;
+  margin-bottom: -10px;
+  top: 80px;
+  width: 100%;
+}
+.frame-33 {
+  width: 861px;
+  height: 161px;
+  position: absolute;
+  left: -30px;
+  top: -11px;
+  overflow: hidden;
+}
+.button {
+  background: #0ea49b;
+  border-radius: 100px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 753px;
+  height: 70px;
+  position: absolute;
+  left: 54px;
+  top: 82px;
+}
+.text {
+  color: #000000;
+  text-align: center;
+  font-family: "PalanquinDark-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  width: 460px;
+}
+.clasificaci-n-de-las-transacciones-de-gastos {
+  color: #000000;
+  text-align: center;
+  font-family: "PalanquinDark-SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  left: 64px;
+  top: 81px;
+  width: 730px;
+  height: 59px;
+}
+.transactions-history {
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px;
+  width: 1078px;
+  height: 590px;
+  position: absolute;
+  left: 24px;
+  top: 278px;
+  overflow: hidden;
+}
+.frame-32 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 767px;
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+.clasifica-autom-ticamente-tus-gastos-por-categor-a {
+  color: #000000;
+  text-align: center;
+  font-family: "PalanquinDark-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: relative;
+}
+.table {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 978px;
+  height: 477px;
+  position: absolute;
+  left: 15px;
+  top: 123px;
+  overflow: hidden;
+}
+.table-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 218px;
+  height: 460px;
+  position: relative;
+}
+.table-header {
+  background: #092c36;
+  border-style: solid;
+  border-color: var(--outline, #e4e7ec);
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.date {
+  color: #ffffff;
+  text-align: center;
+  font-family: "PalanquinDark-SemiBold", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+}
+.table-header2 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: var(--outline, #e4e7ec);
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.date2 {
+  color: var(--grey-text, #475367);
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+}
+.table-column2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 640px;
+  position: relative;
+}
+.date3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-SemiBold", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+}
+.table-column3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 120px;
+  position: relative;
+}
+.table-header3 {
+  background: #092c36;
+  border-radius: 0px 15px 0px 0px;
+  border-style: solid;
+  border-color: var(--outline, #e4e7ec);
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.date4 {
+  color: #f15b64;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+}
+.frame-34 {
+  width: 33px;
+  height: 463px;
+  position: absolute;
+  left: 993px;
+  top: 128px;
+  overflow: hidden;
+}
+.rectangle-5 {
+  background: #092c36;
+  width: 18px;
+  height: 386px;
+  position: absolute;
+  left: 6px;
+  top: 39px;
+}
+.icons {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 7px;
+  top: 427px;
+  overflow: visible;
+}
+.rectangle-6 {
+  border-radius: 0px;
+  width: 20px;
+  height: 177px;
+  position: absolute;
+  left: 5px;
+  top: 39px;
+  overflow: visible;
+}
+.icons2 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 23px;
+  top: 37px;
+  transform: translate(-16px, -16px);
+  overflow: visible;
+}
+.icons3 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 1018px;
+  top: 136px;
+  transform-origin: 0 0;
+  transform: rotate(-180deg) scale(1, 1);
+  overflow: hidden;
+}
+.category-expenses {
+  width: 978px;
+  height: 57px;
+  position: absolute;
+  left: 15px;
+  top: 75px;
+  overflow: hidden;
+}
+.frame-36 {
+  background: #092c36;
+  border-radius: 15px 15px 0px 0px;
+  padding: 12px 20px 12px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 57px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.primera-categor-a {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+}
+.frame-37 {
+  background: #0ea49b;
+  border-radius: 15px 15px 0px 0px;
+  padding: 12px 20px 12px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 57px;
+  position: absolute;
+  left: 145px;
+  top: 0px;
+}
+.segunda-categor-a {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+}
+.frame-39 {
+  background: #0ea49b;
+  border-radius: 15px 15px 0px 0px;
+  padding: 12px 20px 12px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 57px;
+  position: absolute;
+  left: 290px;
+  top: 0px;
+}
+.tercera-categor-a {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+}
+.frame-40 {
+  background: #0ea49b;
+  border-radius: 15px 15px 0px 0px;
+  padding: 12px 20px 12px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 57px;
+  position: absolute;
+  left: 435px;
+  top: 0px;
+}
+.div {
+  color: #ffffff;
+  text-align: center;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  position: relative;
+  width: 75px;
+  height: 93px;
+}
+.group-223 {
+  position: absolute;
+  inset: 0;
+}
+.frame-35 {
+  width: 744px;
+  height: 93px;
+  position: absolute;
+  left: 24px;
+  top: 167px;
+  overflow: hidden;
+}
+.rectangle-7 {
+  background: #092c36;
+  border-radius: 15px;
+  width: 741px;
+  height: 74px;
+  position: absolute;
+  left: 3px;
+  top: 7px;
+}
+.nuevo-gasto-detectado-y-clasificado-como-gasto-primario {
+  color: #ffffff;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 86px;
+  top: 18px;
+  width: 658px;
+  height: 23px;
+}
+.vector {
+  width: 5.38%;
+  height: 43.01%;
+  position: absolute;
+  right: 90.73%;
+  left: 3.9%;
+  bottom: 31.18%;
+  top: 25.81%;
+  overflow: visible;
+}
