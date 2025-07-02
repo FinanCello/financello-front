@@ -12,3 +12,19 @@ export interface CategorySimpleResponse {
   id: number;
   name: string;
 }
+
+export interface CategoryTotalResponse {
+    categoryId: number;
+    categoryName: string;
+    totalAmount: number;
+    movementType: string;
+}
+
+export interface RecentMovementResponse {
+    movementId: number;
+    amount: number;
+    date: string;
+    categoryName: string;
+    categoryDescription: string;
+    movementType: string;
+}
