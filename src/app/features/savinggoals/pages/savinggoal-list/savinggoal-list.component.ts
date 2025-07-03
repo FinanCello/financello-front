@@ -4,16 +4,25 @@ import { Router, RouterModule } from '@angular/router';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
 import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
+import { EditGoalFormComponent } from '../savinggoal-form/edit/editgoal-form.component';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-savinggoal-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, EditGoalFormComponent],
   templateUrl: './savinggoal-list.component.html',
-  styleUrls: ['./savinggoal-list.component.css']
+  styleUrls: ['./savinggoal-list.component.css'],
+  animations: [trigger('routeAnimations', [
+    transition('* => new', [
+      style({ opacity: 0, transform: 'translateY(10%)' }),
+      animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+    ])
+  ])]
 })
 export class SavingGoalListComponent implements OnInit {
   savingGoals: AddSavingGoalResponse[] = [];
+  selectedGoal: AddSavingGoalResponse | null = null;
   loading = false;
   error: string | null = null;
 
@@ -50,7 +59,7 @@ export class SavingGoalListComponent implements OnInit {
   }
 
   onEdit(goal: AddSavingGoalResponse) {
-    this.router.navigate(['/dashboard/savinggoals/edit', goal.id]);
+    this.selectedGoal = goal;
   }
 
   onDelete(goal: AddSavingGoalResponse) {
@@ -78,5 +87,15 @@ export class SavingGoalListComponent implements OnInit {
         }
       });
     }
+  }
+
+  onNewGoal() {
+    this.router.navigate(['/dashboard/savinggoals/new']);
+  }
+
+  onCloseEditForm() {
+    this.selectedGoal = null;
+    // Recargar las metas para mostrar los cambios
+    this.fetchSavingGoals();
   }
 }

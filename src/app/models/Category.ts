@@ -12,3 +12,10 @@ export interface CategorySimpleResponse {
   id: number;
   name: string;
 }
+
+export interface CategoryTotalResponse {
+  categoryId: number;
+  categoryName: string;
+  totalAmount: number;
+  movementType: 'INCOME' | 'OUTCOME';
+}

@@ -10,8 +10,10 @@ import {
     CategoryRequest,
     CategorySimpleResponse,
     CategoryResponse,
+    CategoryTotalResponse,
 } from '../models/Category';
 import { environment } from '../environments/environment';
+import { RecentMovementResponse } from '../models/FinancialMovement';
 
 @Injectable({
     providedIn: 'root',
@@ -45,6 +47,27 @@ export class CategoryService {
     getCategories(userId: number): Observable<CategorySimpleResponse[]> {
         return this.http.get<CategorySimpleResponse[]>(
             `${this.apiUrl}/${userId}`
+        );
+    }
+
+    getTotalExpensesByCategory(userId: number, categoryId: number) {
+        return this.http.get<CategoryTotalResponse>(
+            `${this.apiUrl}/expenses/total`,
+            { params: { userId, categoryId } }
+        );
+    }
+
+    getTotalIncomesByCategory(userId: number, categoryId: number) {
+        return this.http.get<CategoryTotalResponse>(
+            `${this.apiUrl}/incomes/total`,
+            { params: { userId, categoryId } }
+        );
+    }
+
+    getRecentMovementsByCategory(userId: number, categoryId: number, limit: number = 10) {
+        return this.http.get<RecentMovementResponse[]>(
+            `${this.apiUrl}/movements/recent`,
+            { params: { userId, categoryId, limit } }
         );
     }
 }

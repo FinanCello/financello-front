@@ -5,6 +5,7 @@ export interface AddSavingGoalRequest {
 }
 
 export interface UpdateSavingGoalRequest {
+  name?: string;
   targetAmount?: number;
   dueDate?: string;
 }
