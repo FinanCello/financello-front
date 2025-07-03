@@ -45,7 +45,9 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent, children:[
         { path: 'edit', component: EditProfileComponent }
       ] },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'settings', component: SettingsComponent, children: [
+        { path: 'categories', component: CategoryFormComponent }
+      ] },
       { path: 'load-files', component: MovementUploadComponent },
       { path: 'savinggoals', component: SavingGoalListComponent, children: [
         { path: 'new', component: SavingGoalFormComponent },
@@ -56,9 +58,7 @@ export const routes: Routes = [
         { path: 'addmovement', component: AddMovementComponent }
       ] },
       { path: 'analytics', component: AnalyticsComponent },
-      { path: 'categories', component: CategoryComponent, children:[
-        { path: 'new', component: CategoryFormComponent }
-      ] }
+      { path: 'categories', component: CategoryFormComponent }
     ]
   },
   {
