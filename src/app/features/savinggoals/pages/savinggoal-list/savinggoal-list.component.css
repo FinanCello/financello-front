@@ -151,11 +151,17 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   flex: 0 0 auto;
+  cursor: pointer;
 }
 
 .frame-239238:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.frame-239238:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .group-239233 {
   position: absolute;
@@ -172,6 +178,27 @@
   top: 10px;
   width: 160.29px;
   height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contribution-indicator {
+  font-size: 14px;
+  animation: pulse 2s infinite;
+  cursor: help;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .icons2 {
   width: 16.54px;
@@ -191,6 +218,8 @@
   overflow: visible;
   aspect-ratio: 1;
 }
+
+
 .icons2,
 .icons3 {
   cursor: pointer;

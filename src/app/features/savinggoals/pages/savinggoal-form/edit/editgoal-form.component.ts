@@ -36,7 +36,6 @@ export class EditGoalFormComponent implements OnInit {
   onSubmit(): void {
     if (this.goalForm.valid) {
       const updatedGoal: UpdateSavingGoalRequest = {
-        name: this.goalForm.value.name,
         targetAmount: this.goalForm.value.targetAmount,
         dueDate: this.goalForm.value.dueDate
       };
@@ -44,7 +43,7 @@ export class EditGoalFormComponent implements OnInit {
       this.savingGoalService
         .updateSavingGoal(this.goal.id, updatedGoal)
         .subscribe({
-          next: () => {
+          next: (response) => {
             this.snackbarService.showSnackbar(
               'Meta actualizada',
               'La meta de ahorro se ha actualizado exitosamente',

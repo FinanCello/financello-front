@@ -11,10 +11,15 @@
       </div>      
     </div>
     <div class="goals-container">
-      <div class="frame-239238" *ngFor="let goal of savingGoals">
-        <div class="pc">{{ goal.name }}</div>
-        <img class="icons2" src="/assets/icons/settings.svg" (click)="onEdit(goal)" />
-        <img class="icons3" src="/assets/icons/x.png" (click)="onDelete(goal)" />
+      <div class="frame-239238" *ngFor="let goal of savingGoals" (click)="onViewContributions(goal)">
+        <div class="pc">
+          {{ goal.name }}
+          <span *ngIf="goal.currentAmount > 0" class="contribution-indicator" title="Esta meta tiene contribuciones">
+            💰
+          </span>
+        </div>
+        <img class="icons2" src="/assets/icons/settings.svg" (click)="onEdit(goal); $event.stopPropagation()" />
+        <img class="icons3" src="/assets/icons/x.png" (click)="onDelete(goal); $event.stopPropagation()" />
         <div class="actual-0">Actual: {{ goal.currentAmount | currency:'USD' }}</div>
         <div class="meta-550-10">Meta: {{ goal.targetAmount | currency:'USD' }}</div>
         <div class="rectangle-6699">
@@ -49,3 +54,11 @@
     <app-editgoal-form [goal]="selectedGoal" (closeForm)="onCloseEditForm()"></app-editgoal-form>
   </div>
 </div>
+
+<!-- Modal de contribuciones -->
+<app-contributions-modal
+  [goal]="selectedGoalForContributions"
+  [isVisible]="showContributionsModal"
+  (closeModal)="onCloseContributionsModal()"
+  (contributionsDeleted)="onContributionsDeleted()">
+</app-contributions-modal>
