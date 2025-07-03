@@ -11,7 +11,7 @@
   margin-left: 220px;
   margin-right: 1000px;
   margin-bottom: -10px;
-  top: 80px;
+  top: 63px;
   width: 100%;
 }
 .weolcome-buttons {
@@ -647,4 +647,8 @@
 
 .outcome .icons2 {
   filter: drop-shadow(0 0 0px #c62828);
+}
+
+.top-63, .top-80, .main-content, .main-container, .finances-container {
+  top: 39px !important;
 }

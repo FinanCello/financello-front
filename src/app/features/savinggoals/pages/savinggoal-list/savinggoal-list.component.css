@@ -10,7 +10,7 @@
   margin-left: 220px;
   margin-right: 1000px;
   margin-bottom: -10px;
-  top: 80px;
+  top: 63px;
   width: 100%;
 }
 .weolcome-buttons {
@@ -579,4 +579,8 @@
   top: 15.73px;
   overflow: visible;
   aspect-ratio: 1;
+}
+
+.top-63, .top-80, .main-content, .main-container, .savinggoal-list-container {
+  top: 39px !important;
 }

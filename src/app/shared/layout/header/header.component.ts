@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 export class HeaderComponent {
   userInfo: any;
   showMenu = false;
+  @Output() sidebarToggle = new EventEmitter<void>();
 
   constructor(private router: Router) {
     const userStr = localStorage.getItem('user');
@@ -37,5 +38,9 @@ export class HeaderComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigate(['/auth/login']);
+  }
+
+  toggleSidebar() {
+    this.sidebarToggle.emit();
   }
 }

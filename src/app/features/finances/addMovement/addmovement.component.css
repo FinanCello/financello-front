@@ -8,6 +8,7 @@
   height: 944px;
   position: absolute;
   width: 100%;
+  top: 63px;
 }
 .rectangle-329 {
   background: #ffffff;
@@ -261,4 +262,8 @@
   width: 16px;
   height: 16px;
   pointer-events: none;
+}
+
+.top-63, .top-80, .main-content, .main-container, .add-movement-container {
+  top: 39px !important;
 }

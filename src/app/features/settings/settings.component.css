@@ -10,8 +10,9 @@
   overflow: hidden;
   margin-left: 220px;
   margin-right: 1000px;
-  margin-bottom: -10px;
-  top: 80px;
+  margin-top: 24px;
+  top: 39px;
+  bottom: 0px;
   width: 100%;
 }
 .rectangle-314 {
@@ -318,4 +319,7 @@
   top: 44px;
   transform: translate(0px, -32px);
   overflow: visible;
+}
+.top-63, .top-80, .main-content, .main-container, .settings-container {
+  top: 39px !important;
 }

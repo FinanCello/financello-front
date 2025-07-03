@@ -5,12 +5,13 @@
   height: calc(100vh - 140px);
   overflow: hidden;
   background: #dcdcd1;
-  margin: 20px 30px 30px 30px;
+  margin: -950px 30px 30px 20px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  max-width: calc(100vw - 280px);
+  max-width: calc(100vw - 220px);
   display: flex;
   flex-direction: column;
+  
 }
 
 /* Header */

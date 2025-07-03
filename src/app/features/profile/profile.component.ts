@@ -24,6 +24,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   isEditing = false;
   private routerSubscription: Subscription;
 
+  // NUEVO: variables para los valores calculados
+  daysSinceRegistration: number = 0;
+  transactionCount: number = 0;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -55,6 +59,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadUserProfile();
     this.checkCurrentRoute();
+    // Calcular los valores una sola vez
+    this.daysSinceRegistration = this.getDaysSinceRegistration();
+    this.transactionCount = this.getTransactionCount();
   }
 
   checkCurrentRoute() {

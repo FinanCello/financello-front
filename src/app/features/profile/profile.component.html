@@ -27,7 +27,7 @@
   </div>
 
   <!-- Profile Content -->
-  <div *ngIf="!isLoading && !errorMessage && !isEditing" class="profile-content">
+  <div *ngIf="!isEditing" class="profile-content">
     <!-- Profile Card -->
     <div class="profile-card">
       <div class="profile-avatar">
@@ -87,7 +87,7 @@
               <img src="assets/icons/calendar.svg" alt="Fecha" class="stat-icon-img">
             </div>
             <div class="stat-content">
-              <div class="stat-value">{{ getDaysSinceRegistration() }}</div>
+              <div class="stat-value">{{ daysSinceRegistration }}</div>
               <div class="stat-label">Días en la plataforma</div>
             </div>
           </div>
@@ -97,15 +97,13 @@
               <img src="assets/icons/wallet.svg" alt="Transacciones" class="stat-icon-img">
             </div>
             <div class="stat-content">
-              <div class="stat-value">{{ getTransactionCount() }}</div>
+              <div class="stat-value">{{ transactionCount }}</div>
               <div class="stat-label">Transacciones realizadas</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
   <router-outlet></router-outlet>
 </div>
