@@ -46,6 +46,16 @@ export class CategoryFormComponent {
     this.categoryService.getCategories(this.userInfo.id).subscribe({
         next: (res) => {
           this.categories = res;
+          // Si estamos editando y hay una categoría seleccionada, actualizar la referencia
+          if (this.action === 'edit' && this.selectedCategory) {
+            const updatedCategory = this.categories.find(cat => cat.id === this.selectedCategory?.id);
+            if (updatedCategory) {
+              this.selectedCategory = updatedCategory;
+            } else {
+              // Si la categoría ya no existe (fue eliminada), limpiar la selección
+              this.selectedCategory = null;
+            }
+          }
           this.cdr.detectChanges();
         },
         error: (err) => {
@@ -116,8 +126,9 @@ export class CategoryFormComponent {
         this.categoryService.updateCategory(id, data).subscribe({
             next: () => {
                 Swal.fire('Actualizado', 'La categoría fue actualizada correctamente', 'success');
-                this.cancelEdit();
                 this.loadCategories();
+                // Mantener la categoría seleccionada pero limpiar el formulario
+                this.categoryForm.reset();
             },
             error: (err) => this.showError(err)
         });
@@ -135,6 +146,10 @@ export class CategoryFormComponent {
             next: () => {
                 Swal.fire('Eliminado', 'La categoría fue eliminada correctamente', 'success');
                 this.selectedCategory = null;
+                // Actualizar inmediatamente la lista local
+                this.categories = this.categories.filter(cat => cat.id !== id);
+                this.cdr.detectChanges();
+                // Luego recargar desde el servidor para asegurar sincronización
                 this.loadCategories();
             },
             error: (err) => this.showError(err)
