@@ -2,8 +2,8 @@ import { Component, effect, inject, Signal, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { slideInAnimation } from './route-animations';
-import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-import { SnackbarService } from './shared/snackbar/snackbar.service';
+import { SnackbarComponent } from './shared/layout/snackbar/snackbar.component';
+import { SnackbarService } from './shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-root',
@@ -36,5 +36,9 @@ export class App {
 
   getAnimationData(outlet: RouterOutlet) {
     return outlet?.activatedRouteData?.['animation'];
+  }
+
+  onUndoSnackbar() {
+    this.snackbarData.set(null);
   }
 }

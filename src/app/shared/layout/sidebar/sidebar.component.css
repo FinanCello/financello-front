@@ -1,6 +1,6 @@
 @font-face {
   font-family: "PalanquinDark-Medium";
-  src: url("/fonts/PalanquinDark-Medium.ttf") format("truetype");
+  src: url("/assets/fonts/PalanquinDark-Medium.ttf") format("truetype");
 }
 .sidebar,
 .sidebar * {
@@ -78,6 +78,13 @@
 .sidebar-button.active {
   box-shadow: inset 0 0 0 1px #58c2b0;
 }
+
+.sidebar-button.home-button:not(.active):hover {
+  background-color: #00cfe8; /* celeste brillante */
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px #58c2b0;
+}
+
 
 /* Elimina el fondo en botones no activos excepto el HOME */
 .sidebar-button:not(.active):not(.home-button) {

@@ -1,0 +1,60 @@
+<div class="nirvana-sappy">
+  <form [formGroup]="movementForm" (ngSubmit)="submit()">
+    <div class="rectangle-329"></div>
+
+    <img class="icons" src="assets/icons/x.png" [routerLink]="['/dashboard/finances']" />
+
+    <button class="button" type="submit">
+      <div class="text">Aceptar</div>
+    </button>
+
+    <div class="new-movement">New Movement</div>
+
+    <div class="frame-226">
+      <!-- Monto -->
+      <div class="input-group">
+        <label class="label">Amount</label>
+        <input type="number" formControlName="amount" class="rectangle-333" placeholder="Enter amount" />
+      </div>
+
+      <!-- Fecha -->
+      <div class="input-group">
+        <label class="label">Date</label>
+        <input type="date" formControlName="date" class="rectangle-332" />
+      </div>
+
+      <!-- Movimiento -->
+      <div class="input-group">
+        <label class="label">Movement Type</label>
+        <div class="select-container">
+          <select formControlName="movementType" class="rectangle-331">
+            <option *ngFor="let type of movementTypes" [value]="type">{{ type }}</option>
+          </select>
+          <img class="chevron-icon" src="assets/icons/down.svg" />
+        </div>
+      </div>
+
+      <!-- Moneda -->
+      <div class="input-group">
+        <label class="label">Currency Type</label>
+        <div class="select-container">
+          <select formControlName="currencyType" class="rectangle-331">
+            <option *ngFor="let currency of currencyTypes" [value]="currency">{{ currency }}</option>
+          </select>
+          <img class="chevron-icon" src="assets/icons/down.svg" />
+        </div>
+      </div>
+
+      <!-- Categoría -->
+      <div class="input-group">
+        <label class="label">Category</label>
+        <div class="select-container">
+          <select formControlName="categoryId" class="rectangle-331">
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+          </select>
+          <img class="chevron-icon" src="assets/icons/down.svg" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

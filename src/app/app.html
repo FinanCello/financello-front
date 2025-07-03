@@ -3,7 +3,8 @@
   [title]="snackbarData()?.title || ''"
   [message]="snackbarData()?.message || ''"
   [icon]="snackbarData()?.icon || ''"
-  [showUndo]="!!snackbarData()?.showUndo">
+  [showUndo]="!!snackbarData()?.showUndo"
+  (undoClicked)="onUndoSnackbar()">
 </app-snackbar>
 
 <main [@routeAnimations]="getAnimationData(outlet)">

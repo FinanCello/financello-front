@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/Auth.service';
 import { UserProfileResponse, UpdateProfileRequest } from '../../models/User';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -28,9 +29,10 @@ export class ProfileComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.minLength(6)]]
+      password: ['']
     });
 
+    console.log(this.profileForm.value);
     // Obtener información del usuario actual del localStorage
     const userStr = localStorage.getItem('user');
     if (userStr) {
@@ -73,7 +75,8 @@ export class ProfileComponent implements OnInit {
       const updateRequest: UpdateProfileRequest = {
         firstName: this.profileForm.get('firstName')?.value,
         lastName: this.profileForm.get('lastName')?.value,
-        email: this.profileForm.get('email')?.value
+        email: this.profileForm.get('email')?.value,
+        password: this.profileForm.get('password')?.value
       };
 
       // Solo incluir password si se proporcionó
