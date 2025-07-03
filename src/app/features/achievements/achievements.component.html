@@ -1,0 +1,52 @@
+<div class="logros-container">
+  <h2>🎖️ Logros Desbloqueados</h2>
+
+  <button class="boton-animado" (click)="abrirModal()">🔄 Verificar logros</button>
+
+  <div *ngIf="userAchievements.length === 0" class="mensaje-vacio">
+    Aún no has desbloqueado logros.
+  </div>
+
+  <div class="logros-grid">
+    <div
+      class="logro-card"
+      *ngFor="let userAchievement of userAchievements"
+    >
+      <div class="icono">🏅</div>
+      <div class="nombre">{{ userAchievement.achievementName }}</div>
+      <div class="descripcion">{{ userAchievement.achievementDescription }}</div>
+      <div class="fecha">Desbloqueado: {{ userAchievement.unlockedAt | date:'shortDate' }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de logros -->
+<div *ngIf="modalAbierto" class="modal-fondo" (click)="cerrarModal()">
+  <div class="modal-contenido modal-cuadro" (click)="$event.stopPropagation()">
+    <button class="cerrar-modal" (click)="cerrarModal()">×</button>
+    <h2>🏆 Todos los Logros</h2>
+    <div class="logro-lista-dos-columnas">
+      <div class="columna-logros">
+        <div class="logro-item" *ngFor="let logro of todosLogros.slice(0,5)" [ngClass]="{ 'bloqueado': !logro.desbloqueado, 'desbloqueado': logro.desbloqueado, 'pop-effect': popLogroId === logro.id }">
+          <span class="logro-medalla">{{ logro.icono }}</span>
+          <div class="logro-info">
+            <div class="logro-nombre">{{ logro.nombre }}</div>
+            <div class="logro-desc">{{ logro.descripcion }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="columna-logros">
+        <div class="logro-item" *ngFor="let logro of todosLogros.slice(5,10)" [ngClass]="{ 'bloqueado': !logro.desbloqueado, 'desbloqueado': logro.desbloqueado, 'pop-effect': popLogroId === logro.id }">
+          <span class="logro-medalla">{{ logro.icono }}</span>
+          <div class="logro-info">
+            <div class="logro-nombre">{{ logro.nombre }}</div>
+            <div class="logro-desc">{{ logro.descripcion }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showConfetti" class="confetti-container">
+      <div *ngFor="let c of confettiArray" class="confetti" [ngStyle]="c"></div>
+    </div>
+  </div>
+</div>

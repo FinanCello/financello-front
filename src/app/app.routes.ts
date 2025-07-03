@@ -16,6 +16,7 @@ import { CategoryFormComponent } from './features/categories/pages/category-form
 
 
 export const routes: Routes = [
+  
   {
     path: '',
     redirectTo: '/dashboard',
@@ -58,11 +59,14 @@ export const routes: Routes = [
       { path: 'analytics', component: AnalyticsComponent },
       { path: 'categories', component: CategoryComponent, children:[
         { path: 'new', component: CategoryFormComponent }
-      ] }
+      ] },
+      { path: 'logros', loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent) }
     ]
   },
   {
     path: '**',
     redirectTo: '/dashboard'
-  }
+  },
+  
+      { path: 'logros', loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent) }
 ];
