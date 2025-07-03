@@ -39,7 +39,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent, children:[
+      { path: 'profile', component: ProfileComponent, children: [
         { path: 'edit', component: EditProfileComponent }
       ] },
       { path: 'settings', component: SettingsComponent },
@@ -52,7 +52,22 @@ export const routes: Routes = [
       { path: 'finances', component: FinancesComponent, children: [
         { path: 'addmovement', component: AddMovementComponent }
       ] },
-      // Puedes agregar más rutas hijas aquí
+
+      // ✅ NUEVAS RUTAS AÑADIDAS
+      {
+        path: 'historial/form',
+        loadComponent: () => import('./features/historialcontribution.form/historialcontribution.form.component').then(m => m.HistorialContributionFormComponent)
+      },
+      {
+        path: 'historial/list',
+        loadComponent: () => import('./features/historialcontribution.list/historialcontribution.list.component').then(m => m.HistorialContributionListComponent)
+      },
+      {
+        path: 'category/new',
+        loadComponent: () => import('./features/newcategory.form/newcategory.form.component').then(m => m.NewcategoryFormComponent)
+      }
+
+      // Puedes seguir agregando más rutas hijas aquí
     ]
   },
   {
