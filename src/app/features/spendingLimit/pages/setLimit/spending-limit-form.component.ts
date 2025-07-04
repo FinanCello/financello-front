@@ -18,6 +18,7 @@ import { AuthResponse } from '../../../../models/User';
 export class SpendingLimitFormComponent implements OnInit {
   limitForm!: FormGroup;
   categories: any[] = [];
+  limits: SpendingLimitResponse[] = [];
   user!: AuthResponse;
   createdLimit: SpendingLimitResponse | null = null;
 
@@ -28,6 +29,7 @@ export class SpendingLimitFormComponent implements OnInit {
     private snackbarService: SnackbarService,
   ) {}
 
+  mode: "delete" | "list" | "create" = 'create';
 
   ngOnInit(): void {
     const storedUser = localStorage.getItem('user');
@@ -40,6 +42,32 @@ export class SpendingLimitFormComponent implements OnInit {
 
     this.initForm();
     this.loadCategories();
+    this.loadLimits()
+
+  }
+
+  switchMode(m: 'delete' | 'list' | 'create'): void {
+    console.log(' switchMode llamado con:', m);
+    this.mode = m;
+    if (m === 'list') {
+      this.loadLimits();
+    }
+  }
+
+
+  list(): void {
+    this.loadLimits();
+    this.mode = 'list';
+  }
+
+// para pasar al modo “delete”
+  enterDelete(): void {
+    this.mode = 'delete';
+  }
+
+// para volver siempre al modo crear
+  backToCreate(): void {
+    this.mode = 'create';
   }
 
 
@@ -61,6 +89,16 @@ export class SpendingLimitFormComponent implements OnInit {
     });
   }
 
+  loadLimits(): void {
+    this.spendingLimitService.listLimits(this.user.id).subscribe({
+      next: data => this.limits = data,
+      error: err => {
+        console.error('Error loading limits:', err);
+        this.snackbarService.showSnackbar('Error', 'No se pudieron cargar los límites');
+      }
+    });
+  }
+
   onSubmit(): void {
     if (this.limitForm.invalid) return;
 
@@ -73,6 +111,7 @@ export class SpendingLimitFormComponent implements OnInit {
           this.createdLimit = res;
           this.limitForm.reset();
           this.loadCategories();
+          this.loadLimits();
           this.snackbarService.showSnackbar(
             'Límite creado',
             'El límite se creó correctamente'
@@ -105,9 +144,22 @@ export class SpendingLimitFormComponent implements OnInit {
       });
   }
 
+  deleteSelectedLimit(): void {
+    const catId = this.limitForm.get('categoryId')?.value;
+    if (!catId) {
+      return this.snackbarService.showSnackbar('Error', 'Selecciona una categoría');
+    }
 
-  onCancel(): void {
-    this.limitForm.reset();
-    this.createdLimit = null;
+    this.spendingLimitService
+      .deleteLimit(this.user.id, catId)
+      .subscribe({
+        next: () => {
+          this.snackbarService.showSnackbar('Límite eliminado', '');
+          this.loadLimits();
+        },
+        error: () =>
+          this.snackbarService.showSnackbar('Error', 'No se pudo eliminar el límite')
+      });
   }
+
 }

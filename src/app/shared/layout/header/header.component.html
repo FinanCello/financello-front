@@ -1,27 +1,32 @@
-<div class="navbar">
-  <div class="dashboard">DASHBOARD</div>
-  <div class="user-profile-icon">
-    <div class="circle button-hover" (click)="goToDashboard()">
-      <img class="chart-pie" src="/assets/icons/chart-pie.svg" />
-    </div>
-    <div class="circle button-hover" (click)="showNotifications()">
-      <img class="notification" src="/assets/icons/notification.svg" />
-    </div>
-    <div class="user-dropdown">
-      <div class="frame-5 button-hover" (click)="toggleUserMenu()">
-        <div class="avatar-user-32">
-          <div class="rectangle"></div>
-          <div class="rectangle2"></div>
+<header class="main-header">
+  <div class="header-left">
+    <span class="menu-icon" (click)="toggleSidebar()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </span>
+  </div>
+  <div class="header-actions">
+    <button class="header-icon-btn" (click)="goToDashboard()">
+      <img src="/assets/icons/chart-pie.svg" alt="Dashboard" />
+    </button>
+    <button class="header-icon-btn" (click)="showNotifications()">
+      <img src="/assets/icons/notification.svg" alt="Notificaciones" />
+    </button>
+    <div class="user-menu-wrapper">
+      <button class="user-btn" (click)="toggleUserMenu()">
+        <div class="user-avatar">
+          <div class="avatar-initials">
+            {{ (userInfo?.firstName?.[0] || 'J') + (userInfo?.lastName?.[0] || 'D') }}
+          </div>
         </div>
-        <div class="jhon-doe">{{ userInfo?.firstName + ' ' + userInfo?.lastName || 'John Doe' }}</div>
-        <img class="icons" src="/assets/icons/down.svg" />
+        <span class="user-name">{{ userInfo?.firstName + ' ' + userInfo?.lastName || 'John Doe' }}</span>
+        <img class="dropdown-arrow" src="/assets/icons/down.svg" alt="Abrir menú" />
+      </button>
+      <div *ngIf="showMenu" class="user-menu">
+        <div class="user-role">Rol: {{ userInfo?.role || 'Usuario' }}</div>
+        <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
       </div>
-  
     </div>
   </div>
-</div>
-
-<div *ngIf="showMenu" class="user-menu">
-  <div class="user-role">Rol: {{ userInfo?.role || 'Usuario' }}</div>
-  <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
-</div>
+</header>

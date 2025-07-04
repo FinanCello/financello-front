@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/Auth.service';
 import { UserProfileResponse, UpdateProfileRequest } from '../../models/User';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   profileForm: FormGroup;
   isLoading = false;
   successMessage = '';
@@ -20,10 +21,17 @@ export class ProfileComponent implements OnInit {
 
   userInfo: any;
   showMenu = false;
+  isEditing = false;
+  private routerSubscription: Subscription;
+
+  // NUEVO: variables para los valores calculados
+  daysSinceRegistration: number = 0;
+  transactionCount: number = 0;
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -39,10 +47,27 @@ export class ProfileComponent implements OnInit {
       this.userInfo = JSON.parse(userStr);
       console.log(this.userInfo);
     }
+
+    // Suscribirse a los cambios de ruta
+    this.routerSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.checkCurrentRoute();
+    });
   }
 
   ngOnInit() {
     this.loadUserProfile();
+    this.checkCurrentRoute();
+    // Calcular los valores una sola vez
+    this.daysSinceRegistration = this.getDaysSinceRegistration();
+    this.transactionCount = this.getTransactionCount();
+  }
+
+  checkCurrentRoute() {
+    // Verificar si estamos en la ruta de edición
+    const currentUrl = this.router.url;
+    this.isEditing = currentUrl.includes('/edit');
   }
 
   loadUserProfile() {
@@ -98,6 +123,7 @@ export class ProfileComponent implements OnInit {
             user.lastName = updatedProfile.lastName;
             user.email = updatedProfile.email;
             localStorage.setItem('user', JSON.stringify(user));
+            this.userInfo = user;
           }
 
           // Limpiar campo de contraseña
@@ -115,5 +141,42 @@ export class ProfileComponent implements OnInit {
     this.loadUserProfile();
     this.successMessage = '';
     this.errorMessage = '';
+  }
+
+  // Nuevos métodos para el UI
+  navigateToEdit() {
+    this.router.navigate(['/dashboard/profile/edit']);
+  }
+
+  getInitials(): string {
+    if (!this.userInfo?.firstName || !this.userInfo?.lastName) {
+      return 'U';
+    }
+    return `${this.userInfo.firstName.charAt(0)}${this.userInfo.lastName.charAt(0)}`.toUpperCase();
+  }
+
+  getDaysSinceRegistration(): number {
+    // Simular días desde el registro (puedes ajustar según tu lógica)
+    const registrationDate = new Date('2024-01-01'); // Fecha de ejemplo
+    const today = new Date();
+    const diffTime = Math.abs(today.getTime() - registrationDate.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  }
+
+  getTransactionCount(): number {
+    // Simular número de transacciones (puedes conectar con tu servicio real)
+    return Math.floor(Math.random() * 50) + 10; // Número aleatorio entre 10-60
+  }
+
+  changePassword() {
+    // Navegar a una página de cambio de contraseña o mostrar modal
+    this.router.navigate(['/dashboard/profile/change-password']);
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 } 

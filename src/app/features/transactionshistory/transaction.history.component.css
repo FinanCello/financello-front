@@ -11,7 +11,7 @@
   margin-left: 220px;
   margin-right: 100px;
   margin-bottom: -10px;
-  top: 80px;
+  top: 63px;
   width: 100%;
 }
 .weolcome-buttons {
@@ -661,4 +661,7 @@
   right: 52px;
   top: 804px;
   overflow: visible;
+}
+.top-63, .top-80, .main-content, .main-container, .transaction-history-container {
+  top: 39px !important;
 }

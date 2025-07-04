@@ -11,7 +11,7 @@
   margin-left: 220px;
   margin-right: 1000px;
   margin-bottom: -10px;
-  top: 80px;
+  top: 63px;
   width: 100%;
 }
 .welcome {
@@ -56,6 +56,18 @@
   top: 90px;
   box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
+  cursor: pointer;
+}
+
+.upload-place.dragging {
+  background: linear-gradient(
+    0deg,
+    rgba(14, 164, 155, 0.3) 0%,
+    rgba(122, 170, 170, 0.3) 50%,
+    rgba(220, 220, 209, 0.3) 100%
+  );
+  border-color: #0ea49b;
+  border-width: 2px;
 }
 .frame-47 {
   display: flex;

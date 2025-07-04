@@ -1,280 +1,312 @@
-@font-face {
-  font-family: "PalanquinDark-Bold";
-  src: url("/assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
-}
-@font-face {
-  font-family: "PalanquinDark-Medium";
-  src: url("/assets/fonts/PalanquinDark-Medium.ttf") format("truetype");
-}
-@font-face {
-  font-family: "PalanquinDark-Regular";
-  src: url("/assets/fonts/PalanquinDark-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "PalanquinDark-SemiBold";
-  src: url("/assets/fonts/PalanquinDark-SemiBold.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Poppins-Regular";
-  src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
+.form-backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.pearl-jam-black,
-.pearl-jam-black * {
-  box-sizing: border-box;
-}
-.pearl-jam-black {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 212px 231px 212px 231px;
-  height: 944px;
-  position: relative;
-}
-.rectangle-329 {
+.form-container {
   background: #ffffff;
-  border-radius: 35px;
-  width: 738px;
-  height: 520px;
-  position: absolute;
-  left: 492px;
-  top: 212px;
+  border-radius: 20px;
+  padding: 40px 50px;
+  width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: pop 0.3s ease-out;
 }
-.button {
-  background: #0ea49b;
-  border-radius: 100px;
-  padding: 12px 24px 12px 24px;
+
+@keyframes pop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.header {
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 28px;
+  color: #222;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+  color: #0ea49b;
+}
+
+.tab-btn.active {
+  color: #0ea49b;
+  border-bottom-color: #0ea49b;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  position: absolute;
-  left: 615px;
-  top: 655px;
+  padding: 40px;
 }
-.text {
-  color: #000000;
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0ea49b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #fcc;
+  font-family: "Poppins-Regular", sans-serif;
+}
+
+/* Tab content */
+.tab-content {
+  min-height: 300px;
+}
+
+.tab-content h3 {
+  margin-bottom: 20px;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 20px;
+  color: #222;
+}
+
+/* Goals list */
+.goals-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.goals-list h4 {
+  margin-bottom: 15px;
+  font-family: "Poppins-Medium", sans-serif;
+  color: #333;
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.goal-item:hover {
+  background-color: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.goal-info h5 {
+  margin: 0 0 5px 0;
+  font-family: "PalanquinDark-Regular", sans-serif;
+  color: #222;
+}
+
+.goal-info p {
+  margin: 2px 0;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.no-goals {
   text-align: center;
+  padding: 40px;
+  color: #666;
+  font-family: "Poppins-Regular", sans-serif;
+}
+
+/* Selected goal info */
+.selected-goal-info {
+  background-color: #e8f5e8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6c3;
+}
+
+.selected-goal-info h4 {
+  margin: 0;
+  color: #2d5a2d;
+  font-family: "Poppins-Medium", sans-serif;
+}
+
+/* Warning text */
+.warning-text {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ffeaa7;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn-edit {
+  background-color: #0ea49b;
+  color: white;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.btn-delete {
+  background-color: #f15b64;
+  color: white;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.form-container h2 {
+  margin-bottom: 25px;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 28px;
+  color: #222;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
   font-family: "Poppins-Medium", sans-serif;
   font-size: 16px;
-  font-weight: 500;
-  position: relative;
-  width: 460px;
+  margin-bottom: 8px;
+  color: #333;
 }
-.button2 {
-  background: #bababa;
-  border-radius: 100px;
-  padding: 12px 24px 12px 24px;
+
+input {
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0ea49b;
+  box-shadow: 0 0 5px #0ea49b88;
+}
+
+.form-actions {
+  margin-top: 30px;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  position: absolute;
-  left: 885px;
-  top: 655px;
+  justify-content: flex-end;
+  gap: 15px;
 }
-.new-goal-contribution {
-  color: #000000;
-  text-align: left;
-  font-family: "PalanquinDark-Bold", sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  position: absolute;
-  left: 664px;
-  top: 230px;
-  width: 351px;
-  height: 58px;
-}
-.frame-226 {
-  border-radius: 15px;
-  border-style: solid;
-  border-color: #bababa;
-  border-width: 1px;
-  padding: 15px 0px 15px 0px;
-  width: 356px;
-  height: 209px;
-  position: absolute;
-  left: 663px;
-  top: 351px;
-  overflow: hidden;
-}
-.group-220 {
-  position: absolute;
-  inset: 0;
-}
-.frame-66 {
-  background: #ced5d7;
-  border-radius: 15px;
-  padding: 2px 6px 2px 6px;
-  width: 332px;
-  height: 40px;
-  position: absolute;
-  left: 13px;
-  top: 14px;
-}
-.e-mail {
-  color: #000000;
-  text-align: left;
+
+.btn {
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
   font-family: "Poppins-Medium", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  position: absolute;
-  left: 6px;
-  top: 2px;
+  transition: all 0.2s ease;
 }
-.icons {
-  width: 29.15px;
-  height: 29.15px;
-  position: absolute;
-  left: 302.39px;
-  top: 16.42px;
-  overflow: visible;
-  aspect-ratio: 1;
+
+.btn-primary {
+  background-color: #0ea49b;
+  color: white;
 }
-.line-5 {
-  margin-top: -1px;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 1px 0 0 0;
-  width: 355px;
-  height: 0px;
-  position: absolute;
-  left: 1px;
-  top: 73px;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
+
+.btn-cancel {
+  background-color: #bababa;
+  color: #222;
 }
-.line-6 {
-  margin-top: -1px;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 1px 0 0 0;
-  width: 355px;
-  height: 0px;
-  position: absolute;
-  left: 1px;
-  top: 143px;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
+
+.btn:hover {
+  opacity: 0.9;
 }
-.frame-239229 {
-  background: #ced5d7;
-  border-radius: 15px;
-  padding: 6px;
-  display: flex;
-  flex-direction: row;
-  gap: 92px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 334px;
-  height: 40px;
-  position: absolute;
-  left: 11px;
-  top: 87px;
+
+.btn:active {
+  transform: scale(0.97);
 }
-.due-date {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Medium", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  position: relative;
-  width: 193px;
-  height: 21px;
-}
-.icons2 {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
-.frame-239230 {
-  background: #ced5d7;
-  border-radius: 15px;
-  padding: 6px;
-  display: flex;
-  flex-direction: row;
-  gap: 92px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 334px;
-  height: 40px;
-  position: absolute;
-  left: 11px;
-  top: 155px;
-}
-.goal-name {
-  color: #000000;
-  text-align: left;
-  font-family: "Poppins-Medium", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  position: relative;
-  width: 193px;
-  height: 21px;
-}
-.icon {
-  width: 3.19%;
-  height: 1.63%;
-  position: absolute;
-  right: 95.22%;
-  left: 1.59%;
-  bottom: 100%;
-  top: -1.63%;
-  overflow: visible;
-}
-.table-top {
-  display: flex;
-  flex-direction: row;
-  gap: 75px;
-  row-gap: 5px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  align-content: center;
-  width: 341px;
-  position: absolute;
-  left: 669px;
-  top: 305px;
-}
-.create {
-  color: #475367;
-  text-align: left;
-  font-family: "PalanquinDark-Bold", sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  font-weight: 700;
-  position: relative;
-  width: 80px;
-}
-.update {
-  color: #475367;
-  text-align: left;
-  font-family: "PalanquinDark-Bold", sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  font-weight: 700;
-  position: relative;
-  width: 65px;
-}
-.delete {
-  color: #475367;
-  text-align: left;
-  font-family: "PalanquinDark-Bold", sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  font-weight: 700;
-  position: relative;
-  width: 46px;
-}
-.divider-line-horizontal {
-  flex-shrink: 0;
-  width: 340px;
-  height: 0px;
-  position: relative;
-  overflow: visible;
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
