@@ -10,7 +10,7 @@ import { TransactionHistoryComponent } from './features/transactionshistory/tran
 import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
 import { FinancesComponent } from './features/finances/finances.component';
 import { AddMovementComponent } from './features/finances/addMovement/addmovement.component';
-import { AnalyticsComponent } from './features/analytics/analytics.component';
+
 import { CategoryComponent } from './features/categories/pages/category.component';
 import { CategoryFormComponent } from './features/categories/pages/category-form/category-form.component';
 import { EditGoalFormComponent } from './features/savinggoals/pages/savinggoal-form/edit/editgoal-form.component';
@@ -69,7 +69,6 @@ export const routes: Routes = [
           { path: 'addmovement', component: AddMovementComponent }
         ]
       },
-      { path: 'analytics', component: AnalyticsComponent },
       {
         path: 'categories', component: CategoryComponent, children: [
           { path: 'new', component: CategoryFormComponent }

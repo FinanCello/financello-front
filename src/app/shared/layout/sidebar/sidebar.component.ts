@@ -105,7 +105,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
     myfinances: '/dashboard/finances',
     loadfiles: '/dashboard/load-files',
     savinggoals: '/dashboard/savinggoals',
-    analytics: '/dashboard/analytics',
     categories: '/dashboard/categories',
     logros: '/dashboard/logros',
     profile: '/dashboard/profile',

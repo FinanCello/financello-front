@@ -40,6 +40,7 @@
   color: #6b7280;
   font-size: 1rem;
   margin: 0;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 /* Header Section */
@@ -69,12 +70,14 @@
   font-weight: 700;
   color: #1f2937;
   margin: 0 0 8px 0;
+  font-family: "PalanquinDark-Bold", sans-serif;
 }
 
 .page-subtitle {
   font-size: 1rem;
   color: #6b7280;
   margin: 0;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .header-actions {
@@ -98,6 +101,7 @@
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   width: 48px;
   height: 48px;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .refresh-btn:hover {
@@ -119,6 +123,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .add-category-btn:hover {
@@ -189,12 +194,14 @@
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 4px;
+  font-family: "PalanquinDark-Bold", sans-serif;
 }
 
 .stat-label {
   font-size: 0.9rem;
   color: #6b7280;
   font-weight: 500;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 /* Categories Section */
@@ -216,12 +223,14 @@
   font-weight: 700;
   color: #1f2937;
   margin: 0 0 8px 0;
+  font-family: "PalanquinDark-Bold", sans-serif;
 }
 
 .section-subtitle {
   font-size: 1rem;
   color: #6b7280;
   margin: 0;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .categories-grid {
@@ -270,12 +279,14 @@
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 4px 0;
+  font-family: "PalanquinDark-Medium", sans-serif;
 }
 
 .category-description {
   font-size: 0.9rem;
   color: #6b7280;
   margin: 0;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .category-stats {
@@ -298,12 +309,14 @@
   font-size: 0.8rem;
   color: #6b7280;
   font-weight: 500;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .stat-item .stat-value {
   font-size: 1rem;
   font-weight: 600;
   color: #1f2937;
+  font-family: "PalanquinDark-Medium", sans-serif;
 }
 
 .category-actions {
@@ -381,12 +394,14 @@
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 4px 0;
+  font-family: "PalanquinDark-Medium", sans-serif;
 }
 
 .add-description {
   font-size: 0.9rem;
   color: #6b7280;
   margin: 0;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 /* Movements Section */
@@ -422,6 +437,7 @@
   color: #1f2937;
   cursor: pointer;
   transition: border-color 0.3s ease;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .filter-select:focus {
@@ -450,6 +466,7 @@
   font-weight: 600;
   color: #374151;
   font-size: 0.9rem;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .table-row {
@@ -469,16 +486,19 @@
   display: flex;
   align-items: center;
   font-size: 0.9rem;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .date-cell {
   color: #6b7280;
   font-weight: 500;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .description-cell {
   color: #1f2937;
   font-weight: 500;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .category-cell {
@@ -492,6 +512,7 @@
   font-size: 0.8rem;
   font-weight: 500;
   white-space: nowrap;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .type-cell {
@@ -503,6 +524,7 @@
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 500;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .type-badge.income {
@@ -518,6 +540,7 @@
 .amount-cell {
   font-weight: 600;
   justify-content: flex-end;
+  font-family: "PalanquinDark-Medium", sans-serif;
 }
 
 .amount-cell.income {
@@ -546,11 +569,13 @@
   font-weight: 600;
   color: #374151;
   margin: 0 0 8px 0;
+  font-family: "PalanquinDark-Medium", sans-serif;
 }
 
 .empty-state p {
   font-size: 0.9rem;
   margin: 0;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 /* Responsive Design */
@@ -603,30 +628,35 @@
     content: "Fecha: ";
     font-weight: 600;
     color: #374151;
+    font-family: "Poppins-Medium", sans-serif;
   }
   
   .description-cell::before {
     content: "Descripción: ";
     font-weight: 600;
     color: #374151;
+    font-family: "Poppins-Medium", sans-serif;
   }
   
   .category-cell::before {
     content: "Categoría: ";
     font-weight: 600;
     color: #374151;
+    font-family: "Poppins-Medium", sans-serif;
   }
   
   .type-cell::before {
     content: "Tipo: ";
     font-weight: 600;
     color: #374151;
+    font-family: "Poppins-Medium", sans-serif;
   }
   
   .amount-cell::before {
     content: "Monto: ";
     font-weight: 600;
     color: #374151;
+    font-family: "Poppins-Medium", sans-serif;
   }
 }
 

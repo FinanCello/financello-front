@@ -25,7 +25,7 @@ form.form-container {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   gap: 24px;
   border-radius: 35px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins-Medium', sans-serif;
   font-weight: 800;
   position: relative;
   z-index: 1000;
@@ -49,17 +49,17 @@ textarea {
   color: #333;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-family: inherit;
+  font-family: "DmSans-Regular", sans-serif;
   font-size: 14px;
   background-color: #f8f9fa;
 }
 
 button {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins-Medium', sans-serif;
 }
 
 ul, li {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'DmSans-Regular', sans-serif;
 }
 
 button[type="submit"] {
@@ -72,6 +72,7 @@ button[type="submit"] {
   padding: 15px;
   width: auto;
   min-width: 100px;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 button[type="submit"]:hover {
@@ -96,6 +97,7 @@ button[type="submit"]:hover {
   cursor: pointer;
   border-radius: 100px;
   color: black;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .actions button:hover {
@@ -109,6 +111,7 @@ button[type="submit"]:hover {
   display: flex;
   align-items: center;
   gap: 12px;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .edit-note button {
@@ -120,6 +123,7 @@ button[type="submit"]:hover {
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .edit-note button:hover {
@@ -141,6 +145,7 @@ button[type="submit"]:hover {
   cursor: pointer;
   background-color: #ffffff;
   color: #333;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .delete-list li.selected {
@@ -165,6 +170,7 @@ button[type="submit"]:hover {
   transition: background-color 0.2s;
   background-color: #ffffff;
   color: #333;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .edit-list li:hover {
@@ -198,6 +204,7 @@ button[type="submit"]:hover {
   cursor: pointer;
   transition: background-color 0.2s;
   border-radius: 100px;
+  font-family: "Poppins-Medium", sans-serif;
 }
 
 .delete-button:hover {
@@ -237,6 +244,7 @@ button[type="submit"]:hover {
   margin: 0 0 12px 0;
   color: #333;
   font-size: 16px;
+  font-family: "PalanquinDark-Medium", sans-serif;
 }
 
 .categories-list ul {
@@ -254,6 +262,7 @@ button[type="submit"]:hover {
   font-size: 14px;
   color: #333;
   transition: background-color 0.2s;
+  font-family: "DmSans-Regular", sans-serif;
 }
 
 .categories-list li:hover {

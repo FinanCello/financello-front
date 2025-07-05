@@ -219,7 +219,7 @@
 }
 .category-chart {
   color: #000000;
-  text-align: left;
+  text-align: center;
   font-family: "PalanquinDark-Bold", sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -652,5 +652,32 @@
 
 .top-63, .top-80, .main-content, .main-container, .finances-container {
   top: 39px !important;
+}
+
+.chart-container {
+  flex-shrink: 0;
+  width: 421px;
+  height: 406px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.transactions-chart {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 400px;
+  max-height: 380px;
+}
+
+.categories-chart {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 400px;
+  max-height: 380px;
 }
 
