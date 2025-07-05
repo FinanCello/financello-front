@@ -8,9 +8,14 @@ import { SettingsComponent } from './features/settings/settings.component';
 import { EditProfileComponent } from './features/profile/edit/editprofile.component';
 import { TransactionHistoryComponent } from './features/transactionshistory/transaction.history.component';
 import { MovementUploadComponent } from './features/movements/pages/movement-upload/movement-upload.component';
-import { CATEGORIES_ROUTES } from './features/categories/categories-routes';
 import { FinancesComponent } from './features/finances/finances.component';
 import { AddMovementComponent } from './features/finances/addMovement/addmovement.component';
+import { AnalyticsComponent } from './features/analytics/analytics.component';
+import { CategoryComponent } from './features/categories/pages/category.component';
+import { CategoryFormComponent } from './features/categories/pages/category-form/category-form.component';
+import { EditGoalFormComponent } from './features/savinggoals/pages/savinggoal-form/edit/editgoal-form.component';
+import { SpendingLimitFormComponent } from './features/spendingLimit/pages/setLimit/spending-limit-form.component';
+import { SpendingLimitAlertComponent } from './features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component';
 
 export const routes: Routes = [
   {
@@ -39,21 +44,37 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent, children: [
-        { path: 'edit', component: EditProfileComponent }
-      ] },
-      { path: 'settings', component: SettingsComponent },
-      { path: 'categories', children: CATEGORIES_ROUTES },
+      {
+        path: 'profile', component: ProfileComponent, children: [
+          { path: 'edit', component: EditProfileComponent }
+        ]
+      },
+      {
+        path: 'settings', component: SettingsComponent, children: [
+          { path: 'categories', component: CategoryFormComponent },
+          { path: 'spending-limit', component: SpendingLimitFormComponent },
+          { path: 'alerts', component: SpendingLimitAlertComponent }
+        ]
+      },
       { path: 'load-files', component: MovementUploadComponent },
-      { path: 'savinggoals', component: SavingGoalListComponent },
-      { path: 'savinggoals/new', component: SavingGoalFormComponent },
-      { path: 'savinggoals/edit/:id', component: SavingGoalFormComponent },
+      {
+        path: 'savinggoals', component: SavingGoalListComponent, children: [
+          { path: 'new', component: SavingGoalFormComponent },
+          { path: 'edit/:id', component: EditGoalFormComponent }
+        ]
+      },
       { path: 'transactions', component: TransactionHistoryComponent },
-      { path: 'finances', component: FinancesComponent, children: [
-        { path: 'addmovement', component: AddMovementComponent }
-      ] },
-
-      // ✅ NUEVAS RUTAS AÑADIDAS
+      {
+        path: 'finances', component: FinancesComponent, children: [
+          { path: 'addmovement', component: AddMovementComponent }
+        ]
+      },
+      { path: 'analytics', component: AnalyticsComponent },
+      {
+        path: 'categories', component: CategoryComponent, children: [
+          { path: 'new', component: CategoryFormComponent }
+        ]
+      },
       {
         path: 'historial/form',
         loadComponent: () => import('./features/historialcontribution.form/historialcontribution.form.component').then(m => m.HistorialContributionFormComponent)
@@ -65,9 +86,13 @@ export const routes: Routes = [
       {
         path: 'category/new',
         loadComponent: () => import('./features/newcategory.form/newcategory.form.component').then(m => m.NewcategoryFormComponent)
-      }
-
-      // Puedes seguir agregando más rutas hijas aquí
+      },
+      {
+        path: 'logros',
+        loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent)
+      },
+      { path: 'spending-limit', component: SpendingLimitFormComponent },
+      { path: 'alerts', component: SpendingLimitAlertComponent }
     ]
   },
   {

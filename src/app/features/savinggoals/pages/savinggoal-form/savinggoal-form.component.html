@@ -1,150 +1,192 @@
-<!-- Contenedor principal del formulario de meta de ahorro, limpio y enfocado -->
-<div class="savinggoal-form-container">
-  <div class="savinggoal-form-wrapper">
-    <div class="form-card">
-      <div class="tab-navigation">
-        <button [class.active]="activeTab === 'create'" (click)="switchTab('create')">Crear</button>
-        <button [class.active]="activeTab === 'edit'" (click)="switchTab('edit')">Editar</button>
-        <button [class.active]="activeTab === 'delete'" (click)="switchTab('delete')">Eliminar</button>
-      </div>
+<div class="form-backdrop">
+  <div class="form-container">
+    <div class="header">
+      <h2>Gestión de Metas de Ahorro</h2>
+      <button class="btn-close" (click)="goBack()">×</button>
+    </div>
+
+    <!-- Tabs de navegación -->
+    <div class="tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'create'"
+        (click)="switchTab('create')">
+        Crear Meta
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'edit'"
+        (click)="switchTab('edit')">
+        Editar Meta
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'delete'"
+        (click)="switchTab('delete')">
+        Eliminar Meta
+      </button>
+    </div>
+
+    <!-- Loading spinner -->
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Cargando...</p>
+    </div>
+
+    <!-- Error message -->
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+
+    <!-- Tab de Crear Meta -->
+    <div *ngIf="activeTab === 'create' && !loading" class="tab-content">
+      <h3>Crear Nueva Meta de Ahorro</h3>
+      <form (ngSubmit)="submitCreateForm()" #createForm="ngForm">
+        <div class="form-group">
+          <label for="create-name">Nombre de la Meta</label>
+          <input 
+            type="text" 
+            id="create-name" 
+            name="name"
+            [(ngModel)]="createGoal.name"
+            placeholder="Ej. Viaje a Japón"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="create-amount">Monto Objetivo</label>
+          <input 
+            type="number" 
+            id="create-amount" 
+            name="targetAmount"
+            [(ngModel)]="createGoal.targetAmount"
+            placeholder="$0.00"
+            min="0.01"
+            step="0.01"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="create-date">Fecha Límite</label>
+          <input 
+            type="date" 
+            id="create-date" 
+            name="dueDate"
+            [(ngModel)]="createGoal.dueDate"
+            required />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="loading">
+            Crear Meta
+          </button>
+          <button type="button" class="btn btn-cancel" (click)="goBack()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tab de Editar Meta -->
+    <div *ngIf="activeTab === 'edit' && !loading" class="tab-content">
+      <h3>Editar Meta de Ahorro</h3>
       
-      <!-- TAB: CREAR META -->
-      <div *ngIf="activeTab === 'create'" class="tab-content">
-        <form (ngSubmit)="submitCreateForm()" #createForm="ngForm" class="goal-form">
-          <h2>Nueva Meta de Ahorro</h2>
-          
-          <div *ngIf="loading" class="loading-message">Cargando...</div>
-          <div *ngIf="error" class="error-message">{{ error }}</div>
-          
-          <div class="form-group">
-            <label for="name">Nombre de la meta</label>
-            <input type="text" id="name" [(ngModel)]="createGoal.name" name="name" placeholder="Ej: Viaje a Europa" required />
+      <!-- Lista de metas para seleccionar -->
+      <div *ngIf="!selectedGoal" class="goals-list">
+        <h4>Selecciona una meta para editar:</h4>
+        <div *ngFor="let goal of savingGoals" class="goal-item" (click)="selectGoalToEdit(goal)">
+          <div class="goal-info">
+            <h5>{{ goal.name }}</h5>
+            <p>Objetivo: ${{ goal.targetAmount | number:'1.2-2' }}</p>
+            <p>Fecha límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}</p>
           </div>
-          
-          <div class="form-group">
-            <label for="targetAmount">Monto objetivo</label>
-            <input type="number" id="targetAmount" [(ngModel)]="createGoal.targetAmount" name="targetAmount" placeholder="0.00" required />
+          <div class="goal-actions">
+            <button class="btn btn-edit">Editar</button>
           </div>
-          
+        </div>
+        <div *ngIf="savingGoals.length === 0" class="no-goals">
+          <p>No hay metas de ahorro disponibles para editar.</p>
+        </div>
+      </div>
+
+      <!-- Formulario de edición -->
+      <div *ngIf="selectedGoal" class="edit-form">
+        <div class="selected-goal-info">
+          <h4>Editando: {{ selectedGoal.name }}</h4>
+        </div>
+        
+        <form (ngSubmit)="submitEditForm()" #editForm="ngForm">
           <div class="form-group">
-            <label for="dueDate">Fecha límite</label>
-            <input type="date" id="dueDate" [(ngModel)]="createGoal.dueDate" name="dueDate" required />
+            <label for="edit-name">Nombre de la Meta</label>
+            <input 
+              type="text" 
+              id="edit-name" 
+              name="name"
+              [(ngModel)]="editGoal.name"
+              placeholder="Ej. Viaje a Japón"
+              required />
           </div>
-          
+
+          <div class="form-group">
+            <label for="edit-amount">Monto Objetivo</label>
+            <input 
+              type="number" 
+              id="edit-amount" 
+              name="targetAmount"
+              [(ngModel)]="editGoal.targetAmount"
+              placeholder="$0.00"
+              min="0.01"
+              step="0.01"
+              required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-date">Fecha Límite</label>
+            <input 
+              type="date" 
+              id="edit-date" 
+              name="dueDate"
+              [(ngModel)]="editGoal.dueDate"
+              required />
+          </div>
+
           <div class="form-actions">
-            <button type="submit" class="btn-primary">Crear</button>
-            <button type="button" class="btn-secondary" (click)="goBack()">Cancelar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading">
+              Guardar Cambios
+            </button>
+            <button type="button" class="btn btn-cancel" (click)="cancelEdit()">
+              Cancelar
+            </button>
           </div>
         </form>
       </div>
+    </div>
+
+    <!-- Tab de Eliminar Meta -->
+    <div *ngIf="activeTab === 'delete' && !loading" class="tab-content">
+      <h3>Eliminar Meta de Ahorro</h3>
+      <p class="warning-text">⚠️ Esta acción no se puede deshacer.</p>
       
-      <!-- TAB: EDITAR META -->
-      <div *ngIf="activeTab === 'edit'" class="tab-content">
-        <!-- Lista de metas para seleccionar -->
-        <div *ngIf="!selectedGoal" class="goals-list">
-          <h2 class="edit-goal-title">Editar Meta de Ahorro</h2>
-          
-          <div *ngIf="loading" class="loading-message">Cargando...</div>
-          <div *ngIf="error" class="error-message">{{ error }}</div>
-          
-          <div *ngIf="savingGoals.length === 0 && !loading" class="empty-list-message">
-            No tienes metas de ahorro creadas. Dirígete a la pestaña "Crear" para agregar una nueva meta.
+      <div class="goals-list">
+        <div *ngFor="let goal of savingGoals" class="goal-item">
+          <div class="goal-info">
+            <h5>{{ goal.name }}</h5>
+            <p>Objetivo: ${{ goal.targetAmount | number:'1.2-2' }}</p>
+            <p>Fecha límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}</p>
           </div>
-          
-          <ul *ngIf="savingGoals.length > 0">
-            <li *ngFor="let goal of savingGoals" (click)="selectGoalToEdit(goal)" class="goal-list-item">
-              <div class="goal-info">
-                <div class="goal-list-name">{{ goal.name }}</div>
-                <div class="goal-list-amount">
-                  <span class="current-amount">S/. {{ goal.currentAmount }}</span>
-                  <span class="target-amount">/ S/. {{ goal.targetAmount }}</span>
-                </div>
-              </div>
-              <div class="goal-action-hint">
-                <i class="hint-icon">✎</i>
-              </div>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- Formulario de edición -->
-        <div *ngIf="selectedGoal" class="edit-form">
-          <form (ngSubmit)="submitEditForm()" #editForm="ngForm" class="goal-form">
-            <div class="form-header">
-              <h2>Editar Meta de Ahorro</h2>
-              <div class="edit-meta">
-                <span>Estás editando: <strong>{{ selectedGoal.name }}</strong></span>
-              </div>
-            </div>
-            
-            <div *ngIf="loading" class="loading-message">Cargando...</div>
-            <div *ngIf="error" class="error-message">{{ error }}</div>
-            
-            <div class="form-group">
-              <label for="editName">Nombre de la meta</label>
-              <input type="text" id="editName" [(ngModel)]="editGoal.name" name="name" placeholder="Ej: Viaje a Europa" required disabled />
-            </div>
-            
-            <div class="form-group">
-              <label for="editTargetAmount">Monto objetivo</label>
-              <input type="number" id="editTargetAmount" [(ngModel)]="editGoal.targetAmount" name="targetAmount" placeholder="0.00" required />
-            </div>
-            
-            <div class="form-group">
-              <label for="editDueDate">Fecha límite</label>
-              <input type="date" id="editDueDate" [(ngModel)]="editGoal.dueDate" name="dueDate" required />
-            </div>
-            
-            <div class="current-info">
-              <div class="current-amount-info">
-                <label>Monto actual:</label>
-                <div class="current-value">S/. {{ selectedGoal.currentAmount }}</div>
-              </div>
-              <div class="progress-indicator">
-                <div class="progress-bar">
-                  <div class="progress-fill" [style.width.%]="(selectedGoal.currentAmount / selectedGoal.targetAmount) * 100"></div>
-                </div>
-                <div class="progress-percentage">{{ (selectedGoal.currentAmount / selectedGoal.targetAmount) * 100 | number:'1.0-0' }}%</div>
-              </div>
-            </div>
-            
-            <div class="form-actions">
-              <button type="submit" class="btn-primary">Actualizar</button>
-              <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancelar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      
-      <!-- TAB: ELIMINAR META -->
-      <div *ngIf="activeTab === 'delete'" class="tab-content">
-        <div class="delete-section">
-          <h2>Eliminar Meta de Ahorro</h2>
-          
-          <div *ngIf="loading" class="loading-message">Cargando...</div>
-          <div *ngIf="error" class="error-message">{{ error }}</div>
-          
-          <div *ngIf="savingGoals.length === 0 && !loading" class="empty-list-message">
-            No tienes metas de ahorro creadas. Dirígete a la pestaña "Crear" para agregar una nueva meta.
+          <div class="goal-actions">
+            <button 
+              class="btn btn-delete" 
+              (click)="confirmDelete(goal)"
+              [disabled]="loading">
+              Eliminar
+            </button>
           </div>
-          
-          <ul *ngIf="savingGoals.length > 0" class="delete-list">
-            <li *ngFor="let goal of savingGoals" class="goal-list-item">
-              <div class="goal-info">
-                <div class="goal-list-name">{{ goal.name }}</div>
-                <div class="goal-list-amount">
-                  <span class="current-amount">S/. {{ goal.currentAmount }}</span>
-                  <span class="target-amount">/ S/. {{ goal.targetAmount }}</span>
-                </div>
-              </div>
-              <button type="button" class="delete-button" (click)="confirmDelete(goal)">
-                <img src="assets/icons/x.png" alt="Eliminar" class="delete-icon" />
-              </button>
-            </li>
-          </ul>
+        </div>
+        <div *ngIf="savingGoals.length === 0" class="no-goals">
+          <p>No hay metas de ahorro disponibles para eliminar.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-

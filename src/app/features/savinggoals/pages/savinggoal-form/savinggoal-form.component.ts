@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
 import { AddSavingGoalRequest, AddSavingGoalResponse } from '../../../../models/SavingGoal';
-import { SnackbarService } from '../../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-savinggoal-form',
@@ -124,12 +124,16 @@ export class SavingGoalFormComponent implements OnInit {
 
   // Cancelar la edición
   cancelEdit() {
+    console.log('Cancelando edición...');
     this.selectedGoal = null;
     this.editGoal = {
       name: '',
       targetAmount: 0,
       dueDate: ''
     };
+    // Regresar a la página anterior
+    console.log('Regresando a la página anterior desde cancelEdit');
+    window.history.back();
   }
 
   // Enviar formulario de creación
@@ -144,7 +148,7 @@ export class SavingGoalFormComponent implements OnInit {
           'La meta de ahorro se ha creado exitosamente',
           'assets/icons/success.png'
         );
-        this.router.navigate(['/dashboard/savinggoals']);
+        window.history.back();
       },
       error: (err) => {
         console.error('Error creating goal:', err);
@@ -178,7 +182,7 @@ export class SavingGoalFormComponent implements OnInit {
           'La meta de ahorro se ha actualizado exitosamente',
           'assets/icons/success.png'
         );
-        this.router.navigate(['/dashboard/savinggoals']);
+        window.history.back();
       },
       error: (err) => {
         console.error('Error updating goal:', err);
@@ -256,6 +260,8 @@ export class SavingGoalFormComponent implements OnInit {
 
   // Regresar a la página anterior
   goBack() {
-    this.router.navigate(['/dashboard/savinggoals']);
+    console.log('Regresando a la página anterior');
+    // Usar history.back() para regresar a la página anterior
+    window.history.back();
   }
 }

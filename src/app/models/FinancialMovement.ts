@@ -23,3 +23,12 @@ export interface TransactionResponse {
   movementName: string;
   categoryName: string;
 }
+
+export interface RecentMovementResponse {
+  movementId: number;
+  amount: number;
+  date: string; // ISO string, se puede convertir a Date en el frontend si lo necesitas
+  categoryName: string;
+  categoryDescription: string;
+  movementType: 'INCOME' | 'OUTCOME';
+}

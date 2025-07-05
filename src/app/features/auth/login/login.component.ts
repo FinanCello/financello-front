@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormsModule } 
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/Auth.service';
 import { LoginRequest } from '../../../models/User';
-import { SnackbarService } from '../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,8 @@ export class LoginComponent {
       this.snackbarService.showSnackbar(
         'Data are Missing',
         'Complete all the required fields',
-        'icons/warning.png'
+        'assets/icons/warning.png',
+        true
       );
       return;
     }
@@ -56,13 +57,14 @@ export class LoginComponent {
           email: response.email,
           firstName: response.firstName,
           lastName: response.lastName,
-          userType: response.userType
+          userType: response.userType,
         }));
 
         this.snackbarService.showSnackbar(
           'Successful Record',
           'The user was created correctly',
-          'icons/success.png'
+          'assets/icons/success.png',
+          true
         );
 
         this.router.navigate(['/dashboard']);
@@ -75,19 +77,22 @@ export class LoginComponent {
           this.snackbarService.showSnackbar(
             'Access Denied',
             'Incorrect password',
-            'icons/error.png'
+            'assets/icons/error.png',
+            true
           );
         } else if (backendMsg.includes('User not found')) {
           this.snackbarService.showSnackbar(
             'Access Denied',
             'User does not exist',
-            'icons/error.png'
+            'assets/icons/error.png',
+            true
           );
         } else {
           this.snackbarService.showSnackbar(
             'Access Denied',
             backendMsg,
-            'icons/error.png'
+            'assets/icons/error.png',
+            true
           );
         }
       }

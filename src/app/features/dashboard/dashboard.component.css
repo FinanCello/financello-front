@@ -30,6 +30,10 @@
   font-family: "DmSans-Regular";
   src: url("/assets/fonts/DMSans-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "PlusJakartaSans-SemiBold";
+  src: url("/assets/fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+}
 /* Estilo general del layout */
 .dashboard-layout {
   display: flex;
@@ -72,9 +76,8 @@
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  background-color: #f5f5f5;
+  background-color: #DCDCD1;
 }
-
 
 .us-12-acceso-r-pido-a-datos-clave-desde-el-panel-principal,
 .us-12-acceso-r-pido-a-datos-clave-desde-el-panel-principal * {

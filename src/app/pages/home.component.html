@@ -1,164 +1,182 @@
-<div class="content">
-  <div class="weolcome-buttons">
-    <div class="bienvenido-nuevamente-john-doe">
-      ¡Bienvenido nuevamente {{userInfo.firstName}} {{userInfo.lastName}}!
-    </div>
-  </div>
-  <div class="rectangle-318"></div>
-  <div class="frame-62">
-    <div class="frame-59">
-      <div class="save-goal">
-        <div class="_1-er-plan">1er Plan</div>
-        <div class="_100-00">$100.00</div>
-        <div class="cumplea-os-javier">Cumpleaños javier</div>
+<div class="home-container">
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <div class="welcome-inline-col">
+      <div class="welcome-inline">
+        <h1 class="welcome-title">¡Bienvenido de vuelta</h1>
+        <span class="welcome-title">{{ userInfo.firstName }} {{ userInfo.lastName }}!</span>
       </div>
-      <img class="icons" src="/assets/icons/plus-circle.svg" />
+      <div class="welcome-subtitle">Aquí tienes un resumen de tus finanzas</div>
     </div>
-    <div class="frame-60">
-      <div class="save-goal">
-        <div class="_2-er-plan">2er Plan</div>
-        <div class="_500-00">$500.00</div>
-        <div class="viaje-roma">Viaje Roma</div>
+    <div class="current-date">{{ currentDate | date:'EEEE, d MMMM yyyy' }}</div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <!-- Loading State for Stats -->
+    <div class="loading-state" *ngIf="isLoadingStats">
+      <div class="loading-spinner"></div>
+      <p>Cargando estadísticas...</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stat-card income-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <img src="assets/icons/hand-arrow-down.svg" alt="Ingresos" width="32" height="32" />
       </div>
-      <img class="icons2" src="/assets/icons/plus-circle.svg" />
+      <div class="stat-value">{{ financialStats.totalIncome | currency }}</div>
+      <div class="stat-label">Ingresos del mes</div>
+      <div class="stat-change positive">Total</div>
     </div>
-    <div class="frame-61">
-      <div class="save-goal2">
-        <div class="_3-er-plan">3er Plan</div>
-        <div class="_9-457-00">$9,457.00</div>
-        <div class="comprar-carro">Comprar Carro</div>
+
+    <div class="stat-card expense-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <img src="assets/icons/hand-arrow-up.svg" alt="Gastos" width="32" height="32" />
       </div>
-      <img class="icons3" src="/assets/icons/plus-circle.svg" />
+      <div class="stat-value">{{ financialStats.totalExpenses | currency }}</div>
+      <div class="stat-label">Gastos del mes</div>
+      <div class="stat-change negative">Total</div>
     </div>
-  </div>
-  <div class="rectangle-319"></div>
-  <div class="rectangle-324"></div>
-  <div class="_12">12%</div>
-  <div class="categor-a-terciaria">
-    Categoría
-    <br />
-    Terciaria
-  </div>
-  <div class="rectangle-323"></div>
-  <div class="_20">20%</div>
-  <div class="categor-a-secundaria">
-    Categoría
-    <br />
-    Secundaria
-  </div>
-  <div class="ellipse-91"></div>
-  <div class="ellipse-103"></div>
-  <div class="ellipse-93"></div>
-  <div class="ellipse-92"></div>
-  <div class="_15">15%</div>
-  <div class="_202">20%</div>
-  <div class="_122">12%</div>
-  <div class="ellipse-94"></div>
-  <div class="ellipse-95"></div>
-  <div class="ellipse-96"></div>
-  <div class="s-3-925">S/. 3,925</div>
-  <div class="rectangle-320"></div>
-  <div class="rectangle-321"></div>
-  <div class="contact-details">
-    <img class="ellipse-3" src="/assets/icons/user.svg" />
-    <div class="frame-16">
-      <div class="contact-name">Esther Howard</div>
-      <div class="e-mail">Fecha de pago: 6/19/14</div>
-    </div>
-    <div class="text">$396.84</div>
-  </div>
-  <div class="contact-details2">
-    <img class="ellipse-3" src="/assets/icons/user.svg" />
-    <div class="frame-16">
-      <div class="contact-name">Cody Fisher</div>
-      <div class="e-mail">Fecha de pago: 9/23/16</div>
-    </div>
-    <div class="text">$779.58</div>
-  </div>
-  <div class="contact-details3">
-    <img class="ellipse-3" src="/assets/icons/user.svg" />
-    <div class="frame-16">
-      <div class="contact-name">Ronald Richards</div>
-      <div class="e-mail">Fecha de pago: 2/11/12</div>
-    </div>
-    <div class="text">$328.85</div>
-  </div>
-  <div class="movimientos">Movimientos:</div>
-  <div class="rectangle-322"></div>
-  <div class="categor-a-primaria">
-    Categoría
-    <br />
-    Primaria
-  </div>
-  <div class="_152">15%</div>
-  <div class="rectangle-325"></div>
-  <div class="_24th">
-    <span>
-      <span class="_24th-span">24</span>
-      <span class="_24th-span2">th</span>
-    </span>
-  </div>
-  <div class="mayo">mayo</div>
-  <div class="monto-500-00">Monto: $500.00</div>
-  <div class="recordatorio-cumple-mam">Recordatorio: Cumple Mamá</div>
-  <div class="contacto-de-empleados">Contacto de empleados</div>
-  <div class="frame-58">
-    <div class="expenses">
-      <div class="gastos-este-mes">
-        <span>
-          <span class="gastos-este-mes-span">
-            Gastos
-            <br />
-          </span>
-          <span class="gastos-este-mes-span2">Este mes</span>
-        </span>
+
+    <div class="stat-card balance-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <img src="assets/icons/wallet.svg" alt="Saldo actual" width="32" height="32" />
       </div>
-      <img class="icons4" src="/assets/icons/minus.svg" />
-      <div class="group-3">
-        <div class="_135-800">$135.800</div>
+      <div class="stat-value" [class.negative-balance]="financialStats.currentBalance < 0">
+        {{ formatBalance(financialStats.currentBalance) }}
+      </div>
+      <div class="stat-label">Balance actual</div>
+      <div class="stat-change" [class]="financialStats.currentBalance >= 0 ? 'balance' : 'negative'">
+        {{ financialStats.currentBalance >= 0 ? 'Positivo' : 'Negativo' }}
       </div>
     </div>
-    <div class="income">
-      <div class="group-32">
-        <div class="ingresos-este-mes">
-          <span>
-            <span class="ingresos-este-mes-span">
-              Ingresos
-              <br />
-            </span>
-            <span class="ingresos-este-mes-span2">Este mes</span>
-          </span>
+
+    <div class="stat-card goals-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <img src="assets/icons/tip-jar.svg" alt="Ahorros" width="32" height="32" />
+      </div>
+      <div class="stat-value">{{ financialStats.totalSavings | currency }}</div>
+      <div class="stat-label">Ahorros totales</div>
+      <div class="stat-change savings">Total</div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="main-grid">
+    <!-- Transactions Section -->
+    <div class="transactions-section">
+      <div class="section-header">
+        <h2>Transacciones Recientes</h2>
+        <button class="view-all-btn" routerLink="/dashboard/transactions">Ver todas</button>
+      </div>
+      
+      <!-- Loading State -->
+      <div class="loading-state" *ngIf="isLoading">
+        <div class="loading-spinner"></div>
+        <p>Cargando transacciones...</p>
+      </div>
+
+      <!-- Transactions List -->
+      <div class="transactions-list" *ngIf="!isLoading">
+        <div class="transaction-item" *ngFor="let transaction of recentTransactions">
+          <div class="transaction-icon" [class]="transaction.type">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="transaction-details">
+            <div class="transaction-title">{{ transaction.category }}</div>
+            <div class="transaction-category">{{ transaction.title }}</div>
+            <div class="transaction-date">{{ formatDate(transaction.date) }}</div>
+          </div>
+          <div class="transaction-amount" [class]="transaction.type">
+            {{ transaction.type === 'income' ? '+' : '-' }}{{ transaction.amount | currency }}
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="recentTransactions.length === 0">
+          <p>No hay transacciones recientes</p>
         </div>
       </div>
-      <img class="icons5" src="/assets/icons/plus.svg" />
-      <div class="_6-000">$6.000</div>
     </div>
-    <div class="wallet-balance">
-      <img class="icons6" src="/assets/icons/wallet.svg" />
-      <div class="saldo-actual-de-billetera">Saldo actual de billetera</div>
-      <div class="_142-450-00">$142,450.00</div>
-    </div>
-  </div>
-  <div class="button">
-    <div class="text2">Ver todos los reportes</div>
-  </div>
-  <div class="last-transaction">
-    <div class="ltima-transacci-n">Última transacción</div>
-    <div class="_620-00">-$620.00</div>
-    <div class="cena-con-clientes">Cena con clientes</div>
-    <div class="upcoming-bill">
-      <div class="frame-48">
-        <div class="ultima">Ultima</div>
-        <div class="acualizaci-n">acualización</div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <h2>Acciones Rápidas</h2>
+      <div class="actions-grid">
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>Agregar Movimiento</span>
+        </button>
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>Nueva Categoría</span>
+        </button>
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>Meta de Ahorro</span>
+        </button>
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>Ver Reportes</span>
+        </button>
       </div>
-      <div class="group-6">
-        <img class="icons7" src="/assets/icons/calendar.svg" />
-        <div class="_27">27</div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="goals-section">
+      <h2>Metas de Ahorro</h2>
+      
+      <!-- Loading State -->
+      <div class="loading-state" *ngIf="isLoadingGoals">
+        <div class="loading-spinner"></div>
+        <p>Cargando metas de ahorro...</p>
+      </div>
+
+      <!-- Goals List -->
+      <div class="goals-list" *ngIf="!isLoadingGoals">
+        <!-- Display actual goals -->
+        <div class="goal-item" *ngFor="let goal of recentGoals">
+          <div class="goal-title">{{ goal.title }}</div>
+          <div class="goal-description">{{ goal.description }}</div>
+          <div class="goal-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="goal.progress"></div>
+            </div>
+            <div class="progress-text">{{ goal.progress }}% completado</div>
+          </div>
+          <div class="goal-amount">
+            <span class="current-amount">{{ goal.currentAmount | currency }}</span>
+            <span class="target-amount">de {{ goal.targetAmount | currency }}</span>
+          </div>
+        </div>
+
+        <!-- Display placeholder cards when no goals -->
+        <div class="goal-item placeholder" *ngFor="let item of [1,2,3,4]; let i = index" 
+             [style.display]="recentGoals.length > 0 ? 'none' : 'block'">
+          <div class="goal-title">-</div>
+          <div class="goal-description">-</div>
+          <div class="goal-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">0% completado</div>
+          </div>
+          <div class="goal-amount">
+            <span class="current-amount">$0</span>
+            <span class="target-amount">de $0</span>
+          </div>
+        </div>
       </div>
     </div>
-    <img class="line-1" src="/assets/icons/plus.svg" />
-  </div>
-  <div class="button2">
-    <div class="text3">Agregar transacción</div>
   </div>
 </div>

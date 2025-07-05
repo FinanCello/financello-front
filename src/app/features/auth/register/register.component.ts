@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/Auth.service';
 import { RegisterRequest, UserType } from '../../../models/User';
-import { SnackbarService } from '../../../shared/snackbar/snackbar.service';
+import { SnackbarService } from '../../../shared/layout/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-register',
