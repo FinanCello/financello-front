@@ -18,7 +18,6 @@ import { SpendingLimitFormComponent } from './features/spendingLimit/pages/setLi
 import { SpendingLimitAlertComponent } from './features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component';
 
 export const routes: Routes = [
-
   {
     path: '',
     redirectTo: '/dashboard',
@@ -45,36 +44,59 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent, children:[
-        { path: 'edit', component: EditProfileComponent }
-      ] },
-      { path: 'settings', component: SettingsComponent, children: [
-        { path: 'categories', component: CategoryFormComponent },
-        { path: 'spending-limit', component: SpendingLimitFormComponent },
-        { path: 'alerts', component: SpendingLimitAlertComponent }
-      ] },
+      {
+        path: 'profile', component: ProfileComponent, children: [
+          { path: 'edit', component: EditProfileComponent }
+        ]
+      },
+      {
+        path: 'settings', component: SettingsComponent, children: [
+          { path: 'categories', component: CategoryFormComponent },
+          { path: 'spending-limit', component: SpendingLimitFormComponent },
+          { path: 'alerts', component: SpendingLimitAlertComponent }
+        ]
+      },
       { path: 'load-files', component: MovementUploadComponent },
-      { path: 'savinggoals', component: SavingGoalListComponent, children: [
-        { path: 'new', component: SavingGoalFormComponent },
-        { path: 'edit/:id', component: EditGoalFormComponent }
-      ] },
+      {
+        path: 'savinggoals', component: SavingGoalListComponent, children: [
+          { path: 'new', component: SavingGoalFormComponent },
+          { path: 'edit/:id', component: EditGoalFormComponent }
+        ]
+      },
       { path: 'transactions', component: TransactionHistoryComponent },
-      { path: 'finances', component: FinancesComponent, children: [
-        { path: 'addmovement', component: AddMovementComponent }
-      ] },
+      {
+        path: 'finances', component: FinancesComponent, children: [
+          { path: 'addmovement', component: AddMovementComponent }
+        ]
+      },
       { path: 'analytics', component: AnalyticsComponent },
-      { path: 'categories', component: CategoryComponent, children:[
-        { path: 'new', component: CategoryFormComponent }
-      ] },
-      { path: 'logros', loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent) },
+      {
+        path: 'categories', component: CategoryComponent, children: [
+          { path: 'new', component: CategoryFormComponent }
+        ]
+      },
+      {
+        path: 'historial/form',
+        loadComponent: () => import('./features/historialcontribution.form/historialcontribution.form.component').then(m => m.HistorialContributionFormComponent)
+      },
+      {
+        path: 'historial/list',
+        loadComponent: () => import('./features/historialcontribution.list/historialcontribution.list.component').then(m => m.HistorialContributionListComponent)
+      },
+      {
+        path: 'category/new',
+        loadComponent: () => import('./features/newcategory.form/newcategory.form.component').then(m => m.NewcategoryFormComponent)
+      },
+      {
+        path: 'logros',
+        loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent)
+      },
       { path: 'spending-limit', component: SpendingLimitFormComponent },
-      { path: 'alerts', component: SpendingLimitAlertComponent },
+      { path: 'alerts', component: SpendingLimitAlertComponent }
     ]
   },
   {
     path: '**',
     redirectTo: '/dashboard'
-  },
-
-      { path: 'logros', loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent) }
+  }
 ];
