@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../services/Auth.service';
 import { FinancialMovementService } from '../services/FinancialMovement.service';
 import { SavingGoalService } from '../services/SavingGoal.service';
@@ -64,7 +64,8 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private financialMovementService: FinancialMovementService,
     private savingGoalService: SavingGoalService,
-    private goalContributionService: GoalContributionService
+    private goalContributionService: GoalContributionService,
+    private router: Router
   ) {
     const userStr = localStorage.getItem('user');
     if (userStr) {
@@ -276,5 +277,22 @@ export class HomeComponent implements OnInit {
         this.isLoadingGoals = false;
       }
     });
+  }
+
+  // Métodos para acciones rápidas
+  goToAddMovement() {
+    this.router.navigate(['/dashboard/finances/addmovement']);
+  }
+
+  goToAddCategory() {
+    this.router.navigate(['/dashboard/settings/categories']);
+  }
+
+  goToAddGoal() {
+    this.router.navigate(['/dashboard/savinggoals/new']);
+  }
+
+  goToReports() {
+    this.router.navigate(['/dashboard/transactions']);
   }
 }

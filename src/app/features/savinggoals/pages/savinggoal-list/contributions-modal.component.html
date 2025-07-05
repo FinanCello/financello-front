@@ -59,24 +59,28 @@
         </div>
 
         <div class="contributions-list" *ngIf="contributions.length > 0">
-          <h4>Lista de Contribuciones</h4>
-          <div class="contribution-item" *ngFor="let contribution of contributions">
+          <h4>Lista de Contribuciones ({{ contributions.length }})</h4>
+          <div class="contribution-item" *ngFor="let contribution of contributions; let i = index">
             <div class="contribution-info">
+              <span class="contribution-number">#{{ i + 1 }}</span>
               <span class="amount">{{ contribution.amount | currency:'USD' }}</span>
               <span class="date">{{ contribution.date | date:'dd/MM/yyyy' }}</span>
             </div>
             <button 
               class="delete-btn" 
-              (click)="deleteContribution(contribution.id)"
-              [disabled]="deletingContribution === contribution.id">
-              {{ deletingContribution === contribution.id ? 'Eliminando...' : 'Eliminar' }}
+              (click)="deleteContribution(contribution.contributionId)"
+              [disabled]="deletingContribution === contribution.contributionId">
+              {{ deletingContribution === contribution.contributionId ? 'Eliminando...' : 'Eliminar' }}
             </button>
           </div>
         </div>
 
-        <div class="no-contributions" *ngIf="contributions.length === 0">
+        <div class="no-contributions" *ngIf="!loading && contributions.length === 0">
           <p>No hay contribuciones registradas para esta meta.</p>
+          <p class="debug-info">Meta ID: {{ goal?.id }} | Meta: {{ goal?.name }}</p>
         </div>
+
+
 
         <div class="modal-actions">
           <button 

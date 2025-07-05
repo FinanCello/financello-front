@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SavingGoalService } from '../../../../services/SavingGoal.service';
-import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
+import { AddSavingGoalResponse, UserGoalsWithContributionsResponse } from '../../../../models/SavingGoal';
 import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
 import { EditGoalFormComponent } from '../savinggoal-form/edit/editgoal-form.component';
 import { ContributionsModalComponent } from './contributions-modal.component';
 import { AchievementEventsService } from '../../../../services/achievement-events.service';
+import { DataRefreshService } from '../../../../services/data-refresh.service';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-savinggoal-list',
@@ -22,36 +24,69 @@ import { animate, style, transition, trigger } from '@angular/animations';
     ])
   ])]
 })
-export class SavingGoalListComponent implements OnInit {
+export class SavingGoalListComponent implements OnInit, OnDestroy {
   savingGoals: AddSavingGoalResponse[] = [];
+  goalsWithContributions: UserGoalsWithContributionsResponse[] = [];
   selectedGoal: AddSavingGoalResponse | null = null;
   selectedGoalForContributions: AddSavingGoalResponse | null = null;
   showContributionsModal = false;
   loading = false;
   error: string | null = null;
+  private refreshSubscription: Subscription | null = null;
 
   constructor(
     private savingGoalService: SavingGoalService,
     private router: Router,
     private snackbarService: SnackbarService,
-    private achievementEventsService: AchievementEventsService
+    private achievementEventsService: AchievementEventsService,
+    private dataRefreshService: DataRefreshService
   ) {}
 
   ngOnInit() {
     this.fetchSavingGoals();
+    this.setupRefreshListener();
+  }
+
+  ngOnDestroy() {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
   }
 
   fetchSavingGoals() {
     this.loading = true;
     this.error = null;
     
-    this.savingGoalService.listSavingGoals().subscribe({
-      next: (goals) => {
-        this.savingGoals = goals;
+    // Obtener el userId del localStorage
+    const userStr = localStorage.getItem('user');
+    if (!userStr) {
+      this.error = 'Usuario no autenticado';
+      this.loading = false;
+      return;
+    }
+    
+    const user = JSON.parse(userStr);
+    const userId = user.id;
+    
+    // Cargar metas con contribuciones
+    this.savingGoalService.getUserGoalsWithContributions(userId).subscribe({
+      next: (goalsWithContributions) => {
+        this.goalsWithContributions = goalsWithContributions;
+        
+        // Convertir a AddSavingGoalResponse para mantener compatibilidad
+        this.savingGoals = goalsWithContributions.map(g => ({
+          id: g.goalId,
+          name: g.goalName,
+          targetAmount: g.targetAmount,
+          currentAmount: g.currentAmount,
+          dueDate: g.dueDate,
+          userId: userId
+        }));
+        
         this.loading = false;
         
         // Check if any goals were completed and trigger achievement refresh
-        const completedGoals = goals.filter(goal => goal.currentAmount >= goal.targetAmount);
+        const completedGoals = goalsWithContributions.filter(goal => goal.currentAmount >= goal.targetAmount);
         if (completedGoals.length > 0) {
           this.achievementEventsService.triggerGoalCompletionRefresh();
         }
@@ -102,7 +137,9 @@ export class SavingGoalListComponent implements OnInit {
             successMessage,
             'assets/icons/success.png'
           );
-          this.fetchSavingGoals();
+          
+          // Trigger data refresh
+          this.dataRefreshService.refreshSavingGoals();
           
           // Trigger achievement refresh
           this.achievementEventsService.triggerGoalCompletionRefresh();
@@ -153,8 +190,8 @@ export class SavingGoalListComponent implements OnInit {
 
   onCloseEditForm() {
     this.selectedGoal = null;
-    // Recargar las metas para mostrar los cambios
-    this.fetchSavingGoals();
+    // Trigger data refresh
+    this.dataRefreshService.refreshSavingGoals();
   }
 
   onViewContributions(goal: AddSavingGoalResponse) {
@@ -168,10 +205,31 @@ export class SavingGoalListComponent implements OnInit {
   }
 
   onContributionsDeleted() {
-    // Recargar las metas para actualizar los montos
-    this.fetchSavingGoals();
+    // Trigger data refresh
+    this.dataRefreshService.refreshContributions();
     
     // Trigger achievement refresh
     this.achievementEventsService.triggerContributionRefresh();
+  }
+
+  getLastContribution(goalId: number): any {
+    const goalWithContributions = this.goalsWithContributions.find(g => g.goalId === goalId);
+    if (goalWithContributions && goalWithContributions.contributions && goalWithContributions.contributions.length > 0) {
+      // Ordenar por fecha y obtener la más reciente
+      const sortedContributions = goalWithContributions.contributions.sort((a, b) => 
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+      return sortedContributions[0];
+    }
+    return null;
+  }
+
+  private setupRefreshListener() {
+    this.refreshSubscription = this.dataRefreshService.getRefreshObservable().subscribe(event => {
+      if (event && (event.type === 'savingGoals' || event.type === 'contributions' || event.type === 'all')) {
+        console.log('SavingGoalListComponent: Refreshing data due to', event.type);
+        this.fetchSavingGoals();
+      }
+    });
   }
 }

@@ -20,9 +20,7 @@ export class SettingsComponent {
     this.router.navigate(['spending-limit'], { relativeTo: this.route });
   }
 
-  goToSpendingLimitAlerts() {
-    this.router.navigate(['alerts'], { relativeTo: this.route });
-  }
+
 
 
 }

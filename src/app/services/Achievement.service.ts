@@ -18,6 +18,12 @@ export class AchievementService {
   }
 
   getUserAchievements(userId: number): Observable<UserAchievementDTO[]> {
+    // Try different endpoint patterns that might exist in the backend
+    return this.http.get<UserAchievementDTO[]>(`${this.baseUrl}/achievements/user/${userId}`);
+  }
+
+  // Alternative method to get user achievements with different endpoint
+  getUserAchievementsAlternative(userId: number): Observable<UserAchievementDTO[]> {
     return this.http.get<UserAchievementDTO[]>(`${this.baseUrl}/users/${userId}/achievements`);
   }
 

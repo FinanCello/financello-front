@@ -222,8 +222,20 @@
 
 .contribution-info {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.contribution-number {
+  background: #0ea49b;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 24px;
+  text-align: center;
 }
 
 .amount {
@@ -266,6 +278,28 @@
   padding: 40px;
   color: #666;
   font-family: "Poppins-Regular", sans-serif;
+}
+
+.debug-info {
+  font-size: 12px;
+  color: #999;
+  margin-top: 10px;
+  font-family: "Poppins-Regular", sans-serif;
+}
+
+.warning-message {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+.warning-message p {
+  margin: 0;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  color: #856404;
 }
 
 .modal-actions {

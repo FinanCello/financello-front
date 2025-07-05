@@ -35,10 +35,24 @@
           Fecha Límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}
         </div>
         <div class="ltima-contribuci-n-300">
-          Última contribución: {{ goal.userId | currency:'USD' }}
+          Última contribución: 
+          <span *ngIf="getLastContribution(goal.id); else noContributions">
+            {{ getLastContribution(goal.id).amount | currency:'USD' }} 
+          </span>
+          <ng-template #noContributions>
+            <span class="no-contributions-text">Sin contribuciones</span>
+          </ng-template>
         </div>
         <div class="frame-239239">
-          <div class="in-progress">IN PROGRESS</div>
+          <div class="goal-status" 
+               [ngClass]="{
+                 'status-created': goal.currentAmount === 0,
+                 'status-in-progress': goal.currentAmount > 0 && goal.currentAmount < goal.targetAmount,
+                 'status-done': goal.currentAmount >= goal.targetAmount
+               }">
+            {{ goal.currentAmount === 0 ? 'CREATED' : 
+               goal.currentAmount >= goal.targetAmount ? 'DONE' : 'IN PROGRESS' }}
+          </div>
         </div>
       </div>
     </div>
