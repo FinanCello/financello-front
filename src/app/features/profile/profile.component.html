@@ -84,11 +84,12 @@
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-icon">
-              <img src="assets/icons/calendar.svg" alt="Fecha" class="stat-icon-img">
+              <img src="assets/icons/calendar.svg" alt="Última transacción" class="stat-icon-img">
             </div>
             <div class="stat-content">
-              <div class="stat-value">{{ daysSinceRegistration }}</div>
-              <div class="stat-label">Días en la plataforma</div>
+              <div class="stat-value" *ngIf="lastMovementDate">{{ lastMovementDate | date:'dd/MM/yyyy HH:mm' }}</div>
+              <div class="stat-value" *ngIf="!lastMovementDate">Sin movimientos aún</div>
+              <div class="stat-label">Última transacción realizada</div>
             </div>
           </div>
 

@@ -6,6 +6,7 @@ import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
 import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
 import { EditGoalFormComponent } from '../savinggoal-form/edit/editgoal-form.component';
 import { ContributionsModalComponent } from './contributions-modal.component';
+import { AchievementEventsService } from '../../../../services/achievement-events.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -32,7 +33,8 @@ export class SavingGoalListComponent implements OnInit {
   constructor(
     private savingGoalService: SavingGoalService,
     private router: Router,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private achievementEventsService: AchievementEventsService
   ) {}
 
   ngOnInit() {
@@ -47,6 +49,12 @@ export class SavingGoalListComponent implements OnInit {
       next: (goals) => {
         this.savingGoals = goals;
         this.loading = false;
+        
+        // Check if any goals were completed and trigger achievement refresh
+        const completedGoals = goals.filter(goal => goal.currentAmount >= goal.targetAmount);
+        if (completedGoals.length > 0) {
+          this.achievementEventsService.triggerGoalCompletionRefresh();
+        }
       },
       error: (err) => {
         console.error('Error fetching saving goals:', err);
@@ -84,7 +92,7 @@ export class SavingGoalListComponent implements OnInit {
       this.loading = true;
       
       this.savingGoalService.deleteSavingGoal(goal.id).subscribe({
-        next: (response) => {
+        next: () => {
           const successMessage = hasContributions 
             ? 'Meta eliminada junto con todas sus contribuciones'
             : 'La meta de ahorro se ha eliminado exitosamente';
@@ -95,6 +103,9 @@ export class SavingGoalListComponent implements OnInit {
             'assets/icons/success.png'
           );
           this.fetchSavingGoals();
+          
+          // Trigger achievement refresh
+          this.achievementEventsService.triggerGoalCompletionRefresh();
         },
         error: (err) => {
           console.error('Error completo:', err);
@@ -159,5 +170,8 @@ export class SavingGoalListComponent implements OnInit {
   onContributionsDeleted() {
     // Recargar las metas para actualizar los montos
     this.fetchSavingGoals();
+    
+    // Trigger achievement refresh
+    this.achievementEventsService.triggerContributionRefresh();
   }
 }

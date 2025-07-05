@@ -5,6 +5,8 @@ import { AuthService } from '../../services/Auth.service';
 import { UserProfileResponse, UpdateProfileRequest } from '../../models/User';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
+import { FinancialMovementService } from '../../services/FinancialMovement.service';
+import { TransactionResponse } from '../../models/FinancialMovement';
 
 @Component({
   selector: 'app-profile',
@@ -27,11 +29,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // NUEVO: variables para los valores calculados
   daysSinceRegistration: number = 0;
   transactionCount: number = 0;
+  lastMovementDate: string | null = null;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private movementService: FinancialMovementService
   ) {
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
@@ -40,12 +44,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       password: ['']
     });
 
-    console.log(this.profileForm.value);
     // Obtener información del usuario actual del localStorage
     const userStr = localStorage.getItem('user');
     if (userStr) {
       this.userInfo = JSON.parse(userStr);
-      console.log(this.userInfo);
     }
 
     // Suscribirse a los cambios de ruta
@@ -59,13 +61,31 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadUserProfile();
     this.checkCurrentRoute();
-    // Calcular los valores una sola vez
     this.daysSinceRegistration = this.getDaysSinceRegistration();
-    this.transactionCount = this.getTransactionCount();
+    this.loadMovementStats();
+  }
+
+  loadMovementStats() {
+    if (!this.userInfo?.id) return;
+    this.movementService.getMovements(this.userInfo.id).subscribe({
+      next: (movements: TransactionResponse[]) => {
+        this.transactionCount = movements.length;
+        if (movements.length > 0) {
+          // Buscar la fecha más reciente
+          const last = movements.reduce((a, b) => new Date(a.date) > new Date(b.date) ? a : b);
+          this.lastMovementDate = last.date;
+        } else {
+          this.lastMovementDate = null;
+        }
+      },
+      error: () => {
+        this.transactionCount = 0;
+        this.lastMovementDate = null;
+      }
+    });
   }
 
   checkCurrentRoute() {
-    // Verificar si estamos en la ruta de edición
     const currentUrl = this.router.url;
     this.isEditing = currentUrl.includes('/edit');
   }
@@ -80,7 +100,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           firstName: profile.firstName,
           lastName: profile.lastName,
           email: profile.email,
-          password: '' // No cargamos la contraseña
+          password: ''
         });
         this.isLoading = false;
       },
@@ -104,7 +124,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         password: this.profileForm.get('password')?.value
       };
 
-      // Solo incluir password si se proporcionó
       const password = this.profileForm.get('password')?.value;
       if (password) {
         updateRequest.password = password;
@@ -114,8 +133,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         next: (updatedProfile: UserProfileResponse) => {
           this.successMessage = 'Perfil actualizado correctamente';
           this.isLoading = false;
-          
-          // Actualizar información en localStorage
           const userStr = localStorage.getItem('user');
           if (userStr) {
             const user = JSON.parse(userStr);
@@ -125,8 +142,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
             localStorage.setItem('user', JSON.stringify(user));
             this.userInfo = user;
           }
-
-          // Limpiar campo de contraseña
           this.profileForm.patchValue({ password: '' });
         },
         error: (error) => {
@@ -143,7 +158,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.errorMessage = '';
   }
 
-  // Nuevos métodos para el UI
   navigateToEdit() {
     this.router.navigate(['/dashboard/profile/edit']);
   }
@@ -156,7 +170,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   getDaysSinceRegistration(): number {
-    // Simular días desde el registro (puedes ajustar según tu lógica)
     const registrationDate = new Date('2024-01-01'); // Fecha de ejemplo
     const today = new Date();
     const diffTime = Math.abs(today.getTime() - registrationDate.getTime());
@@ -164,13 +177,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return diffDays;
   }
 
-  getTransactionCount(): number {
-    // Simular número de transacciones (puedes conectar con tu servicio real)
-    return Math.floor(Math.random() * 50) + 10; // Número aleatorio entre 10-60
-  }
-
   changePassword() {
-    // Navegar a una página de cambio de contraseña o mostrar modal
     this.router.navigate(['/dashboard/profile/change-password']);
   }
 

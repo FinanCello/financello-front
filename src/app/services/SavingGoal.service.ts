@@ -64,4 +64,17 @@ export class SavingGoalService {
       { params }
     );
   }
+
+  getGoalsByUser(userId: number): Observable<AddSavingGoalResponse[]> {
+    return this.http.get<AddSavingGoalResponse[]>(
+      `${this.apiUrl}/user`,
+      { params: { userId } }
+    );
+  }
+
+  getUserGoalsWithContributions(userId: number): Observable<AddSavingGoalResponse[]> {
+    return this.http.get<AddSavingGoalResponse[]>(
+      `${this.apiUrl}/user/${userId}/with-contributions`
+    );
+  }
 }

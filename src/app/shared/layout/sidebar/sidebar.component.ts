@@ -13,7 +13,6 @@ export class SidebarComponent {
   userInfo: any;
   activeSection: string = 'home';
   
-  // Responsive sidebar state
   isCollapsed: boolean = false;
   isMobileOpen: boolean = false;
 
@@ -21,10 +20,12 @@ export class SidebarComponent {
 
   sectionRoutes: { [key: string]: string } = {
     home: '/dashboard',
-    loadfiles: '/dashboard/load-files',
     myfinances: '/dashboard/finances',
+    loadfiles: '/dashboard/load-files',
     savinggoals: '/dashboard/savinggoals',
     analytics: '/dashboard/analytics',
+    categories: '/dashboard/categories',
+    logros: '/dashboard/logros',
     profile: '/dashboard/profile',
     settings: '/dashboard/settings'
   };

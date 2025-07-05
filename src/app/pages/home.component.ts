@@ -178,8 +178,6 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error loading recent transactions:', error);
-        // Cargar datos de ejemplo en caso de error
-        this.loadSampleTransactions();
         this.isLoading = false;
       }
     });
@@ -191,39 +189,6 @@ export class HomeComponent implements OnInit {
       movementName.toLowerCase().includes(keyword)
     );
     return hasIncomeKeyword ? 'income' : 'expense';
-  }
-
-  private loadSampleTransactions(): void {
-    this.recentTransactions = [
-      {
-        title: 'Salario',
-        category: 'Ingresos',
-        amount: 2500,
-        type: 'income',
-        date: new Date('2024-01-15')
-      },
-      {
-        title: 'Supermercado',
-        category: 'Alimentación',
-        amount: 180,
-        type: 'expense',
-        date: new Date('2024-01-14')
-      },
-      {
-        title: 'Gasolina',
-        category: 'Transporte',
-        amount: 45,
-        type: 'expense',
-        date: new Date('2024-01-13')
-      },
-      {
-        title: 'Freelance',
-        category: 'Ingresos',
-        amount: 800,
-        type: 'income',
-        date: new Date('2024-01-12')
-      }
-    ];
   }
 
   formatDate(date: Date): string {

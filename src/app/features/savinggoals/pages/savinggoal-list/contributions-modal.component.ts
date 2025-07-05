@@ -1,13 +1,16 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { GoalContributionService } from '../../../../services/GoalContribution.service';
 import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
 import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
+import { AchievementEventsService } from '../../../../services/achievement-events.service';
+import { RegisterGoalContributionRequest } from '../../../../models/GoalContribution';
 
 @Component({
   selector: 'app-contributions-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contributions-modal.component.html',
   styleUrls: ['./contributions-modal.component.css']
 })
@@ -23,9 +26,18 @@ export class ContributionsModalComponent implements OnInit {
   deletingContribution: number | null = null;
   deletingAll: boolean = false;
 
+  // New contribution form
+  showAddForm = false;
+  newContribution = {
+    amount: 0,
+    date: new Date().toISOString().split('T')[0]
+  };
+  addingContribution = false;
+
   constructor(
     private goalContributionService: GoalContributionService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private achievementEventsService: AchievementEventsService
   ) {}
 
   ngOnInit() {
@@ -81,6 +93,58 @@ export class ContributionsModalComponent implements OnInit {
     });
   }
 
+  addContribution() {
+    if (!this.goal || this.newContribution.amount <= 0) {
+      this.snackbarService.showSnackbar(
+        'Error',
+        'Por favor ingresa un monto válido',
+        'assets/icons/error.png'
+      );
+      return;
+    }
+
+    this.addingContribution = true;
+    const request: RegisterGoalContributionRequest = {
+      goalId: this.goal.id,
+      amount: this.newContribution.amount,
+      date: this.newContribution.date
+    };
+
+    this.goalContributionService.registerContribution(request).subscribe({
+      next: () => {
+        this.snackbarService.showSnackbar(
+          'Contribución agregada',
+          'La contribución se ha agregado exitosamente',
+          'assets/icons/success.png'
+        );
+        
+        // Reset form
+        this.newContribution = {
+          amount: 0,
+          date: new Date().toISOString().split('T')[0]
+        };
+        this.showAddForm = false;
+        
+        // Reload contributions
+        this.loadContributions();
+        
+        // Trigger achievement refresh
+        this.achievementEventsService.triggerContributionRefresh();
+        
+        this.addingContribution = false;
+      },
+      error: (err) => {
+        console.error('Error adding contribution:', err);
+        this.snackbarService.showSnackbar(
+          'Error',
+          'No se pudo agregar la contribución',
+          'assets/icons/error.png'
+        );
+        this.addingContribution = false;
+      }
+    });
+  }
+
   deleteContribution(contributionId: number) {
     if (confirm('¿Estás seguro de que deseas eliminar esta contribución?')) {
       this.deletingContribution = contributionId;
@@ -94,6 +158,9 @@ export class ContributionsModalComponent implements OnInit {
           );
           this.loadContributions(); // Recargar la lista
           this.contributionsDeleted.emit();
+          
+          // Trigger achievement refresh
+          this.achievementEventsService.triggerContributionRefresh();
         },
         error: (err) => {
           console.error('Error deleting contribution:', err);
@@ -129,6 +196,10 @@ export class ContributionsModalComponent implements OnInit {
         );
         this.loadContributions(); // Recargar la lista
         this.contributionsDeleted.emit();
+        
+        // Trigger achievement refresh
+        this.achievementEventsService.triggerContributionRefresh();
+        
         this.deletingAll = false;
       }).catch(err => {
         console.error('Error deleting all contributions:', err);
@@ -140,6 +211,10 @@ export class ContributionsModalComponent implements OnInit {
         this.deletingAll = false;
       });
     }
+  }
+
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
   }
 
   close() {
