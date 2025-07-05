@@ -89,6 +89,7 @@
   border-radius: 6px;
 }
 
+
 .view-all:hover {
   background-color: rgba(0, 0, 0, 0.05); /* efecto hover sutil */
 }
@@ -652,3 +653,4 @@
 .top-63, .top-80, .main-content, .main-container, .finances-container {
   top: 39px !important;
 }
+

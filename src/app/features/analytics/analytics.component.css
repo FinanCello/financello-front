@@ -14,13 +14,34 @@
   top: 63px;
   width: 100%;
 }
-.weolcome-buttons {
+.welcome-buttons {
   width: 1121px;
   height: 53px;
   position: absolute;
   left: 36px;
   top: 17px;
 }
+.view-all{
+  padding: 10px 0px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* <-- Apunta a interactividad */
+  transition: background-color 0.2s ease;
+  border-radius: 6px;
+}
+.view-all:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* efecto hover sutil */
+}
+
+.view-all:hover .icons {
+  transform: translateX(3px); /* desplazamiento suave a la derecha */
+  transition: transform 0.2s ease;
+  opacity: 0.9;
+}
+s
 .panorama-financiero {
   color: #000000;
   text-align: left;

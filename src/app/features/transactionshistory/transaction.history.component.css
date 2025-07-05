@@ -60,6 +60,30 @@
   border-color: #d1d5db;
 }
 
+.export-btn {
+  background: #0ea49b;
+  color: white;
+  border: 1px solid #0ea49b;
+}
+
+.export-btn:hover {
+  background: #0b6862;
+  border-color: #0b6862;
+  color: white;
+}
+
+.test-data-btn {
+  background: #0ea49b;
+  color: white;
+  border: 1px solid #0ea49b;
+}
+
+.test-data-btn:hover {
+  background: #0b6862;
+  border-color: #0b6862;
+  color: white;
+}
+
 .action-btn img {
   width: 16px;
   height: 16px;
@@ -460,7 +484,7 @@
   .transaction-history-container {
     left: 200px;
   }
-  
+
   .table-row {
     grid-template-columns: 2fr 1fr 1fr 1fr 50px;
     gap: 12px;
@@ -474,59 +498,59 @@
     top: 0;
     padding: 12px;
   }
-  
+
   .main-content {
     height: calc(100vh - 160px);
   }
-  
+
   .table-body {
     max-height: calc(100vh - 360px);
   }
-  
+
   .header-content {
     flex-direction: column;
     gap: 16px;
     align-items: stretch;
   }
-  
+
   .header-actions {
     justify-content: center;
   }
-  
+
   .table-row {
     grid-template-columns: 1fr;
     gap: 6px;
     padding: 16px;
   }
-  
+
   .col-details {
     order: 1;
   }
-  
+
   .col-category {
     order: 2;
   }
-  
+
   .col-amount {
     order: 3;
     justify-content: flex-start;
   }
-  
+
   .col-date {
     order: 4;
   }
-  
+
   .col-actions {
     order: 5;
     justify-content: flex-end;
   }
-  
+
   .pagination-section {
     flex-direction: column;
     gap: 16px;
     align-items: stretch;
   }
-  
+
   .pagination-controls {
     justify-content: center;
   }
@@ -536,19 +560,19 @@
   .transaction-history-container {
     padding: 8px;
   }
-  
+
   .page-title {
     font-size: 20px;
   }
-  
+
   .card-title {
     font-size: 16px;
   }
-  
+
   .transaction-name {
     font-size: 13px;
   }
-  
+
   .amount-chip {
     font-size: 13px;
     padding: 4px 8px;
