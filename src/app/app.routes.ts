@@ -13,7 +13,7 @@ import { AddMovementComponent } from './features/finances/addMovement/addmovemen
 import { AnalyticsComponent } from './features/analytics/analytics.component';
 import { CategoryComponent } from './features/categories/pages/category.component';
 import { CategoryFormComponent } from './features/categories/pages/category-form/category-form.component';
-
+import { EditGoalFormComponent } from './features/savinggoals/pages/savinggoal-form/edit/editgoal-form.component';
 
 export const routes: Routes = [
   
@@ -46,11 +46,13 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent, children:[
         { path: 'edit', component: EditProfileComponent }
       ] },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'settings', component: SettingsComponent, children: [
+        { path: 'categories', component: CategoryFormComponent }
+      ] },
       { path: 'load-files', component: MovementUploadComponent },
       { path: 'savinggoals', component: SavingGoalListComponent, children: [
         { path: 'new', component: SavingGoalFormComponent },
-        { path: 'edit/:id', component: SavingGoalFormComponent }
+        { path: 'edit/:id', component: EditGoalFormComponent }
       ] },
       { path: 'transactions', component: TransactionHistoryComponent },
       { path: 'finances', component: FinancesComponent, children: [

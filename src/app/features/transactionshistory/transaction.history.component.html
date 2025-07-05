@@ -1,197 +1,161 @@
-<div class="content">
-    <div class="weolcome-buttons">
-      <div class="my-transactions">My Transactions</div>
-    </div>
-    <div class="all-tickets">
-      <div class="cards-default">
-        <div class="sheet"></div>
-      </div>
-      <div class="all-transactions">All Transactions</div>
-      <div class="sort2">Sort</div>
-      <img class="icon-sort" src="icon-sort0.svg" />
-      <div class="filter2">Filter</div>
-      <img class="icon-filter" src="icon-filter0.svg" />
-      <div class="table-top">
-        <div class="transactions-details">Transactions Details</div>
-        <div class="category-name">Category name</div>
-        <div class="amount">Amount</div>
-        <div class="date">Date</div>
-        <img class="divider-line-horizontal" src="divider-line-horizontal0.svg" />
-      </div>
-      <div class="frame-239184">
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet2"></div>
-            <div class="title">$16.13</div>
+<div class="transaction-history-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="header-content">
+      <h1 class="page-title">My Transactions</h1>
+      <div class="header-actions">
+        <div class="dropdown-container">
+          <button class="action-btn sort-btn" (click)="toggleSortMenu()">
+            <img src="/assets/icons/dots-vertical.svg" alt="Sort" />
+            <span>{{ getSortButtonText() }}</span>
+          </button>
+          <div class="dropdown-menu sort-menu" *ngIf="showSortMenu">
+            <button class="dropdown-item" (click)="sortByAmount('asc')">
+              <span>Low to High</span>
+            </button>
+            <button class="dropdown-item" (click)="sortByAmount('desc')">
+              <span>High to Low</span>
+            </button>
+            <button class="dropdown-item" (click)="sortByAmount(null)">
+              <span>Clear Sort</span>
+            </button>
           </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer"></div>
-          <div class="customer-name">Tourism</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">
-            First invoice for a new client acquired in April
-          </div>
-          <img class="icons" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal2"
-            src="divider-line-horizontal1.svg"
-          />
-          <img
-            class="divider-line-horizontal3"
-            src="divider-line-horizontal2.svg"
-          />
         </div>
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical2" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet2"></div>
-            <div class="title">$65.06</div>
+
+        <div class="dropdown-container">
+          <button class="action-btn filter-btn" (click)="toggleFilterMenu()">
+            <img src="/assets/icons/dots-vertical.svg" alt="Filter" />
+            <span>{{ getFilterButtonText() }}</span>
+          </button>
+          <div class="dropdown-menu filter-menu" *ngIf="showFilterMenu">
+            <div class="filter-section">
+              <h4>Transaction Type</h4>
+              <button class="dropdown-item" (click)="filterByType('all')">
+                <span>All</span>
+              </button>
+              <button class="dropdown-item" (click)="filterByType('income')">
+                <span>Income</span>
+              </button>
+              <button class="dropdown-item" (click)="filterByType('expense')">
+                <span>Expense</span>
+              </button>
+            </div>
+            <div class="filter-section">
+              <h4>Category</h4>
+              <button class="dropdown-item" (click)="filterByCategory('all')">
+                <span>All Categories</span>
+              </button>
+              <button class="dropdown-item" *ngFor="let category of availableCategories" (click)="filterByCategory(category)">
+                <span>{{ category }}</span>
+              </button>
+            </div>
+            <div class="filter-section">
+              <button class="dropdown-item clear-filters" (click)="clearFilters()">
+                <span>Clear All Filters</span>
+              </button>
+            </div>
           </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer"></div>
-          <div class="customer-name">Art</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">
-            Invoice for the delivery of office furniture
-          </div>
-          <img class="icons2" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal4"
-            src="divider-line-horizontal3.svg"
-          />
-          <img
-            class="divider-line-horizontal5"
-            src="divider-line-horizontal4.svg"
-          />
         </div>
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical3" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet3"></div>
-            <div class="title">$93.93</div>
-          </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer">Goal: Organize a remote event</div>
-          <div class="customer-name">Workshop</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">
-            Invoice for a critical repair in an urgent situation
-          </div>
-          <img class="icons3" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal6"
-            src="divider-line-horizontal5.svg"
-          />
-          <img
-            class="divider-line-horizontal7"
-            src="divider-line-horizontal6.svg"
-          />
-        </div>
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical4" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet2"></div>
-            <div class="title">$23.96</div>
-          </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer"></div>
-          <div class="customer-name">Other</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">
-            Invoice for a semi-annual software subscription
-          </div>
-          <img class="icons4" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal8"
-            src="divider-line-horizontal7.svg"
-          />
-          <img
-            class="divider-line-horizontal9"
-            src="divider-line-horizontal8.svg"
-          />
-        </div>
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical5" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet3"></div>
-            <div class="title">$29.39</div>
-          </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer">Goal: Find work</div>
-          <div class="customer-name">Finance</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">Delivery of Office Supplies</div>
-          <img class="icons5" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal10"
-            src="divider-line-horizontal9.svg"
-          />
-          <img
-            class="divider-line-horizontal11"
-            src="divider-line-horizontal10.svg"
-          />
-        </div>
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical6" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet3"></div>
-            <div class="title">$2.42</div>
-          </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer">Goal: Track &amp; Measure Speaker</div>
-          <div class="customer-name">Education</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">Equipment Rental for Training</div>
-          <img class="icons6" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal12"
-            src="divider-line-horizontal11.svg"
-          />
-          <img
-            class="divider-line-horizontal13"
-            src="divider-line-horizontal12.svg"
-          />
-        </div>
-        <div class="table-ticket-priority-normal">
-          <img class="icon-more-vertical7" src="/assets/icons/dots-vertical.svg" />
-          <div class="chip-priority-normal">
-            <div class="sheet3"></div>
-            <div class="title">$59.80</div>
-          </div>
-          <div class="time-label">5:00 PM</div>
-          <div class="date-label">May 25, 2019</div>
-          <div class="date-customer">Goal: Build my network</div>
-          <div class="customer-name">Tech</div>
-          <div class="ticket-information">Updated 2 days ago</div>
-          <div class="ticket-name">IT Maintenance Subscription</div>
-          <img class="icons7" src="/assets/icons/piggy-bank.png" />
-          <img
-            class="divider-line-horizontal14"
-            src="divider-line-horizontal13.svg"
-          />
-          <img
-            class="divider-line-horizontal15"
-            src="divider-line-horizontal14.svg"
-          />
-        </div>
-      </div>
-      <div class="rows-per-page">
-        <div class="rows-per-page2">Rows per page:</div>
-        <div class="_8">8</div>
-        <img class="icon-dropdown" src="icon-dropdown0.svg" />
-      </div>
-      <div class="pagination">
-        <div class="_1-8-of-1240">1-8 of 1240</div>
-        <img class="icon-arrow-left" src="icon-arrow-left0.svg" />
-        <img class="icon-arrow-right" src="icon-arrow-right0.svg" />
       </div>
     </div>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="transactions-card">
+      <div class="card-header">
+        <h2 class="card-title">All Transactions</h2>
+      </div>
+
+      <!-- Table Header -->
+      <div class="table-header">
+        <div class="table-row header-row">
+          <div class="col-details">Transaction Details</div>
+          <div class="col-category">Category</div>
+          <div class="col-amount">Amount</div>
+          <div class="col-date">Date</div>
+          <div class="col-actions"></div>
+        </div>
+      </div>
+
+      <!-- Table Body -->
+      <div class="table-body">
+        <!-- Loading State -->
+        <div class="loading-state" *ngIf="isLoading">
+          <div class="loading-spinner"></div>
+          <p>Cargando transacciones...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-state" *ngIf="errorMessage && !isLoading">
+          <p class="error-message">{{ errorMessage }}</p>
+          <button class="retry-btn" (click)="loadTransactions()">Reintentar</button>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="!isLoading && !errorMessage && allTransactions.length === 0">
+          <p>No hay transacciones para mostrar</p>
+        </div>
+
+        <!-- Transactions List -->
+        <div class="table-row transaction-row" *ngFor="let transaction of displayedTransactions; trackBy: trackByTransaction">
+          <div class="col-details">
+            <div class="transaction-info">
+              <img class="transaction-icon" [src]="transaction.icon || '/assets/icons/piggy-bank.png'" [alt]="transaction.category" />
+              <div class="transaction-details">
+                <div class="transaction-name">{{ transaction.name }}</div>
+                <div class="transaction-meta">{{ transaction.meta }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-category">
+            <div class="category-info">
+              <div class="category-name">{{ transaction.category }}</div>
+              <div class="category-goal" *ngIf="transaction.goal">{{ transaction.goal }}</div>
+            </div>
+          </div>
+          <div class="col-amount">
+            <div class="amount-chip" [class.income]="transaction.type === 'income'" [class.expense]="transaction.type === 'expense'">
+              {{ transaction.amount | currency }}
+            </div>
+          </div>
+          <div class="col-date">
+            <div class="date-info">
+              <div class="date-main">{{ transaction.date | date:'MMM dd, yyyy' }}</div>
+              <div class="date-time">{{ transaction.time }}</div>
+            </div>
+          </div>
+          <div class="col-actions">
+            <button class="action-menu-btn">
+              <img src="/assets/icons/dots-vertical.svg" alt="More" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-section">
+        <div class="pagination-info">
+          <span>Rows per page:</span>
+          <select class="rows-select" (change)="onPageSizeChange($event)" [value]="pageSize">
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="32">32</option>
+          </select>
+        </div>
+        <div class="pagination-controls">
+          <span class="pagination-text">{{ getPaginationInfo() }}</span>
+          <div class="pagination-buttons">
+            <button class="pagination-btn" [disabled]="currentPage === 1" (click)="goToPreviousPage()">
+              <img src="/assets/icons/caret-left.png" alt="Previous" />
+            </button>
+            <button class="pagination-btn" [disabled]="currentPage >= totalPages" (click)="goToNextPage()">
+              <img src="/assets/icons/caret-right.png" alt="Next" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   

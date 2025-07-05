@@ -13,6 +13,10 @@ export class SidebarComponent {
   userInfo: any;
   activeSection: string = 'home';
   
+  // Responsive sidebar state
+  isCollapsed: boolean = false;
+  isMobileOpen: boolean = false;
+
   constructor(private router: Router) {}
 
   sectionRoutes: { [key: string]: string } = {
@@ -33,6 +37,16 @@ export class SidebarComponent {
     } else {
         this.router.navigate(['/auth/login']);
     }
+    // Cierra el sidebar en móvil al navegar
+    this.isMobileOpen = false;
+  }
+
+  toggleSidebar(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  getAdmin(): void {
+    alert('Funcionalidad para obtener cuenta admin próximamente.');
   }
 
   ngAfterViewInit(): void {

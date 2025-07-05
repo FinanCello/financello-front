@@ -15,8 +15,10 @@ import { AuthService } from '../../../services/Auth.service';
 export class EditProfileComponent implements OnInit {
   profileForm!: FormGroup;
   isLoading = false;
+  isSubmitting = false;
   successMessage = '';
   errorMessage = '';
+  showPassword = false;
 
   userInfo: any;
   showMenu = false;
@@ -39,7 +41,7 @@ export class EditProfileComponent implements OnInit {
   
   onSave(): void {
     if (this.profileForm.valid) {
-      this.isLoading = true;
+      this.isSubmitting = true;
       this.successMessage = '';
       this.errorMessage = '';
       
@@ -59,7 +61,7 @@ export class EditProfileComponent implements OnInit {
       this.authService.updateUserProfile(this.userInfo.id, updateRequest).subscribe({
         next: (updatedProfile: UserProfileResponse) => {
           this.successMessage = 'Perfil actualizado correctamente';
-          this.isLoading = false;
+          this.isSubmitting = false;
   
           const userStr = localStorage.getItem('user');
           if (userStr) {
@@ -68,18 +70,49 @@ export class EditProfileComponent implements OnInit {
             user.lastName = updatedProfile.lastName;
             user.email = updatedProfile.email;
             localStorage.setItem('user', JSON.stringify(user));
+            this.userInfo = user;
           }
   
           this.profileForm.patchValue({ password: '' });
 
-          this.router.navigate(['dashboard/profile']);
+          // Redirigir después de un breve delay para mostrar el mensaje de éxito
+          setTimeout(() => {
+            this.router.navigate(['/dashboard/profile']);
+          }, 1500);
         },
         error: (error) => {
           this.errorMessage = error.error?.message || 'Error al actualizar el perfil';
-          this.isLoading = false;
+          this.isSubmitting = false;
         }
       });
     }
   }
-  
+
+  // Nuevos métodos para el UI
+  goBack(): void {
+    this.router.navigate(['/dashboard/profile']);
+  }
+
+  getInitials(): string {
+    if (!this.userInfo?.firstName || !this.userInfo?.lastName) {
+      return 'U';
+    }
+    return `${this.userInfo.firstName.charAt(0)}${this.userInfo.lastName.charAt(0)}`.toUpperCase();
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  resetForm(): void {
+    this.profileForm.patchValue({
+      firstName: this.userInfo.firstName || '',
+      lastName: this.userInfo.lastName || '',
+      email: this.userInfo.email || '',
+      password: ''
+    });
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.showPassword = false;
+  }
 }

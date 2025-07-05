@@ -30,4 +30,14 @@ export class GoalContributionService {
     const params = new HttpParams().set('date', date);
     return this.http.get<any[]>(`${this.apiUrl}/history/date`, { params });
   }
+
+  getContributionsByGoalId(goalId: number): Observable<any[]> {
+    console.log('GoalContributionService - Obteniendo contribuciones para goalId:', goalId);
+    console.log('URL:', `${this.apiUrl}/goal/${goalId}`);
+    return this.http.get<any[]>(`${this.apiUrl}/goal/${goalId}`);
+  }
+
+  deleteContribution(contributionId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${contributionId}`);
+  }
 }
