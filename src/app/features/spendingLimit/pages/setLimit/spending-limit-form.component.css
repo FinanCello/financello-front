@@ -1,105 +1,174 @@
-body {
-  background-color: #E8E8DC;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-}
-/* Título centrado */
-.limit-title {
-  font-size: 30px;
-  font-weight: bold;
-  color: #0B6862;
-  border: 2px solid #0B6862;
-  border-radius: 12px;
-  padding: 10px 20px;
-  background-color: transparent;
-  display: inline-block;
-  margin: 30px auto 20px;
-  text-align: center;
+/* ----------------------------------------------------------
+   CAJA EXTERNA
+----------------------------------------------------------- */
+.nirvana-sappy,
+.nirvana-sappy * {
+  box-sizing: border-box;
 }
 
-/* Centrar el título */
-.title-container {
-  text-align: center;
-}
-
-/* Cuadro del formulario */
-.form-container {
-  background-color: #7AAAAA;
-  padding: 40px;
-  border-radius: 20px;
-  width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 20px;
+.nirvana-sappy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #DCDCD1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-label {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #fff;
+/* ----------------------------------------------------------
+   CONTENEDOR BLANCO
+----------------------------------------------------------- */
+.rectangle-329 {
+  position: relative;
+  background: #ffffff;
+  border-radius: 35px;
+  width: 738px;
+  height: 520px;
+  overflow: hidden;
+  padding: 24px;
 }
 
-input,
-select {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-/* Eliminar flechas del input number */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 30px;
-}
-
-button {
-  background-color: #002B2B;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 12px;
-  border: none;
-  font-weight: bold;
+/* ----------------------------------------------------------
+   ICONO CERRAR
+----------------------------------------------------------- */
+.icons {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
   cursor: pointer;
 }
 
-button[type="button"] {
-  background-color: #e0e0e0;
+/* ----------------------------------------------------------
+   TÍTULO
+----------------------------------------------------------- */
+.new-movement {
+  color: #000;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ----------------------------------------------------------
+   FORMULARIO (CREAR / ACTUALIZAR)
+----------------------------------------------------------- */
+.frame-226 {
+  border-radius: 15px;
+  border: 1px solid #bababa;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 32px;
+  background: #fff;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 90%;
+  max-width: 225px;
+}
+
+.label {
+  color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Select básico */
+.rectangle-331 {
+  background: #bababa;
+  border-radius: 15px;
+  opacity: 0.2;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* Input numérico */
+.rectangle-333 {
+  background-color: rgba(9, 44, 54, 0.2);
+  border: none;
+  border-radius: 15px;
+  width: 225px;
+  height: 40px;
+  padding: 0 8px;
   color: #000;
 }
 
-.limit-alert-box {
-  background-color: #C9F6EF;
-  border-radius: 35px;
-  padding: 24px;
-  margin-top: 30px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  color: #002B2B;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+/* ----------------------------------------------------------
+   BOTÓN ACEPTAR
+----------------------------------------------------------- */
+.button {
+  background: #0ea49b;
+  border-radius: 100px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  cursor: pointer;
 }
 
-.alert-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.text {
+  color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button.accept-btn {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   BOTONES ELIMINAR / LISTAR
+----------------------------------------------------------- */
+.action-buttons {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+}
+
+.button.small-btn {
+  width: 140px;
+  padding: 10px 0;
+  position: static;
+  margin: 0;
 }
