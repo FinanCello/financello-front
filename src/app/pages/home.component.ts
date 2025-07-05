@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../services/Auth.service';
 import { FinancialMovementService } from '../services/FinancialMovement.service';
 import { SavingGoalService } from '../services/SavingGoal.service';
@@ -64,7 +64,8 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private financialMovementService: FinancialMovementService,
     private savingGoalService: SavingGoalService,
-    private goalContributionService: GoalContributionService
+    private goalContributionService: GoalContributionService,
+    private router: Router
   ) {
     const userStr = localStorage.getItem('user');
     if (userStr) {
@@ -178,8 +179,6 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error loading recent transactions:', error);
-        // Cargar datos de ejemplo en caso de error
-        this.loadSampleTransactions();
         this.isLoading = false;
       }
     });
@@ -191,39 +190,6 @@ export class HomeComponent implements OnInit {
       movementName.toLowerCase().includes(keyword)
     );
     return hasIncomeKeyword ? 'income' : 'expense';
-  }
-
-  private loadSampleTransactions(): void {
-    this.recentTransactions = [
-      {
-        title: 'Salario',
-        category: 'Ingresos',
-        amount: 2500,
-        type: 'income',
-        date: new Date('2024-01-15')
-      },
-      {
-        title: 'Supermercado',
-        category: 'Alimentación',
-        amount: 180,
-        type: 'expense',
-        date: new Date('2024-01-14')
-      },
-      {
-        title: 'Gasolina',
-        category: 'Transporte',
-        amount: 45,
-        type: 'expense',
-        date: new Date('2024-01-13')
-      },
-      {
-        title: 'Freelance',
-        category: 'Ingresos',
-        amount: 800,
-        type: 'income',
-        date: new Date('2024-01-12')
-      }
-    ];
   }
 
   formatDate(date: Date): string {
@@ -311,5 +277,22 @@ export class HomeComponent implements OnInit {
         this.isLoadingGoals = false;
       }
     });
+  }
+
+  // Métodos para acciones rápidas
+  goToAddMovement() {
+    this.router.navigate(['/dashboard/finances/addmovement']);
+  }
+
+  goToAddCategory() {
+    this.router.navigate(['/dashboard/settings/categories']);
+  }
+
+  goToAddGoal() {
+    this.router.navigate(['/dashboard/savinggoals/new']);
+  }
+
+  goToReports() {
+    this.router.navigate(['/dashboard/transactions']);
   }
 }

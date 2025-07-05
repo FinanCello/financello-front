@@ -1,17 +1,22 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { GoalContributionService } from '../../../../services/GoalContribution.service';
-import { AddSavingGoalResponse } from '../../../../models/SavingGoal';
+import { SavingGoalService } from '../../../../services/SavingGoal.service';
+import { AddSavingGoalResponse, UserGoalsWithContributionsResponse, GoalContributionResponse } from '../../../../models/SavingGoal';
 import { SnackbarService } from '../../../../shared/layout/snackbar/snackbar.service';
+import { AchievementEventsService } from '../../../../services/achievement-events.service';
+import { DataRefreshService } from '../../../../services/data-refresh.service';
+import { RegisterGoalContributionRequest } from '../../../../models/GoalContribution';
 
 @Component({
   selector: 'app-contributions-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contributions-modal.component.html',
   styleUrls: ['./contributions-modal.component.css']
 })
-export class ContributionsModalComponent implements OnInit {
+export class ContributionsModalComponent implements OnInit, OnChanges {
   @Input() goal: AddSavingGoalResponse | null = null;
   @Input() isVisible: boolean = false;
   @Output() closeModal = new EventEmitter<void>();
@@ -23,60 +28,126 @@ export class ContributionsModalComponent implements OnInit {
   deletingContribution: number | null = null;
   deletingAll: boolean = false;
 
+  // New contribution form
+  showAddForm = false;
+  newContribution = {
+    amount: 0,
+    date: new Date().toISOString().split('T')[0]
+  };
+  addingContribution = false;
+
   constructor(
     private goalContributionService: GoalContributionService,
-    private snackbarService: SnackbarService
+    private savingGoalService: SavingGoalService,
+    private snackbarService: SnackbarService,
+    private achievementEventsService: AchievementEventsService,
+    private dataRefreshService: DataRefreshService
   ) {}
 
   ngOnInit() {
+    // No cargar aquí, se cargará cuando se abra el modal
+  }
+
+  ngOnChanges() {
+    // Cargar contribuciones cuando el modal se hace visible
     if (this.isVisible && this.goal) {
       this.loadContributions();
     }
   }
 
   loadContributions() {
-    if (!this.goal) return;
+    if (!this.goal) {
+      console.log('No hay meta seleccionada');
+      return;
+    }
     
     console.log('Cargando contribuciones para meta:', this.goal);
     this.loading = true;
+    this.contributions = [];
+    this.totalContributions = 0;
     
-    // Primero intentar con el endpoint específico
-    this.goalContributionService.getContributionsByGoalId(this.goal.id).subscribe({
-      next: (contributions) => {
-        console.log('Contribuciones recibidas del endpoint específico:', contributions);
-        this.contributions = contributions;
-        this.totalContributions = contributions.reduce((sum, c) => sum + c.amount, 0);
-        console.log('Total calculado:', this.totalContributions);
+    // Usar el método correcto que obtiene las metas con sus contribuciones
+    this.savingGoalService.getUserGoalsWithContributions(this.goal.userId).subscribe({
+      next: (goalsWithContributions: UserGoalsWithContributionsResponse[]) => {
+        console.log('Metas con contribuciones recibidas:', goalsWithContributions);
+        
+        // Encontrar la meta específica usando goalId
+        const targetGoal = goalsWithContributions.find(g => g.goalId === this.goal?.id);
+        
+        if (targetGoal && targetGoal.contributions) {
+          console.log('Contribuciones encontradas para la meta:', targetGoal.contributions);
+          this.contributions = targetGoal.contributions;
+          this.totalContributions = targetGoal.contributions.reduce((sum: number, c: GoalContributionResponse) => sum + (c.amount || 0), 0);
+          console.log('Total calculado:', this.totalContributions);
+        } else {
+          console.log('No se encontraron contribuciones para esta meta específica');
+          this.contributions = [];
+          this.totalContributions = 0;
+        }
         this.loading = false;
       },
       error: (err) => {
-        console.error('Error con endpoint específico:', err);
+        console.error('Error cargando metas con contribuciones:', err);
+        this.snackbarService.showSnackbar(
+          'Error',
+          'No se pudieron cargar las contribuciones',
+          'assets/icons/error.png'
+        );
+        this.loading = false;
+        this.contributions = [];
+        this.totalContributions = 0;
+      }
+    });
+  }
+
+  addContribution() {
+    if (!this.goal || this.newContribution.amount <= 0) {
+      this.snackbarService.showSnackbar(
+        'Error',
+        'Por favor ingresa un monto válido',
+        'assets/icons/error.png'
+      );
+      return;
+    }
+
+    this.addingContribution = true;
+    const request: RegisterGoalContributionRequest = {
+      goalId: this.goal.id,
+      amount: this.newContribution.amount,
+      date: this.newContribution.date
+    };
+
+    this.goalContributionService.registerContribution(request).subscribe({
+      next: () => {
+        this.snackbarService.showSnackbar(
+          'Contribución agregada',
+          'La contribución se ha agregado exitosamente',
+          'assets/icons/success.png'
+        );
         
-        // Si falla, intentar con getHistory y filtrar
-        console.log('Intentando con getHistory...');
-        this.goalContributionService.getHistory().subscribe({
-          next: (allContributions) => {
-            console.log('Todas las contribuciones:', allContributions);
-            
-            // Filtrar por goalId
-            const filteredContributions = allContributions.filter(c => c.goalId === this.goal?.id);
-            console.log('Contribuciones filtradas:', filteredContributions);
-            
-            this.contributions = filteredContributions;
-            this.totalContributions = filteredContributions.reduce((sum, c) => sum + c.amount, 0);
-            console.log('Total calculado:', this.totalContributions);
-            this.loading = false;
-          },
-          error: (historyErr) => {
-            console.error('Error con getHistory:', historyErr);
-            this.snackbarService.showSnackbar(
-              'Error',
-              'No se pudieron cargar las contribuciones',
-              'assets/icons/error.png'
-            );
-            this.loading = false;
-          }
-        });
+        // Reset form
+        this.newContribution = {
+          amount: 0,
+          date: new Date().toISOString().split('T')[0]
+        };
+        this.showAddForm = false;
+        
+        // Trigger data refresh
+        this.dataRefreshService.refreshContributions();
+        
+        // Trigger achievement refresh
+        this.achievementEventsService.triggerContributionRefresh();
+        
+        this.addingContribution = false;
+      },
+      error: (err) => {
+        console.error('Error adding contribution:', err);
+        this.snackbarService.showSnackbar(
+          'Error',
+          'No se pudo agregar la contribución',
+          'assets/icons/error.png'
+        );
+        this.addingContribution = false;
       }
     });
   }
@@ -92,8 +163,13 @@ export class ContributionsModalComponent implements OnInit {
             'La contribución se ha eliminado exitosamente',
             'assets/icons/success.png'
           );
-          this.loadContributions(); // Recargar la lista
+          
+          // Trigger data refresh
+          this.dataRefreshService.refreshContributions();
           this.contributionsDeleted.emit();
+          
+          // Trigger achievement refresh
+          this.achievementEventsService.triggerContributionRefresh();
         },
         error: (err) => {
           console.error('Error deleting contribution:', err);
@@ -122,13 +198,19 @@ export class ContributionsModalComponent implements OnInit {
       );
       
       Promise.all(deletePromises).then(() => {
-        this.snackbarService.showSnackbar(
-          'Contribuciones eliminadas',
-          'Todas las contribuciones se han eliminado exitosamente',
-          'assets/icons/success.png'
-        );
-        this.loadContributions(); // Recargar la lista
-        this.contributionsDeleted.emit();
+                  this.snackbarService.showSnackbar(
+            'Contribuciones eliminadas',
+            'Todas las contribuciones se han eliminado exitosamente',
+            'assets/icons/success.png'
+          );
+          
+          // Trigger data refresh
+          this.dataRefreshService.refreshContributions();
+          this.contributionsDeleted.emit();
+          
+          // Trigger achievement refresh
+          this.achievementEventsService.triggerContributionRefresh();
+        
         this.deletingAll = false;
       }).catch(err => {
         console.error('Error deleting all contributions:', err);
@@ -142,7 +224,20 @@ export class ContributionsModalComponent implements OnInit {
     }
   }
 
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
+  }
+
   close() {
+    // Limpiar el estado antes de cerrar
+    this.contributions = [];
+    this.totalContributions = 0;
+    this.loading = false;
+    this.showAddForm = false;
+    this.newContribution = {
+      amount: 0,
+      date: new Date().toISOString().split('T')[0]
+    };
     this.closeModal.emit();
   }
 } 

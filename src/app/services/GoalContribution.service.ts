@@ -40,4 +40,7 @@ export class GoalContributionService {
   deleteContribution(contributionId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${contributionId}`);
   }
+  getContributionsByUserId(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
+  }
 }

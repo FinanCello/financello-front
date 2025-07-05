@@ -16,5 +16,11 @@ export class SettingsComponent {
     this.router.navigate(['categories'], { relativeTo: this.route });
   }
 
+  goToSpendingLimit() {
+    this.router.navigate(['spending-limit'], { relativeTo: this.route });
+  }
+
+
+
 
 }

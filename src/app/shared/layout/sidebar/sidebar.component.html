@@ -88,13 +88,13 @@
       <div class="nav-items">
         <button 
           class="nav-item achievements-item"
-          [ngClass]="{ 'active': activeSection === 'achievements' }"
-          (click)="setActive('achievements')">
+          [ngClass]="{ 'active': activeSection === 'logros' }"
+          (click)="setActive('logros')">
           <div class="nav-icon trophy-icon">
             <img src="/assets/icons/trophy-star.svg" alt="Achievements" />
           </div>
           <span class="nav-label">Logros</span>
-          <div class="achievement-badge">3</div>
+          <div class="achievement-badge">{{ achievementCount }}</div>
         </button>
       </div>
     </div>

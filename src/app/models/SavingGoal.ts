@@ -18,3 +18,19 @@ export interface AddSavingGoalResponse {
   dueDate: string;
   userId: number;
 }
+
+export interface GoalContributionResponse {
+  contributionId: number;
+  amount: number;
+  date: string;
+}
+
+export interface UserGoalsWithContributionsResponse {
+  goalId: number;
+  goalName: string;
+  targetAmount: number;
+  currentAmount: number;
+  dueDate: string;
+  progress: string;
+  contributions: GoalContributionResponse[];
+}

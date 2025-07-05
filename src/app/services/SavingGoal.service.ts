@@ -4,6 +4,7 @@ import {
   AddSavingGoalRequest,
   UpdateSavingGoalRequest,
   AddSavingGoalResponse,
+  UserGoalsWithContributionsResponse,
 } from '../models/SavingGoal';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../environments/environment';
@@ -39,10 +40,7 @@ export class SavingGoalService {
     );
   }
 
-  updateSavingGoal(
-    goalId: number,
-    request: UpdateSavingGoalRequest
-  ): Observable<AddSavingGoalResponse> {
+  updateSavingGoal(goalId: number, request: UpdateSavingGoalRequest): Observable<AddSavingGoalResponse> {
     return this.http.put<AddSavingGoalResponse>(
       `${this.apiUrl}/${goalId}`,
       request
@@ -62,6 +60,19 @@ export class SavingGoalService {
     return this.http.get<AddSavingGoalResponse[]>(
       `${this.apiUrl}/user`,
       { params }
+    );
+  }
+
+  getGoalsByUser(userId: number): Observable<AddSavingGoalResponse[]> {
+    return this.http.get<AddSavingGoalResponse[]>(
+      `${this.apiUrl}/user`,
+      { params: { userId } }
+    );
+  }
+
+  getUserGoalsWithContributions(userId: number): Observable<UserGoalsWithContributionsResponse[]> {
+    return this.http.get<UserGoalsWithContributionsResponse[]>(
+      `${this.apiUrl}/user/${userId}/contributions`
     );
   }
 }

@@ -323,3 +323,115 @@
 .top-63, .top-80, .main-content, .main-container, .settings-container {
   top: 39px !important;
 }
+
+.settings-main-container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  background: #dcdcd1;
+  border-radius: 0px 0px 0px 15px;
+  height: 944px;
+  position: absolute;
+  margin-left: 220px;
+  margin-right: 1000px;
+  margin-top: 24px;
+  top: 39px;
+}
+
+.settings-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.2rem;
+  font-family: 'PalanquinDark-SemiBold', sans-serif;
+  color: #092c36;
+  margin-bottom: 0.5rem;
+}
+
+.settings-main-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.settings-desc {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 2.5rem;
+  font-family: 'PalanquinDark-Medium', sans-serif;
+}
+
+.settings-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.settings-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #fff;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+  text-align: left;
+  outline: none;
+  position: relative;
+}
+.settings-card:focus, .settings-card:hover {
+  box-shadow: 0 6px 24px rgba(14, 164, 155, 0.13);
+  background: #e6f7f6;
+  transform: translateY(-2px) scale(1.01);
+}
+
+.settings-card-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.settings-card-content {
+  flex: 1;
+}
+
+.settings-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0ea49b;
+  font-family: 'PalanquinDark-SemiBold', sans-serif;
+  margin-bottom: 0.2rem;
+}
+
+.settings-card-desc {
+  font-size: 1rem;
+  color: #333;
+  font-family: 'PalanquinDark-Regular', sans-serif;
+}
+
+.settings-card-arrow {
+  font-size: 2rem;
+  color: #0ea49b;
+  font-weight: bold;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+.settings-card:focus .settings-card-arrow, .settings-card:hover .settings-card-arrow {
+  color: #15313a;
+}
+
+@media (max-width: 700px) {
+  .settings-main-container {
+    padding: 1rem 0.2rem;
+  }
+  .settings-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .settings-title {
+    font-size: 1.3rem;
+  }
+}

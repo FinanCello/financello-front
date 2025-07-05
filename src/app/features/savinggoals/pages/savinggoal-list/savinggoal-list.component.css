@@ -332,8 +332,13 @@
   width: 235.01px;
   height: 20px;
 }
+
+.no-contributions-text {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+}
 .frame-239239 {
-  background: #f15b64;
   border-radius: 15px;
   padding: 10px 9px 10px 9px;
   display: flex;
@@ -341,20 +346,41 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 120px;
   height: 25px;
   position: absolute;
   left: 15px;
   top: 158px;
   overflow: hidden;
 }
-.in-progress {
+.goal-status {
   color: #ffffff;
-  text-align: left;
+  text-align: center;
   font-family: "DmSans-Regular", sans-serif;
   font-size: 12px;
   font-weight: 400;
   position: relative;
+  border-radius: 4px;
+  padding: 2px 8px;
+  min-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-created {
+  background-color: #6b7280;
+  color: #ffffff;
+}
+
+.status-in-progress {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.status-done {
+  background-color: #10b981;
+  color: #ffffff;
 }
 .frame-2392392 {
   background: #ffffff;

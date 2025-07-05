@@ -36,6 +36,7 @@ export class EditGoalFormComponent implements OnInit {
   onSubmit(): void {
     if (this.goalForm.valid) {
       const updatedGoal: UpdateSavingGoalRequest = {
+        name: this.goalForm.value.name,
         targetAmount: this.goalForm.value.targetAmount,
         dueDate: this.goalForm.value.dueDate
       };
@@ -44,20 +45,12 @@ export class EditGoalFormComponent implements OnInit {
         .updateSavingGoal(this.goal.id, updatedGoal)
         .subscribe({
           next: (response) => {
-            this.snackbarService.showSnackbar(
-              'Meta actualizada',
-              'La meta de ahorro se ha actualizado exitosamente',
-              'assets/icons/success.png'
-            );
+            this.snackbarService.showSnackbar('Meta actualizada', 'La meta se ha actualizado exitosamente', 'assets/icons/success.png', true);
             this.closeForm.emit();
           },
           error: (err) => {
             console.error('Error updating goal:', err);
-            this.snackbarService.showSnackbar(
-              'Error',
-              'No se pudo actualizar la meta de ahorro',
-              'assets/icons/error.png'
-            );
+            this.snackbarService.showSnackbar('Error', 'No se pudo actualizar la meta de ahorro', 'assets/icons/error.png', true);
           }
         });
     } else {
