@@ -47,28 +47,95 @@
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
-  background: #007bff;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #0EA49B, #0d9a91);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(14, 164, 155, 0.3);
   z-index: 100;
-  transition: transform 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: float 3s ease-in-out infinite;
 }
 
 .frame-40:hover {
-  transform: scale(1.1);
-  background: #0056b3;
+  transform: scale(1.15) rotate(180deg);
+  box-shadow: 0 12px 35px rgba(14, 164, 155, 0.4);
+  background: linear-gradient(135deg, #0d9a91, #0EA49B);
+}
+
+.frame-40:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
 }
 
 .plus-icon {
-  width: 30px;
-  height: 30px;
-  filter: brightness(0) invert(1); /* Hace el ícono blanco */
+  width: 35px;
+  height: 35px;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* ... y el resto del CSS que ya tienes ... */
+.frame-40:hover .plus-icon {
+  transform: scale(1.2);
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+/* Animación de flotación */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Efecto de brillo al hover */
+.frame-40::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.frame-40:hover::before {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .frame-40 {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .plus-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
