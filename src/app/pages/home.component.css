@@ -175,6 +175,11 @@
   color: #F98323;
 }
 
+/* Negative balance styling */
+.stat-value.negative-balance {
+  color: #F15B64;
+}
+
 /* Main Grid */
 .main-grid {
   display: grid;
@@ -442,6 +447,31 @@
   font-size: 12px;
 }
 
+/* Placeholder styles for empty goals */
+.goal-item.placeholder {
+  opacity: 0.6;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+}
+
+.goal-item.placeholder .goal-title,
+.goal-item.placeholder .goal-description {
+  color: #9ca3af;
+}
+
+.goal-item.placeholder .progress-bar {
+  background: #e5e7eb;
+}
+
+.goal-item.placeholder .progress-fill {
+  background: #d1d5db;
+}
+
+.goal-item.placeholder .current-amount,
+.goal-item.placeholder .target-amount {
+  color: #9ca3af;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .home-container {
@@ -486,4 +516,49 @@
   .stat-value {
     font-size: 24px;
   }
+}
+
+.welcome-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.welcome-inline-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+/* Loading, Error and Empty States */
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #0ea49b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #9ca3af;
 }

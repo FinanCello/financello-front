@@ -45,8 +45,7 @@ export class RegisterComponent {
       this.snackbarService.showSnackbar(
         'Data are Missing',
         'Complete all the required fields',
-        'assets/icons/warning.png',
-        true
+        'icons/warning.png'
       );
       return;
     }
@@ -61,8 +60,7 @@ export class RegisterComponent {
         this.snackbarService.showSnackbar(
           'Successful Record',
           'User created correctly',
-          'assets/icons/success.png',
-          true
+          'icons/success.png'
         );
         this.router.navigate(['/auth/login']);
       },
@@ -76,29 +74,25 @@ export class RegisterComponent {
           this.snackbarService.showSnackbar(
             'Duplicate Mail',
             'Email is already in use',
-            'assets/icons/error.png',
-            true
+            'icons/error.png'
           );
         } else if (backendMsg.includes('Username already exists')) {
           this.snackbarService.showSnackbar(
             'Existing User',
             'Name was already registered',
-            'assets/icons/error.png',
-            true
+            'icons/error.png'
           );
         } else if (backendMsg.includes('blank spaces')) {
           this.snackbarService.showSnackbar(
             'Data are Missing',
             'Complete all the required fields',
-            'assets/icons/warning.png',
-            true
+            'icons/warning.png'
           );
         } else {
           this.snackbarService.showSnackbar(
             'Error',
             backendMsg,
-            'assets/icons/error.png',
-            true
+            'icons/error.png'
           );
         }
       }
