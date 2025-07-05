@@ -18,6 +18,7 @@ import { SpendingLimitFormComponent } from './features/spendingLimit/pages/setLi
 import { SpendingLimitAlertComponent } from './features/spendingLimit/pages/spendingLimitAlert/spending-limit-alert.component';
 
 export const routes: Routes = [
+
   {
     path: '',
     redirectTo: '/dashboard',
@@ -62,7 +63,10 @@ export const routes: Routes = [
         { path: 'addmovement', component: AddMovementComponent }
       ] },
       { path: 'analytics', component: AnalyticsComponent },
-      { path: 'categories', component: CategoryFormComponent },
+      { path: 'categories', component: CategoryComponent, children:[
+        { path: 'new', component: CategoryFormComponent }
+      ] },
+      { path: 'logros', loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent) },
       { path: 'spending-limit', component: SpendingLimitFormComponent },
       { path: 'alerts', component: SpendingLimitAlertComponent },
     ]
@@ -70,5 +74,7 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: '/dashboard'
-  }
+  },
+
+      { path: 'logros', loadComponent: () => import('./features/achievements/achievements.component').then(m => m.AchievementsComponent) }
 ];
